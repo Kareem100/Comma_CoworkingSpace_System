@@ -10,10 +10,11 @@ namespace Comma
             InitializeComponent();
             generateQuote();
         }
-        public RentForm(int roomId)
+        public RentForm(string roomID)
         {
             InitializeComponent();
             generateQuote();
+            // DISPLAY DATA OF THE ROOM WITH roomID
         }
         private void generateQuote()
         {

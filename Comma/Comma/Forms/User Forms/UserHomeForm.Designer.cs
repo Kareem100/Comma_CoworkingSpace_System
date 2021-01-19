@@ -60,14 +60,18 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.childFormPanel = new System.Windows.Forms.Panel();
+            this.showRoomsBtn = new System.Windows.Forms.Button();
             this.quoteBox = new System.Windows.Forms.GroupBox();
             this.quoteLbl = new System.Windows.Forms.Label();
             this.settingsContainer = new System.Windows.Forms.FlowLayoutPanel();
+            this.changeMailBtn = new System.Windows.Forms.Button();
+            this.changePassBtn = new System.Windows.Forms.Button();
             this.logoutBtn = new System.Windows.Forms.Button();
             this.notificationsContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.label6 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.showRoomsBtn = new System.Windows.Forms.Button();
+            this.welcomeLbl = new System.Windows.Forms.Label();
+            this.userFirstNameLbl = new System.Windows.Forms.Label();
             this.navbarPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -91,14 +95,16 @@
             // navbarPanel
             // 
             this.navbarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(39)))), ((int)(((byte)(40)))));
+            this.navbarPanel.Controls.Add(this.label1);
+            this.navbarPanel.Controls.Add(this.contactLbl);
+            this.navbarPanel.Controls.Add(this.userFirstNameLbl);
+            this.navbarPanel.Controls.Add(this.welcomeLbl);
             this.navbarPanel.Controls.Add(this.feedbackBtn);
             this.navbarPanel.Controls.Add(this.pictureBox9);
             this.navbarPanel.Controls.Add(this.label5);
             this.navbarPanel.Controls.Add(this.label4);
             this.navbarPanel.Controls.Add(this.pictureBox6);
             this.navbarPanel.Controls.Add(this.label2);
-            this.navbarPanel.Controls.Add(this.label1);
-            this.navbarPanel.Controls.Add(this.contactLbl);
             this.navbarPanel.Controls.Add(this.sidebarPanel);
             this.navbarPanel.Controls.Add(this.rentBtn);
             this.navbarPanel.Controls.Add(this.topCustomersBtn);
@@ -120,7 +126,7 @@
             this.feedbackBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.feedbackBtn.Image = ((System.Drawing.Image)(resources.GetObject("feedbackBtn.Image")));
             this.feedbackBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.feedbackBtn.Location = new System.Drawing.Point(9, 390);
+            this.feedbackBtn.Location = new System.Drawing.Point(9, 443);
             this.feedbackBtn.Name = "feedbackBtn";
             this.feedbackBtn.Size = new System.Drawing.Size(188, 60);
             this.feedbackBtn.TabIndex = 10;
@@ -217,7 +223,7 @@
             // sidebarPanel
             // 
             this.sidebarPanel.BackColor = System.Drawing.Color.Goldenrod;
-            this.sidebarPanel.Location = new System.Drawing.Point(0, 85);
+            this.sidebarPanel.Location = new System.Drawing.Point(0, 138);
             this.sidebarPanel.Name = "sidebarPanel";
             this.sidebarPanel.Size = new System.Drawing.Size(6, 60);
             this.sidebarPanel.TabIndex = 4;
@@ -231,7 +237,7 @@
             this.rentBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.rentBtn.Image = ((System.Drawing.Image)(resources.GetObject("rentBtn.Image")));
             this.rentBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.rentBtn.Location = new System.Drawing.Point(9, 207);
+            this.rentBtn.Location = new System.Drawing.Point(9, 260);
             this.rentBtn.Name = "rentBtn";
             this.rentBtn.Size = new System.Drawing.Size(188, 60);
             this.rentBtn.TabIndex = 4;
@@ -248,7 +254,7 @@
             this.topCustomersBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.topCustomersBtn.Image = ((System.Drawing.Image)(resources.GetObject("topCustomersBtn.Image")));
             this.topCustomersBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.topCustomersBtn.Location = new System.Drawing.Point(9, 268);
+            this.topCustomersBtn.Location = new System.Drawing.Point(9, 321);
             this.topCustomersBtn.Name = "topCustomersBtn";
             this.topCustomersBtn.Size = new System.Drawing.Size(188, 60);
             this.topCustomersBtn.TabIndex = 3;
@@ -265,7 +271,7 @@
             this.topRoomsBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.topRoomsBtn.Image = ((System.Drawing.Image)(resources.GetObject("topRoomsBtn.Image")));
             this.topRoomsBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.topRoomsBtn.Location = new System.Drawing.Point(9, 329);
+            this.topRoomsBtn.Location = new System.Drawing.Point(9, 382);
             this.topRoomsBtn.Name = "topRoomsBtn";
             this.topRoomsBtn.Size = new System.Drawing.Size(188, 60);
             this.topRoomsBtn.TabIndex = 2;
@@ -282,7 +288,7 @@
             this.roomsBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.roomsBtn.Image = ((System.Drawing.Image)(resources.GetObject("roomsBtn.Image")));
             this.roomsBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.roomsBtn.Location = new System.Drawing.Point(9, 146);
+            this.roomsBtn.Location = new System.Drawing.Point(9, 199);
             this.roomsBtn.Name = "roomsBtn";
             this.roomsBtn.Size = new System.Drawing.Size(188, 60);
             this.roomsBtn.TabIndex = 1;
@@ -299,7 +305,7 @@
             this.homeBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.homeBtn.Image = ((System.Drawing.Image)(resources.GetObject("homeBtn.Image")));
             this.homeBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.homeBtn.Location = new System.Drawing.Point(9, 85);
+            this.homeBtn.Location = new System.Drawing.Point(9, 138);
             this.homeBtn.Name = "homeBtn";
             this.homeBtn.Size = new System.Drawing.Size(188, 60);
             this.homeBtn.TabIndex = 0;
@@ -511,6 +517,27 @@
             this.childFormPanel.Size = new System.Drawing.Size(600, 596);
             this.childFormPanel.TabIndex = 5;
             // 
+            // showRoomsBtn
+            // 
+            this.showRoomsBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.showRoomsBtn.BackColor = System.Drawing.Color.Goldenrod;
+            this.showRoomsBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.showRoomsBtn.FlatAppearance.BorderSize = 0;
+            this.showRoomsBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
+            this.showRoomsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.showRoomsBtn.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.showRoomsBtn.ForeColor = System.Drawing.Color.Crimson;
+            this.showRoomsBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.showRoomsBtn.Location = new System.Drawing.Point(195, 439);
+            this.showRoomsBtn.Name = "showRoomsBtn";
+            this.showRoomsBtn.Size = new System.Drawing.Size(260, 60);
+            this.showRoomsBtn.TabIndex = 8;
+            this.showRoomsBtn.Text = "Show Rooms";
+            this.showRoomsBtn.UseVisualStyleBackColor = false;
+            this.showRoomsBtn.Click += new System.EventHandler(this.showRoomsBtn_Click);
+            this.showRoomsBtn.MouseEnter += new System.EventHandler(this.showRoomsBtn_MouseEnter);
+            this.showRoomsBtn.MouseLeave += new System.EventHandler(this.showRoomsBtn_MouseLeave);
+            // 
             // quoteBox
             // 
             this.quoteBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -546,14 +573,51 @@
             this.settingsContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.settingsContainer.AutoSize = true;
             this.settingsContainer.BackColor = System.Drawing.Color.Goldenrod;
+            this.settingsContainer.Controls.Add(this.changeMailBtn);
+            this.settingsContainer.Controls.Add(this.changePassBtn);
             this.settingsContainer.Controls.Add(this.logoutBtn);
             this.settingsContainer.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.settingsContainer.Location = new System.Drawing.Point(388, 45);
+            this.settingsContainer.Location = new System.Drawing.Point(321, 45);
             this.settingsContainer.Name = "settingsContainer";
-            this.settingsContainer.Size = new System.Drawing.Size(124, 55);
+            this.settingsContainer.Size = new System.Drawing.Size(191, 165);
             this.settingsContainer.TabIndex = 3;
             this.settingsContainer.Visible = false;
             this.settingsContainer.WrapContents = false;
+            // 
+            // changeMailBtn
+            // 
+            this.changeMailBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.changeMailBtn.FlatAppearance.BorderSize = 0;
+            this.changeMailBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.changeMailBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.changeMailBtn.Font = new System.Drawing.Font("Comic Sans MS", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.changeMailBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.changeMailBtn.Image = ((System.Drawing.Image)(resources.GetObject("changeMailBtn.Image")));
+            this.changeMailBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.changeMailBtn.Location = new System.Drawing.Point(3, 3);
+            this.changeMailBtn.Name = "changeMailBtn";
+            this.changeMailBtn.Size = new System.Drawing.Size(185, 49);
+            this.changeMailBtn.TabIndex = 3;
+            this.changeMailBtn.Text = "    Change E-mail";
+            this.changeMailBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.changeMailBtn.UseVisualStyleBackColor = true;
+            // 
+            // changePassBtn
+            // 
+            this.changePassBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.changePassBtn.FlatAppearance.BorderSize = 0;
+            this.changePassBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.changePassBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.changePassBtn.Font = new System.Drawing.Font("Comic Sans MS", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.changePassBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.changePassBtn.Image = ((System.Drawing.Image)(resources.GetObject("changePassBtn.Image")));
+            this.changePassBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.changePassBtn.Location = new System.Drawing.Point(3, 58);
+            this.changePassBtn.Name = "changePassBtn";
+            this.changePassBtn.Size = new System.Drawing.Size(185, 49);
+            this.changePassBtn.TabIndex = 4;
+            this.changePassBtn.Text = "  Change Password";
+            this.changePassBtn.UseVisualStyleBackColor = true;
             // 
             // logoutBtn
             // 
@@ -565,11 +629,12 @@
             this.logoutBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.logoutBtn.Image = ((System.Drawing.Image)(resources.GetObject("logoutBtn.Image")));
             this.logoutBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.logoutBtn.Location = new System.Drawing.Point(3, 3);
+            this.logoutBtn.Location = new System.Drawing.Point(3, 113);
             this.logoutBtn.Name = "logoutBtn";
-            this.logoutBtn.Size = new System.Drawing.Size(108, 49);
+            this.logoutBtn.Size = new System.Drawing.Size(185, 49);
             this.logoutBtn.TabIndex = 2;
-            this.logoutBtn.Text = " Logout";
+            this.logoutBtn.Text = "    Logout";
+            this.logoutBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.logoutBtn.UseVisualStyleBackColor = true;
             this.logoutBtn.Click += new System.EventHandler(this.logoutBtn_Click);
             // 
@@ -610,26 +675,27 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // showRoomsBtn
+            // welcomeLbl
             // 
-            this.showRoomsBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.showRoomsBtn.BackColor = System.Drawing.Color.Goldenrod;
-            this.showRoomsBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.showRoomsBtn.FlatAppearance.BorderSize = 0;
-            this.showRoomsBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(0)))));
-            this.showRoomsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.showRoomsBtn.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.showRoomsBtn.ForeColor = System.Drawing.Color.Crimson;
-            this.showRoomsBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.showRoomsBtn.Location = new System.Drawing.Point(195, 439);
-            this.showRoomsBtn.Name = "showRoomsBtn";
-            this.showRoomsBtn.Size = new System.Drawing.Size(260, 60);
-            this.showRoomsBtn.TabIndex = 8;
-            this.showRoomsBtn.Text = "Show Rooms";
-            this.showRoomsBtn.UseVisualStyleBackColor = false;
-            this.showRoomsBtn.Click += new System.EventHandler(this.showRoomsBtn_Click);
-            this.showRoomsBtn.MouseEnter += new System.EventHandler(this.showRoomsBtn_MouseEnter);
-            this.showRoomsBtn.MouseLeave += new System.EventHandler(this.showRoomsBtn_MouseLeave);
+            this.welcomeLbl.AutoSize = true;
+            this.welcomeLbl.Font = new System.Drawing.Font("Comic Sans MS", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.welcomeLbl.ForeColor = System.Drawing.Color.Goldenrod;
+            this.welcomeLbl.Location = new System.Drawing.Point(17, 46);
+            this.welcomeLbl.Name = "welcomeLbl";
+            this.welcomeLbl.Size = new System.Drawing.Size(143, 38);
+            this.welcomeLbl.TabIndex = 9;
+            this.welcomeLbl.Text = "Welcome,";
+            // 
+            // userFirstNameLbl
+            // 
+            this.userFirstNameLbl.AutoSize = true;
+            this.userFirstNameLbl.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userFirstNameLbl.ForeColor = System.Drawing.Color.Crimson;
+            this.userFirstNameLbl.Location = new System.Drawing.Point(53, 84);
+            this.userFirstNameLbl.Name = "userFirstNameLbl";
+            this.userFirstNameLbl.Size = new System.Drawing.Size(134, 29);
+            this.userFirstNameLbl.TabIndex = 11;
+            this.userFirstNameLbl.Text = "username...";
             // 
             // UserHomeForm
             // 
@@ -716,5 +782,9 @@
         private System.Windows.Forms.GroupBox quoteBox;
         private System.Windows.Forms.Label quoteLbl;
         private System.Windows.Forms.Button showRoomsBtn;
+        private System.Windows.Forms.Button changeMailBtn;
+        private System.Windows.Forms.Button changePassBtn;
+        private System.Windows.Forms.Label userFirstNameLbl;
+        private System.Windows.Forms.Label welcomeLbl;
     }
 }

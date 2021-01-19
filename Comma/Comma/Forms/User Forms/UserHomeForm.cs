@@ -10,14 +10,10 @@ namespace Comma
     {
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
-       (
-           int nLeftRect,     // x-coordinate of upper-left corner
-           int nTopRect,      // y-coordinate of upper-left corner
-           int nRightRect,    // x-coordinate of lower-right corner
-           int nBottomRect,   // y-coordinate of lower-right corner
-           int nWidthEllipse, // width of ellipse
-           int nHeightEllipse // height of ellipse
-       );
+        (
+           int nLeftRect, int nTopRect, int nRightRect,
+           int nBottomRect, int nWidthEllipse,  int nHeightEllipse
+        );
         private Form activeForm = null;
 
         public UserHomeForm()
@@ -78,7 +74,7 @@ namespace Comma
             highlightSelectedButton(topCustomersBtn);
         }
 
-        public void rentBtn_Click(object sender, EventArgs e, int roomID)
+        public void rentBtn_Click(object sender, EventArgs e, string roomID)
         {
             openForm(new RentForm(roomID));
             highlightSelectedButton(rentBtn);
@@ -154,13 +150,13 @@ namespace Comma
                 connectPanel.Visible = true;
                 connectPanel.Left = settingsBtn.Left;
                 settingsContainer.BringToFront();
-                settingsContainer.BackColor = Color.Goldenrod;
+                settingsBtn.BackColor = Color.Goldenrod;
             }
             else
             {
                 settingsContainer.Visible = false;
                 connectPanel.Visible = false;
-                settingsContainer.BackColor = Color.Transparent;
+                settingsBtn.BackColor = Color.Transparent;
             }
         }
 
@@ -186,7 +182,7 @@ namespace Comma
             connectPanel.Visible = false;
             notificationsBtn.BackColor = Color.Transparent;
             settingsContainer.Visible = false;
-            settingsContainer.BackColor = Color.Transparent;
+            settingsBtn.BackColor = Color.Transparent;
         }
 
         private void logoutBtn_Click(object sender, EventArgs e)

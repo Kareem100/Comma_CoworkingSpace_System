@@ -1,7 +1,6 @@
 C:\Users\Google\Documents\Visual Studio 2019\Projects\Comma\Comma\obj\Debug\Comma.FeedbackForm.resources
 C:\Users\Google\Documents\Visual Studio 2019\Projects\Comma\Comma\obj\Debug\Comma.LoginForm.resources
 C:\Users\Google\Documents\Visual Studio 2019\Projects\Comma\Comma\obj\Debug\Comma.RegisterForm.resources
-C:\Users\Google\Documents\Visual Studio 2019\Projects\Comma\Comma\obj\Debug\Comma.Forms.roomControl.resources
 C:\Users\Google\Documents\Visual Studio 2019\Projects\Comma\Comma\obj\Debug\Comma.RentForm.resources
 C:\Users\Google\Documents\Visual Studio 2019\Projects\Comma\Comma\obj\Debug\Comma.RoomsForm.resources
 C:\Users\Google\Documents\Visual Studio 2019\Projects\Comma\Comma\obj\Debug\Comma.TopCustomersForm.resources
@@ -22,3 +21,8 @@ C:\Users\Google\Documents\Visual Studio 2019\Projects\Comma\Comma\obj\Debug\Comm
 C:\Users\Google\Documents\Visual Studio 2019\Projects\Comma\Comma\obj\Debug\Comma.Forms.Admin_Forms.ShowRentsForm.resources
 C:\Users\Google\Documents\Visual Studio 2019\Projects\Comma\Comma\obj\Debug\Comma.Forms.Admin_Forms.RentInformationForm.resources
 C:\Users\Google\Documents\Visual Studio 2019\Projects\Comma\Comma\obj\Debug\Comma.ManageRoomsForm.resources
+C:\Users\Google\Documents\Visual Studio 2019\Projects\Comma\Comma\obj\Debug\Comma.Forms.Admin_Forms.ManageAdminsForm.resources
+C:\Users\Google\Documents\Visual Studio 2019\Projects\Comma\Comma\obj\Debug\Comma.Forms.Admin_Forms.ManageSocialLinksForm.resources
+C:\Users\Google\Documents\Visual Studio 2019\Projects\Comma\Comma\obj\Debug\Comma.Forms.Admin_Forms.DisplayRoomsForm.resources
+C:\Users\Google\Documents\Visual Studio 2019\Projects\Comma\Comma\obj\Debug\Comma.Forms.Admin_Forms.AdminRoom.resources
+C:\Users\Google\Documents\Visual Studio 2019\Projects\Comma\Comma\obj\Debug\Comma.Forms.UserRoom.resources

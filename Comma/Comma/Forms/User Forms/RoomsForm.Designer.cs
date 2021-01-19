@@ -29,43 +29,22 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RoomsForm));
-            this.button1 = new System.Windows.Forms.Button();
             this.containerPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.bottomPanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(198, 123);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(202, 31);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Click To Add Panel";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // containerPanel
             // 
             this.containerPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.containerPanel.AutoSize = true;
+            this.containerPanel.AutoScroll = true;
             this.containerPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.containerPanel.Location = new System.Drawing.Point(28, 160);
             this.containerPanel.Name = "containerPanel";
             this.containerPanel.Padding = new System.Windows.Forms.Padding(5);
-            this.containerPanel.Size = new System.Drawing.Size(544, 10);
+            this.containerPanel.Size = new System.Drawing.Size(544, 540);
             this.containerPanel.TabIndex = 9;
-            // 
-            // bottomPanel
-            // 
-            this.bottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.bottomPanel.Location = new System.Drawing.Point(0, 553);
-            this.bottomPanel.Name = "bottomPanel";
-            this.bottomPanel.Size = new System.Drawing.Size(600, 37);
-            this.bottomPanel.TabIndex = 10;
             // 
             // label1
             // 
@@ -86,17 +65,33 @@
             this.label1.Text = "   ROOMS";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.Color.Green;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.button1.Location = new System.Drawing.Point(194, 123);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(202, 31);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "Click To Add Panel";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // RoomsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
-            this.AutoSize = true;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(600, 590);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.bottomPanel);
-            this.Controls.Add(this.containerPanel);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.containerPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "RoomsForm";
             this.ResumeLayout(false);
@@ -105,9 +100,8 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.FlowLayoutPanel containerPanel;
-        private System.Windows.Forms.Panel bottomPanel;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
     }
 }

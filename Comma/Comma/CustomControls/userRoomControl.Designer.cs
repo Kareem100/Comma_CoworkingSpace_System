@@ -1,6 +1,6 @@
 ﻿namespace Comma.Forms
 {
-    partial class roomControl
+    partial class UserRoom
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(roomControl));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserRoom));
             this.roomImage = new System.Windows.Forms.PictureBox();
             this.roomPrice = new System.Windows.Forms.Label();
             this.roomName = new System.Windows.Forms.Label();
@@ -142,11 +142,11 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "#";
             // 
-            // roomControl
+            // UserRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.Controls.Add(this.label1);
             this.Controls.Add(this.rentRoomBtn);
             this.Controls.Add(this.panel1);
@@ -154,7 +154,7 @@
             this.Controls.Add(this.roomName);
             this.Controls.Add(this.roomImage);
             this.Margin = new System.Windows.Forms.Padding(10);
-            this.Name = "roomControl";
+            this.Name = "UserRoom";
             this.Size = new System.Drawing.Size(340, 500);
             ((System.ComponentModel.ISupportInitialize)(this.roomImage)).EndInit();
             this.panel1.ResumeLayout(false);

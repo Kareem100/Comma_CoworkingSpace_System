@@ -40,8 +40,6 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.showRoomsBtn = new System.Windows.Forms.Button();
-            this.settingsContainer = new System.Windows.Forms.FlowLayoutPanel();
-            this.logoutBtn = new System.Windows.Forms.Button();
             this.titleLbl = new System.Windows.Forms.Label();
             this.navbarPanel = new System.Windows.Forms.Panel();
             this.feedbackBtn = new System.Windows.Forms.Button();
@@ -59,9 +57,15 @@
             this.rentsBtn = new System.Windows.Forms.Button();
             this.homeBtn = new System.Windows.Forms.Button();
             this.childFormPanel = new System.Windows.Forms.Panel();
+            this.settingsContainer = new System.Windows.Forms.FlowLayoutPanel();
+            this.changeMailBtn = new System.Windows.Forms.Button();
+            this.changePassBtn = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.logoPanel = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.topHeader = new System.Windows.Forms.Panel();
+            this.adminFirstNameLbl = new System.Windows.Forms.Label();
+            this.welcomeLbl = new System.Windows.Forms.Label();
             this.shadedPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.closeButton)).BeginInit();
@@ -70,11 +74,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            this.settingsContainer.SuspendLayout();
             this.navbarPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.phoneIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.childFormPanel.SuspendLayout();
+            this.settingsContainer.SuspendLayout();
             this.logoPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -230,38 +234,6 @@
             this.showRoomsBtn.MouseEnter += new System.EventHandler(this.showRoomsBtn_MouseEnter);
             this.showRoomsBtn.MouseLeave += new System.EventHandler(this.showRoomsBtn_MouseLeave);
             // 
-            // settingsContainer
-            // 
-            this.settingsContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.settingsContainer.AutoSize = true;
-            this.settingsContainer.BackColor = System.Drawing.Color.Goldenrod;
-            this.settingsContainer.Controls.Add(this.logoutBtn);
-            this.settingsContainer.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.settingsContainer.Location = new System.Drawing.Point(388, 40);
-            this.settingsContainer.Name = "settingsContainer";
-            this.settingsContainer.Size = new System.Drawing.Size(124, 55);
-            this.settingsContainer.TabIndex = 3;
-            this.settingsContainer.Visible = false;
-            this.settingsContainer.WrapContents = false;
-            // 
-            // logoutBtn
-            // 
-            this.logoutBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.logoutBtn.FlatAppearance.BorderSize = 0;
-            this.logoutBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.logoutBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.logoutBtn.Font = new System.Drawing.Font("Comic Sans MS", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logoutBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.logoutBtn.Image = ((System.Drawing.Image)(resources.GetObject("logoutBtn.Image")));
-            this.logoutBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.logoutBtn.Location = new System.Drawing.Point(3, 3);
-            this.logoutBtn.Name = "logoutBtn";
-            this.logoutBtn.Size = new System.Drawing.Size(108, 49);
-            this.logoutBtn.TabIndex = 2;
-            this.logoutBtn.Text = " Logout";
-            this.logoutBtn.UseVisualStyleBackColor = true;
-            this.logoutBtn.Click += new System.EventHandler(this.logoutBtn_Click);
-            // 
             // titleLbl
             // 
             this.titleLbl.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -277,14 +249,16 @@
             // navbarPanel
             // 
             this.navbarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(39)))), ((int)(((byte)(40)))));
+            this.navbarPanel.Controls.Add(this.adminFirstNameLbl);
+            this.navbarPanel.Controls.Add(this.welcomeLbl);
+            this.navbarPanel.Controls.Add(this.label1);
+            this.navbarPanel.Controls.Add(this.contactLbl);
             this.navbarPanel.Controls.Add(this.feedbackBtn);
             this.navbarPanel.Controls.Add(this.phoneIcon);
             this.navbarPanel.Controls.Add(this.label5);
             this.navbarPanel.Controls.Add(this.label4);
             this.navbarPanel.Controls.Add(this.pictureBox6);
             this.navbarPanel.Controls.Add(this.label2);
-            this.navbarPanel.Controls.Add(this.label1);
-            this.navbarPanel.Controls.Add(this.contactLbl);
             this.navbarPanel.Controls.Add(this.sidebarPanel);
             this.navbarPanel.Controls.Add(this.roomsBtn);
             this.navbarPanel.Controls.Add(this.adminsBtn);
@@ -306,7 +280,7 @@
             this.feedbackBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.feedbackBtn.Image = ((System.Drawing.Image)(resources.GetObject("feedbackBtn.Image")));
             this.feedbackBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.feedbackBtn.Location = new System.Drawing.Point(9, 390);
+            this.feedbackBtn.Location = new System.Drawing.Point(9, 437);
             this.feedbackBtn.Name = "feedbackBtn";
             this.feedbackBtn.Size = new System.Drawing.Size(188, 60);
             this.feedbackBtn.TabIndex = 10;
@@ -403,7 +377,7 @@
             // sidebarPanel
             // 
             this.sidebarPanel.BackColor = System.Drawing.Color.Goldenrod;
-            this.sidebarPanel.Location = new System.Drawing.Point(0, 85);
+            this.sidebarPanel.Location = new System.Drawing.Point(0, 132);
             this.sidebarPanel.Name = "sidebarPanel";
             this.sidebarPanel.Size = new System.Drawing.Size(6, 60);
             this.sidebarPanel.TabIndex = 4;
@@ -417,7 +391,7 @@
             this.roomsBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.roomsBtn.Image = ((System.Drawing.Image)(resources.GetObject("roomsBtn.Image")));
             this.roomsBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.roomsBtn.Location = new System.Drawing.Point(9, 207);
+            this.roomsBtn.Location = new System.Drawing.Point(9, 254);
             this.roomsBtn.Name = "roomsBtn";
             this.roomsBtn.Size = new System.Drawing.Size(188, 60);
             this.roomsBtn.TabIndex = 4;
@@ -434,7 +408,7 @@
             this.adminsBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.adminsBtn.Image = ((System.Drawing.Image)(resources.GetObject("adminsBtn.Image")));
             this.adminsBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.adminsBtn.Location = new System.Drawing.Point(9, 268);
+            this.adminsBtn.Location = new System.Drawing.Point(9, 315);
             this.adminsBtn.Name = "adminsBtn";
             this.adminsBtn.Size = new System.Drawing.Size(188, 60);
             this.adminsBtn.TabIndex = 3;
@@ -451,7 +425,7 @@
             this.socialLinksBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.socialLinksBtn.Image = ((System.Drawing.Image)(resources.GetObject("socialLinksBtn.Image")));
             this.socialLinksBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.socialLinksBtn.Location = new System.Drawing.Point(9, 329);
+            this.socialLinksBtn.Location = new System.Drawing.Point(9, 376);
             this.socialLinksBtn.Name = "socialLinksBtn";
             this.socialLinksBtn.Size = new System.Drawing.Size(188, 60);
             this.socialLinksBtn.TabIndex = 2;
@@ -468,7 +442,7 @@
             this.rentsBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.rentsBtn.Image = ((System.Drawing.Image)(resources.GetObject("rentsBtn.Image")));
             this.rentsBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.rentsBtn.Location = new System.Drawing.Point(9, 146);
+            this.rentsBtn.Location = new System.Drawing.Point(9, 193);
             this.rentsBtn.Name = "rentsBtn";
             this.rentsBtn.Size = new System.Drawing.Size(188, 60);
             this.rentsBtn.TabIndex = 1;
@@ -485,7 +459,7 @@
             this.homeBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.homeBtn.Image = ((System.Drawing.Image)(resources.GetObject("homeBtn.Image")));
             this.homeBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.homeBtn.Location = new System.Drawing.Point(9, 85);
+            this.homeBtn.Location = new System.Drawing.Point(9, 132);
             this.homeBtn.Name = "homeBtn";
             this.homeBtn.Size = new System.Drawing.Size(188, 60);
             this.homeBtn.TabIndex = 0;
@@ -499,12 +473,81 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.childFormPanel.BackColor = System.Drawing.Color.Transparent;
-            this.childFormPanel.Controls.Add(this.showRoomsBtn);
             this.childFormPanel.Controls.Add(this.settingsContainer);
+            this.childFormPanel.Controls.Add(this.showRoomsBtn);
             this.childFormPanel.Location = new System.Drawing.Point(200, 9);
             this.childFormPanel.Name = "childFormPanel";
             this.childFormPanel.Size = new System.Drawing.Size(600, 590);
             this.childFormPanel.TabIndex = 10;
+            // 
+            // settingsContainer
+            // 
+            this.settingsContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.settingsContainer.AutoSize = true;
+            this.settingsContainer.BackColor = System.Drawing.Color.Goldenrod;
+            this.settingsContainer.Controls.Add(this.changeMailBtn);
+            this.settingsContainer.Controls.Add(this.changePassBtn);
+            this.settingsContainer.Controls.Add(this.button1);
+            this.settingsContainer.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.settingsContainer.Location = new System.Drawing.Point(322, 40);
+            this.settingsContainer.Name = "settingsContainer";
+            this.settingsContainer.Size = new System.Drawing.Size(191, 165);
+            this.settingsContainer.TabIndex = 9;
+            this.settingsContainer.Visible = false;
+            this.settingsContainer.WrapContents = false;
+            // 
+            // changeMailBtn
+            // 
+            this.changeMailBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.changeMailBtn.FlatAppearance.BorderSize = 0;
+            this.changeMailBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.changeMailBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.changeMailBtn.Font = new System.Drawing.Font("Comic Sans MS", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.changeMailBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.changeMailBtn.Image = ((System.Drawing.Image)(resources.GetObject("changeMailBtn.Image")));
+            this.changeMailBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.changeMailBtn.Location = new System.Drawing.Point(3, 3);
+            this.changeMailBtn.Name = "changeMailBtn";
+            this.changeMailBtn.Size = new System.Drawing.Size(185, 49);
+            this.changeMailBtn.TabIndex = 3;
+            this.changeMailBtn.Text = "    Change E-mail";
+            this.changeMailBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.changeMailBtn.UseVisualStyleBackColor = true;
+            // 
+            // changePassBtn
+            // 
+            this.changePassBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.changePassBtn.FlatAppearance.BorderSize = 0;
+            this.changePassBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.changePassBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.changePassBtn.Font = new System.Drawing.Font("Comic Sans MS", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.changePassBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.changePassBtn.Image = ((System.Drawing.Image)(resources.GetObject("changePassBtn.Image")));
+            this.changePassBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.changePassBtn.Location = new System.Drawing.Point(3, 58);
+            this.changePassBtn.Name = "changePassBtn";
+            this.changePassBtn.Size = new System.Drawing.Size(185, 49);
+            this.changePassBtn.TabIndex = 4;
+            this.changePassBtn.Text = "  Change Password";
+            this.changePassBtn.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Comic Sans MS", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(3, 113);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(185, 49);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "    Logout";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // logoPanel
             // 
@@ -537,6 +580,28 @@
             this.topHeader.Size = new System.Drawing.Size(800, 10);
             this.topHeader.TabIndex = 7;
             // 
+            // adminFirstNameLbl
+            // 
+            this.adminFirstNameLbl.AutoSize = true;
+            this.adminFirstNameLbl.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.adminFirstNameLbl.ForeColor = System.Drawing.Color.Crimson;
+            this.adminFirstNameLbl.Location = new System.Drawing.Point(48, 57);
+            this.adminFirstNameLbl.Name = "adminFirstNameLbl";
+            this.adminFirstNameLbl.Size = new System.Drawing.Size(148, 29);
+            this.adminFirstNameLbl.TabIndex = 13;
+            this.adminFirstNameLbl.Text = "adminname...";
+            // 
+            // welcomeLbl
+            // 
+            this.welcomeLbl.AutoSize = true;
+            this.welcomeLbl.Font = new System.Drawing.Font("Comic Sans MS", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.welcomeLbl.ForeColor = System.Drawing.Color.Goldenrod;
+            this.welcomeLbl.Location = new System.Drawing.Point(12, 19);
+            this.welcomeLbl.Name = "welcomeLbl";
+            this.welcomeLbl.Size = new System.Drawing.Size(143, 38);
+            this.welcomeLbl.TabIndex = 12;
+            this.welcomeLbl.Text = "Welcome,";
+            // 
             // AdminHomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -563,13 +628,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            this.settingsContainer.ResumeLayout(false);
             this.navbarPanel.ResumeLayout(false);
             this.navbarPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.phoneIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.childFormPanel.ResumeLayout(false);
             this.childFormPanel.PerformLayout();
+            this.settingsContainer.ResumeLayout(false);
             this.logoPanel.ResumeLayout(false);
             this.logoPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -590,8 +655,6 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Button showRoomsBtn;
-        private System.Windows.Forms.FlowLayoutPanel settingsContainer;
-        private System.Windows.Forms.Button logoutBtn;
         private System.Windows.Forms.Label titleLbl;
         private System.Windows.Forms.Panel navbarPanel;
         private System.Windows.Forms.Button feedbackBtn;
@@ -612,5 +675,11 @@
         private System.Windows.Forms.Panel logoPanel;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel topHeader;
+        private System.Windows.Forms.FlowLayoutPanel settingsContainer;
+        private System.Windows.Forms.Button changeMailBtn;
+        private System.Windows.Forms.Button changePassBtn;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label adminFirstNameLbl;
+        private System.Windows.Forms.Label welcomeLbl;
     }
 }

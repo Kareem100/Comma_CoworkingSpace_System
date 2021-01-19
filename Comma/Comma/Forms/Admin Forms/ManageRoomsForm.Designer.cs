@@ -43,10 +43,11 @@
             this.nameTxt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.descriptionBox = new System.Windows.Forms.TextBox();
-            this.addRoomBtn = new System.Windows.Forms.Button();
+            this.processBtn = new System.Windows.Forms.Button();
             this.roomDescGroupBox = new System.Windows.Forms.GroupBox();
             this.addRoomGroupBox = new System.Windows.Forms.GroupBox();
             this.addRoomPanel = new System.Windows.Forms.Panel();
+            this.roomSelectBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.roomImage)).BeginInit();
             this.roomDescGroupBox.SuspendLayout();
             this.addRoomGroupBox.SuspendLayout();
@@ -107,12 +108,13 @@
             // 
             this.roomImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.roomImage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.roomImage.Location = new System.Drawing.Point(30, 28);
+            this.roomImage.Location = new System.Drawing.Point(30, 71);
             this.roomImage.Name = "roomImage";
-            this.roomImage.Size = new System.Drawing.Size(309, 251);
+            this.roomImage.Size = new System.Drawing.Size(310, 251);
             this.roomImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.roomImage.TabIndex = 14;
             this.roomImage.TabStop = false;
+            this.roomImage.Click += new System.EventHandler(this.roomImage_Click);
             // 
             // editRoomLbl
             // 
@@ -172,11 +174,12 @@
             this.clickLbl.Cursor = System.Windows.Forms.Cursors.Hand;
             this.clickLbl.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clickLbl.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.clickLbl.Location = new System.Drawing.Point(96, 143);
+            this.clickLbl.Location = new System.Drawing.Point(94, 191);
             this.clickLbl.Name = "clickLbl";
             this.clickLbl.Size = new System.Drawing.Size(175, 19);
             this.clickLbl.TabIndex = 19;
             this.clickLbl.Text = "Click To Add Room Image";
+            this.clickLbl.Click += new System.EventHandler(this.roomImage_Click);
             // 
             // hourlyTypeBtn
             // 
@@ -241,21 +244,21 @@
             this.descriptionBox.TabIndex = 25;
             this.descriptionBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // addRoomBtn
+            // processBtn
             // 
-            this.addRoomBtn.BackColor = System.Drawing.Color.Indigo;
-            this.addRoomBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.addRoomBtn.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.addRoomBtn.FlatAppearance.BorderSize = 0;
-            this.addRoomBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addRoomBtn.Font = new System.Drawing.Font("Comic Sans MS", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addRoomBtn.ForeColor = System.Drawing.Color.Gold;
-            this.addRoomBtn.Location = new System.Drawing.Point(468, 318);
-            this.addRoomBtn.Name = "addRoomBtn";
-            this.addRoomBtn.Size = new System.Drawing.Size(150, 35);
-            this.addRoomBtn.TabIndex = 17;
-            this.addRoomBtn.Text = "ADD ROOM";
-            this.addRoomBtn.UseVisualStyleBackColor = false;
+            this.processBtn.BackColor = System.Drawing.Color.Indigo;
+            this.processBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.processBtn.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.processBtn.FlatAppearance.BorderSize = 0;
+            this.processBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.processBtn.Font = new System.Drawing.Font("Comic Sans MS", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.processBtn.ForeColor = System.Drawing.Color.Gold;
+            this.processBtn.Location = new System.Drawing.Point(468, 362);
+            this.processBtn.Name = "processBtn";
+            this.processBtn.Size = new System.Drawing.Size(150, 35);
+            this.processBtn.TabIndex = 17;
+            this.processBtn.Text = "ADD ROOM";
+            this.processBtn.UseVisualStyleBackColor = false;
             // 
             // roomDescGroupBox
             // 
@@ -263,7 +266,7 @@
             this.roomDescGroupBox.Controls.Add(this.descriptionBox);
             this.roomDescGroupBox.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.roomDescGroupBox.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.roomDescGroupBox.Location = new System.Drawing.Point(741, 23);
+            this.roomDescGroupBox.Location = new System.Drawing.Point(741, 71);
             this.roomDescGroupBox.Name = "roomDescGroupBox";
             this.roomDescGroupBox.Size = new System.Drawing.Size(310, 251);
             this.roomDescGroupBox.TabIndex = 15;
@@ -282,7 +285,7 @@
             this.addRoomGroupBox.Controls.Add(this.label1);
             this.addRoomGroupBox.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addRoomGroupBox.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.addRoomGroupBox.Location = new System.Drawing.Point(385, 23);
+            this.addRoomGroupBox.Location = new System.Drawing.Point(385, 71);
             this.addRoomGroupBox.Name = "addRoomGroupBox";
             this.addRoomGroupBox.Size = new System.Drawing.Size(310, 251);
             this.addRoomGroupBox.TabIndex = 14;
@@ -292,15 +295,32 @@
             // addRoomPanel
             // 
             this.addRoomPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.addRoomPanel.Controls.Add(this.addRoomBtn);
+            this.addRoomPanel.Controls.Add(this.roomSelectBox);
+            this.addRoomPanel.Controls.Add(this.processBtn);
             this.addRoomPanel.Controls.Add(this.roomDescGroupBox);
             this.addRoomPanel.Controls.Add(this.clickLbl);
             this.addRoomPanel.Controls.Add(this.addRoomGroupBox);
             this.addRoomPanel.Controls.Add(this.roomImage);
             this.addRoomPanel.Location = new System.Drawing.Point(28, 222);
             this.addRoomPanel.Name = "addRoomPanel";
-            this.addRoomPanel.Size = new System.Drawing.Size(1081, 379);
+            this.addRoomPanel.Size = new System.Drawing.Size(1082, 420);
             this.addRoomPanel.TabIndex = 23;
+            // 
+            // roomSelectBox
+            // 
+            this.roomSelectBox.BackColor = System.Drawing.Color.Indigo;
+            this.roomSelectBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.roomSelectBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.roomSelectBox.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.roomSelectBox.ForeColor = System.Drawing.Color.Gold;
+            this.roomSelectBox.FormattingEnabled = true;
+            this.roomSelectBox.Location = new System.Drawing.Point(385, 20);
+            this.roomSelectBox.Name = "roomSelectBox";
+            this.roomSelectBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.roomSelectBox.Size = new System.Drawing.Size(310, 27);
+            this.roomSelectBox.TabIndex = 20;
+            this.roomSelectBox.Text = "SELECT ROOM NAME";
+            this.roomSelectBox.Visible = false;
             // 
             // ManageRoomsForm
             // 
@@ -345,9 +365,10 @@
         private System.Windows.Forms.TextBox nameTxt;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox descriptionBox;
-        private System.Windows.Forms.Button addRoomBtn;
+        private System.Windows.Forms.Button processBtn;
         private System.Windows.Forms.GroupBox roomDescGroupBox;
         private System.Windows.Forms.GroupBox addRoomGroupBox;
         private System.Windows.Forms.Panel addRoomPanel;
+        private System.Windows.Forms.ComboBox roomSelectBox;
     }
 }

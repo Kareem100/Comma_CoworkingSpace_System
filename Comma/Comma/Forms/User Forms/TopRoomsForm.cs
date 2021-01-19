@@ -24,12 +24,12 @@ namespace Comma
 
         private void button1_Click(object sender, EventArgs e)
         {
-            roomControl room = new roomControl(homeForm);
+            UserRoom room = new UserRoom(homeForm);
             initializeRoom(ref room);
             containerPanel.Controls.Add(room);
         }
 
-        private void initializeRoom(ref roomControl room)
+        private void initializeRoom(ref UserRoom room)
         {
             /****************************************/ // FETCH FROM DATABASE
             roomName = "Jokky 33";

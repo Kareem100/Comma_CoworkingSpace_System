@@ -4,21 +4,17 @@ using System.Windows.Forms;
 
 namespace Comma.Forms
 {
-    public partial class roomControl : UserControl
+    public partial class UserRoom : UserControl
     {
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
        (
-           int nLeftRect,     // x-coordinate of upper-left corner
-           int nTopRect,      // y-coordinate of upper-left corner
-           int nRightRect,    // x-coordinate of lower-right corner
-           int nBottomRect,   // y-coordinate of lower-right corner
-           int nWidthEllipse, // width of ellipse
-           int nHeightEllipse // height of ellipse
+           int nLeftRect, int nTopRect, int nRightRect,
+           int nBottomRect, int nWidthEllipse, int nHeightEllipse
        );
         private UserHomeForm homeForm;
 
-        public roomControl(UserHomeForm homeForm)
+        public UserRoom(UserHomeForm homeForm)
         {
             InitializeComponent();
             this.homeForm = homeForm;
@@ -28,7 +24,7 @@ namespace Comma.Forms
 
         private void rentRoomBtn_Click(object sender, EventArgs e)
         {
-            homeForm.rentBtn_Click(sender, e, Int32.Parse(roomID.Text));
+            homeForm.rentBtn_Click(sender, e, roomID.Text);
         }
     }
 }

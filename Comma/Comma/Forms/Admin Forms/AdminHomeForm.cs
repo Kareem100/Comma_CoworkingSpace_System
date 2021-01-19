@@ -42,14 +42,12 @@ namespace Comma
                 settingsContainer.Visible = true;
                 connectPanel.Visible = true;
                 settingsContainer.BringToFront();
-                settingsContainer.BackColor = Color.Goldenrod;
                 settingsBtn.BackColor = Color.Goldenrod;
             }
             else
             {
                 settingsContainer.Visible = false;
                 connectPanel.Visible = false;
-                settingsContainer.BackColor = Color.Transparent;
                 settingsBtn.BackColor = Color.Transparent;
             }
         }
@@ -58,7 +56,7 @@ namespace Comma
         {
             connectPanel.Visible = false;
             settingsContainer.Visible = false;
-            settingsContainer.BackColor = Color.Transparent;
+            settingsBtn.BackColor = Color.Transparent;
         }
 
         private void logoutBtn_Click(object sender, EventArgs e)
@@ -109,6 +107,11 @@ namespace Comma
             openForm(new ManageRoomsForm());
             highlightSelectedButton(roomsBtn);
         }
+        public void roomsBtn_Click(object sender, EventArgs e, string roomID, string choice)
+        {
+            openForm(new ManageRoomsForm(e, roomID, choice));
+            highlightSelectedButton(roomsBtn);
+        }
 
         private void adminsBtn_Click(object sender, EventArgs e)
         {
@@ -130,7 +133,7 @@ namespace Comma
 
         private void showRoomsBtn_Click(object sender, EventArgs e)
         {
-            openForm(new DisplayRoomsForm());
+            openForm(new DisplayRoomsForm(this));
         }
 
         private void highlightSelectedButton(Button selectedButton)
