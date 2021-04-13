@@ -2,7 +2,7 @@
 An Information System Project With Database In SQL Server
 
 
-### Some Screenshots
+### Some Runtime Screenshots
 
 ![](Screenshots/screenshot_1.png)
 
