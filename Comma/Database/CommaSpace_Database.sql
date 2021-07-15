@@ -14,7 +14,8 @@ userName NVARCHAR(20) not null,
 userMail NVARCHAR(30) not null,
 userPhone NVARCHAR(20) not null,
 userPassword NVARCHAR(30) not null,
-userType NVARCHAR(10) not null
+userType NVARCHAR(10) not null,
+userNumberOfRents INT
 );
 
 CREATE TABLE Rooms (
@@ -45,9 +46,9 @@ customerID INT not null FOREIGN KEY REFERENCES Users2(userID),
 );
 
 -- Insertion of some Existing Users
-INSERT INTO Users2 VALUES ('Ahmed Aly', 'ahmed@gmail.com', '01135628901', '123', 'Admin');
-INSERT INTO Users2 VALUES ('Amr Gamal', 'amr20@gmail.com', '01011012314', '1234', 'Customer');
-INSERT INTO Users2 VALUES ('Mona Ramzy', 'mona@gmail.com', '01501579136', '1234', 'Customer');
+INSERT INTO Users2 VALUES ('Ahmed Aly', 'ahmed@gmail.com', '01135628901', '123', 'Admin', null);
+INSERT INTO Users2 VALUES ('Amr Gamal', 'amr20@gmail.com', '01011012314', '1234', 'Customer', 0);
+INSERT INTO Users2 VALUES ('Mona Ramzy', 'mona@gmail.com', '01501579136', '1234', 'Customer', 0);
 
 -- Insertion of some Existing static Rooms
 INSERT INTO Rooms VALUES ('Jokky', NULL, 'Hourly', 180);
