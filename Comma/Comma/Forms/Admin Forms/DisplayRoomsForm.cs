@@ -1,49 +1,100 @@
-﻿using System;
+﻿using Comma.CustomClasses;
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Comma.Forms.Admin_Forms
 {
     public partial class DisplayRoomsForm : Form
     {
-        // max lines for description is 3 lines
-        private string roomName, description; // max chars is 45 in first 3 lines and 30 in last line..
-        private int roomID, roomPrice;
-        private char rentType;
         private AdminHomeForm homeForm;
+        private SqlConnection conn;
+        private List<RoomModel> roomsList;
+
         public DisplayRoomsForm(AdminHomeForm homeForm)
         {
             InitializeComponent();
             this.homeForm = homeForm;
+            conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
+            if (conn.State == ConnectionState.Closed) conn.Open();
+            loadRooms();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void loadRooms()
         {
-            AdminRoom room = new AdminRoom(homeForm);
-            initializeRoom(ref room);
-            containerPanel.Controls.Add(room);
-        }
-        private void initializeRoom(ref AdminRoom room)
-        {
-            /****************************************/ // FETCH FROM DATABASE
-            roomName = "Jokky 2";
-            description =
-                "Lorem ipsum dolor sit amet, adipiscing elit.\nPraesent in aliquet justo. Donec eget risus,\n" +
-                "Nam iaculis, nibh quis facilisis tempor,\nrisus ligula malesuada tortor.";
-            roomID = 11;
-            roomPrice = 120;
-            rentType = 'H';
-            /****************************************/
+            // max lines for description is 3 lines
+            string roomName, roomDescription; // max chars is 45 in first 3 lines and 30 in last line..
+            int roomID, roomPrice;
+            Image roomImage;
+            char rentType;
+            fetchRooms();
 
-            Control[] name = room.Controls.Find("roomName", true);
-            name[0].Text = roomName;
-            Control[] id = room.Controls.Find("roomID", true);
-            id[0].Text = roomID.ToString();
-            Control[] desc = room.Controls.Find("roomDescription", true);
-            desc[0].Text = description;
-            string temp = (rentType == 'H') ? "£ / H" : "£ / D";
-            string P = roomPrice.ToString() + temp;
-            Control[] price = room.Controls.Find("roomPrice", true);
-            price[0].Text = P;
+            for (int i = 0; i < roomsList.Count; ++i)
+            {
+                roomID = roomsList[i].roomID;
+                roomName = roomsList[i].roomName;
+                roomImage = convertByteArrayToImage(roomName, roomsList[i].roomImage);
+                roomDescription = roomsList[i].roomDescription;
+                rentType = roomsList[i].roomRentType[0];
+                roomPrice = roomsList[i].roomRentPrice;
+
+                AdminRoom room = new AdminRoom(homeForm);
+
+                string temp = (rentType == 'H') ? "£ / H" : "£ / D";
+                string PriceFormat = roomPrice.ToString() + temp;
+                room.setRoomID(roomID);
+                room.setRoomName(roomName);
+                room.setRoomImage(roomImage);
+                room.setRoomDescription(roomDescription);
+                room.setRoomPrice(PriceFormat);
+
+                containerPanel.Controls.Add(room);
+            }
+        }
+
+        // ================ HELPER METHODS ====================
+
+        // Fetching all rooms from database to roomList
+        private void fetchRooms()
+        {
+            roomsList = new List<RoomModel>();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = "SELECT * FROM Rooms";
+            cmd.CommandType = CommandType.Text;
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                RoomModel room = new RoomModel();
+                room.roomID = int.Parse(reader[0].ToString());
+                room.roomName = reader[1].ToString();
+                room.roomImage = ((byte[])reader.GetSqlBinary(2));
+                room.roomDescription = reader[3].ToString();
+                room.roomRentType = reader[4].ToString();
+                room.roomRentPrice = int.Parse(reader[5].ToString());
+                roomsList.Add(room);
+            }
+            reader.Close();
+        }
+
+        private Image convertByteArrayToImage(string roomName, byte[] data)
+        {
+            if (data == null) return null;
+            using (MemoryStream ms = new MemoryStream(data, 0, data.Length))
+            {
+                return Image.FromStream(ms);
+            }
+        }
+        // =====================================================
+
+        private void DisplayRoomsForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            conn.Dispose();
         }
 
     }

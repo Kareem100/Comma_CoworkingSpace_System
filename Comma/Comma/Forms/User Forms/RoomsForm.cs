@@ -38,7 +38,7 @@ namespace Comma
             {
                 roomID = roomsList[i].roomID;
                 roomName = roomsList[i].roomName;
-                roomImage = convertByteArrayToImage(roomName, roomsList[i].roomImage);
+                roomImage = convertByteArrayToImage(roomsList[i].roomImage);
                 roomDescription = roomsList[i].roomDescription;
                 rentType = roomsList[i].roomRentType[0];
                 roomPrice = roomsList[i].roomRentPrice;
@@ -57,6 +57,8 @@ namespace Comma
             }
         }
 
+        // ================ HELPER METHODS ====================
+
         // Fetching all rooms from database to roomList
         private void fetchRooms()
         {
@@ -66,7 +68,7 @@ namespace Comma
             cmd.CommandText = "SELECT * FROM Rooms";
             cmd.CommandType = CommandType.Text;
             SqlDataReader reader = cmd.ExecuteReader();
-            while(reader.Read())
+            while (reader.Read())
             {
                 RoomModel room = new RoomModel();
                 room.roomID = int.Parse(reader[0].ToString());
@@ -80,8 +82,7 @@ namespace Comma
             reader.Close();
         }
 
-        // ================ HELPER METHODS ====================
-        private Image convertByteArrayToImage(string roomName, byte[] data)
+        private Image convertByteArrayToImage(byte[] data)
         {
             if (data == null) return null;
             using (MemoryStream ms = new MemoryStream(data, 0, data.Length))

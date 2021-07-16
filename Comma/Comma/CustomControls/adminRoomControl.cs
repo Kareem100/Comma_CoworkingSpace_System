@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Drawing;
+using Comma.CustomClasses;
 
 namespace Comma.Forms.Admin_Forms
 {
@@ -13,6 +15,7 @@ namespace Comma.Forms.Admin_Forms
            int nBottomRect, int nWidthEllipse, int nHeightEllipse
        );
         private AdminHomeForm homeForm;
+
         public AdminRoom(AdminHomeForm homeForm)
         {
             InitializeComponent();
@@ -21,14 +24,43 @@ namespace Comma.Forms.Admin_Forms
             this.homeForm = homeForm;
         }
 
+        // EDIT BUTTON EVENT
         private void editRoomBtn_Click(object sender, EventArgs e)
         {
-            homeForm.roomsBtn_Click(sender, e, roomID.Text, "EDIT ROOM");
+            homeForm.roomsBtn_Click(sender, e, roomID.Text, GlobalData.editRoom);
         }
 
+        // REMOVE BUTTON EVENT
         private void removeRoomBtn_Click(object sender, EventArgs e)
         {
-            homeForm.roomsBtn_Click(sender, e, roomID.Text, "REMOVE ROOM");
+            homeForm.roomsBtn_Click(sender, e, roomID.Text, GlobalData.removeRoom);
         }
+
+        // ============== CONTROLS SETTERS ================= 
+        public void setRoomID(int id)
+        {
+            roomID.Text = id.ToString();
+        }
+
+        public void setRoomName(string name)
+        {
+            roomName.Text = name;
+        }
+
+        public void setRoomImage(Image img)
+        {
+            roomImage.Image = img;
+        }
+
+        public void setRoomDescription(string description)
+        {
+            roomDescription.Text = description;
+        }
+
+        public void setRoomPrice(string price)
+        {
+            roomPrice.Text = price;
+        }
+        // =================================================
     }
 }

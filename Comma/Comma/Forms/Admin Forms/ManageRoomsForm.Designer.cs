@@ -320,12 +320,14 @@
             this.roomSelectBox.ForeColor = System.Drawing.Color.Gold;
             this.roomSelectBox.FormattingEnabled = true;
             this.roomSelectBox.Location = new System.Drawing.Point(385, 20);
+            this.roomSelectBox.MaxDropDownItems = 20;
             this.roomSelectBox.Name = "roomSelectBox";
             this.roomSelectBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.roomSelectBox.Size = new System.Drawing.Size(310, 27);
             this.roomSelectBox.TabIndex = 20;
             this.roomSelectBox.Text = "SELECT ROOM NAME";
             this.roomSelectBox.Visible = false;
+            this.roomSelectBox.SelectedIndexChanged += new System.EventHandler(this.roomSelectBox_SelectedIndexChanged);
             // 
             // ManageRoomsForm
             // 

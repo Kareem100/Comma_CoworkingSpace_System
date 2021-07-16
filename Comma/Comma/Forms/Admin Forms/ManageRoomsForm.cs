@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using System.Data;
+using System.Collections.Generic;
 
 namespace Comma
 {
@@ -20,29 +21,96 @@ namespace Comma
         // SQL CONNECTION
         private SqlConnection conn;
 
+        private Dictionary<string, int> roomDictionary;
+
         public ManageRoomsForm()
         {
-            InitializeComponent();
+            commonConstructorsLines();
             currentState = "ADD ROOM";
             roomModel = new RoomModel();
-            conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
-            if(conn.State == ConnectionState.Closed) conn.Open();
         }
 
         public ManageRoomsForm(EventArgs e, string roomID, string choice)
         {
-            InitializeComponent();
+            commonConstructorsLines();
             currentState = choice;
-            if (choice == "EDIT ROOM")
-            {
+            if (choice == GlobalData.editRoom)
                 editRoomLbl_Click(this, e);
-                // SHOW DATA OF THE ROOM WITH  THE roomID
+            else
+                removeRoomLbl_Click(this, e);
+
+            loadAllRoomNames();
+            loadRoom(int.Parse(roomID), e);
+        }
+
+        // ======================= HELPER METHODS =======================
+
+        private void commonConstructorsLines()
+        {
+            InitializeComponent();
+            roomModel = new RoomModel();
+            conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
+            if (conn.State == ConnectionState.Closed) conn.Open();
+        }
+
+        // Get All The Room Names Into roomSelectBox
+        private void loadAllRoomNames()
+        {
+            roomDictionary = new Dictionary<string, int>();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = "SELECT roomName, roomID FROM ROOMS";
+            cmd.CommandType = CommandType.Text;
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                roomSelectBox.Items.Add(reader.GetString(0));
+                roomDictionary.Add(reader.GetString(0), reader.GetInt32(1));
+            }
+            reader.Close();
+        }
+
+        private void roomSelectBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int id = roomDictionary[roomSelectBox.SelectedItem.ToString()];
+            loadRoom(id, e);
+        }
+
+        // Show Data of the Room with  the Given roomID
+        private void loadRoom(int roomID, EventArgs e)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = "SELECT * FROM Rooms WHERE RoomID = @RoomID";
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.AddWithValue("RoomID", roomID);
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                roomModel.roomID = roomID;
+                roomModel.roomName = reader[1].ToString(); // roomName
+                roomModel.roomImage = ((byte[])reader.GetSqlBinary(2)); // roomImage
+                roomModel.roomDescription = reader[3].ToString(); // roomDescription
+                roomModel.roomRentType = reader[4].ToString();
+                roomModel.roomRentPrice = int.Parse(reader[5].ToString()); // rentPrice
+                loadFields(e);
             }
             else
-            {
-                removeRoomLbl_Click(this, e);
-                // SHOW DATA OF THE ROOM WITH  THE roomID
-            }
+                MessageBox.Show("Something went Wrong!\nPlease try again...", "Oops !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            reader.Close();
+        }
+
+        // Get Data from RoomModel into Form Fields
+        private void loadFields(EventArgs e)
+        {
+            nameTxt.Text = roomModel.roomName; // roomName
+            roomImage.Image = convertByteArrayToImage(roomModel.roomImage); // roomImage
+            descriptionBox.Text = roomModel.roomDescription; // roomDescription
+            if (roomModel.roomRentType == GlobalData.hourlyRoom) // rentType
+                hourlyTypeBtn_Click(this, e);
+            else
+                dailyTypeBtn_Click(this, e);
+            priceTxt.Text = roomModel.roomRentPrice.ToString(); // rentPrice
         }
 
         // ============= LAYOUT AND NAVIGATION CODE =========================
@@ -61,6 +129,7 @@ namespace Comma
             removeRoomLbl.BorderStyle = BorderStyle.None;
             removeRoomLbl.Left = editRoomLbl.Left + editRoomLbl.Width;
             roomSelectBox.Visible = false;
+            clickLbl.Text = "Click To Add Room Image";
             processBtn.Text = "ADD ROOM";
             currentState = "ADD ROOM";
             enableControls();
@@ -81,6 +150,7 @@ namespace Comma
             removeRoomLbl.BorderStyle = BorderStyle.None;
             removeRoomLbl.Left = addRoomLbl.Left + addRoomLbl.Width;
             roomSelectBox.Visible = true;
+            clickLbl.Text = "Click To Edit Room Image";
             processBtn.Text = "EDIT ROOM";
             currentState = "EDIT ROOM";
             enableControls();
@@ -168,11 +238,20 @@ namespace Comma
             }
         }
 
-        private void processBtn_Click(object sender, EventArgs e)
+        private Image convertByteArrayToImage(byte[] data)
+        {
+            if (data == null) return null;
+            using (MemoryStream ms = new MemoryStream(data, 0, data.Length))
+            {
+                return Image.FromStream(ms);
+            }
+        }
+
+        private void addRoom()
         {
             getFieldsData();
 
-            if(isValidData())
+            if (isValidData())
             {
                 try
                 {
@@ -190,11 +269,12 @@ namespace Comma
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("Room has been Added Successfully !", "ADDING ROOM", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                } catch
+                }
+                catch
                 {
                     MessageBox.Show("A Room with the Same Name Already Exist !!\nPlease Specify a Unique Room Name.", "ADDING ROOM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                
+
             }
         }
 
@@ -245,11 +325,125 @@ namespace Comma
             return true;
         }
 
+
+        // ======================= EDIT ROOM ===============================
+        private void editRoom()
+        {
+            if (isValidUpdate())
+            {
+                updateRommModel();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandText = "updateRoom";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("roomID", roomModel.roomID);
+                cmd.Parameters.AddWithValue("roomName", roomModel.roomName);
+                cmd.Parameters.AddWithValue("roomImage", roomModel.roomImage);
+                cmd.Parameters.AddWithValue("roomDescription", roomModel.roomDescription);
+                cmd.Parameters.AddWithValue("rentType", roomModel.roomRentType);
+                cmd.Parameters.AddWithValue("rentPrice", roomModel.roomRentPrice);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Room has been Edited Successfully !", "EDITING ROOM", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private bool isValidUpdate()
+        {
+            if (nameTxt.Text.Equals(""))
+            {
+                MessageBox.Show("Room Must has a Name !!", "EDITING ROOM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (roomImage.Equals(null))
+            {
+                MessageBox.Show("Room Must has an Image !!", "EDITING ROOM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (descriptionBox.Text.Length < 5)
+            {
+                MessageBox.Show("Room Must has a Good Description !!", "EDITING ROOM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (hourlyTypeBtn.BackColor != Color.Green && dailyTypeBtn.BackColor != Color.Green)
+            {
+                MessageBox.Show("Room Must has a Rent Type !!", "EDITING ROOM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (int.Parse(priceTxt.Text) == 0 || priceTxt.Text.Equals(""))
+            {
+                MessageBox.Show("Room Must has a Rent Price !!", "EDITING ROOM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            // Check if there are any data changed...
+            if (!roomModel.roomName.Equals(nameTxt.Text))
+                return true;
+            if (!isDifferentBytes(roomModel.roomImage, convertImageToByteArray(roomImage.Image)))
+                return true;
+            if (!roomModel.roomDescription.Equals(descriptionBox.Text))
+                return true;
+            if (roomModel.roomRentType == GlobalData.dailyRoom && hourlyTypeBtn.BackColor == Color.Green)
+                return true;
+            if (roomModel.roomRentType == GlobalData.hourlyRoom && dailyTypeBtn.BackColor == Color.Green)
+                return true;
+            if (roomModel.roomRentPrice != int.Parse(priceTxt.Text))
+                return true;
+
+            MessageBox.Show("There are no Data Changes to Update the Current Room !!", "EDITING ROOM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
+        }
+
+        private unsafe bool isDifferentBytes(byte[] imageData1, byte[] imageData2)
+        {
+            if (imageData1 == imageData2) return true;
+            if (imageData1 == null || imageData2 == null || imageData1.Length != imageData2.Length)
+                return false;
+            fixed (byte* p1 = imageData1, p2 = imageData2)
+            {
+                byte* x1 = p1, x2 = p2;
+                int l = imageData1.Length;
+                for (int i = 0; i < l / 8; i++, x1 += 8, x2 += 8)
+                    if (*((long*)x1) != *((long*)x2)) return false;
+                if ((l & 4) != 0) { if (*((int*)x1) != *((int*)x2)) return false; x1 += 4; x2 += 4; }
+                if ((l & 2) != 0) { if (*((short*)x1) != *((short*)x2)) return false; x1 += 2; x2 += 2; }
+                if ((l & 1) != 0) if (*x1 != *x2) return false;
+                return true;
+            }
+        }
+
+        private void updateRommModel()
+        {
+            roomModel.roomName = nameTxt.Text;
+            roomModel.roomImage = convertImageToByteArray(roomImage.Image);
+            roomModel.roomDescription = descriptionBox.Text;
+            roomModel.roomRentPrice = int.Parse(priceTxt.Text);
+            if (dailyTypeBtn.BackColor == Color.Green)
+                roomModel.roomRentType = GlobalData.dailyRoom;
+            else
+                roomModel.roomRentType = GlobalData.hourlyRoom;
+        }
+
+        // ======================= REMOVE ROOM =============================
+        private void removeRoom()
+        {
+
+        }
         // =================================================================
+
+        private void processBtn_Click(object sender, EventArgs e)
+        {
+            if (currentState == "ADD ROOM")
+                addRoom();
+            else if (currentState == "EDIT ROOM")
+                editRoom();
+            else
+                removeRoom();
+        }
 
         private void ManageRoomsForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             conn.Dispose();
         }
+
     }
 }

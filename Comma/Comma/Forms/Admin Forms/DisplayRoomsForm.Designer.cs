@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DisplayRoomsForm));
             this.titleLbl = new System.Windows.Forms.Label();
             this.containerPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // titleLbl
@@ -65,23 +64,6 @@
             this.containerPanel.Size = new System.Drawing.Size(544, 540);
             this.containerPanel.TabIndex = 13;
             // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.Green;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button1.Location = new System.Drawing.Point(196, 123);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(202, 31);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Click To Add Panel";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // DisplayRoomsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -91,10 +73,10 @@
             this.ClientSize = new System.Drawing.Size(600, 590);
             this.Controls.Add(this.titleLbl);
             this.Controls.Add(this.containerPanel);
-            this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "DisplayRoomsForm";
             this.Text = "DisplayRoomsForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DisplayRoomsForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -104,6 +86,5 @@
 
         private System.Windows.Forms.Label titleLbl;
         private System.Windows.Forms.FlowLayoutPanel containerPanel;
-        private System.Windows.Forms.Button button1;
     }
 }

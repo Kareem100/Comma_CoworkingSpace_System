@@ -21,8 +21,8 @@ namespace Comma
         {
             InitializeComponent();
             sidebarPanel.Top = homeBtn.Top;
-            homeBtn.ForeColor = Color.Goldenrod;settingsContainer.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, settingsContainer.Width, settingsContainer.Height, 15, 15));
-            showRoomsBtn.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, showRoomsBtn.Width, showRoomsBtn.Height, 30, 30));
+            homeBtn.ForeColor = Color.Goldenrod;settingsContainer.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, settingsContainer.Width, settingsContainer.Height, 15, 15));
+            showRoomsBtn.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, showRoomsBtn.Width, showRoomsBtn.Height, 30, 30));
         }
 
         private void closeButton_Click(object sender, EventArgs e)

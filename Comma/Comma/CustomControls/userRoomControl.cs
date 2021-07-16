@@ -24,6 +24,7 @@ namespace Comma.Forms
             roomPrice.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, roomPrice.Width, roomPrice.Height, 40, 40));
         }
 
+        // RENT BUTTON EVENT
         private void rentRoomBtn_Click(object sender, EventArgs e)
         {
             homeForm.rentBtn_Click(sender, e, roomID.Text);
