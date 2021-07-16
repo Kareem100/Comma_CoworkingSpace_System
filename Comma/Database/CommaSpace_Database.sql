@@ -22,8 +22,9 @@ CREATE TABLE Rooms (
 roomID INT IDENTITY primary key,
 roomName NVARCHAR(20) unique not null,
 roomImage Image,
+roomDescription NVARCHAR(500) not null,
 rentType NVARCHAR(10) not null,
-rentPrice FLOAT not null
+rentPrice INT not null
 );
 
 CREATE TABLE Reservations (
@@ -51,10 +52,12 @@ INSERT INTO Users2 VALUES ('Amr Gamal', 'amr20@gmail.com', '01011012314', '1234'
 INSERT INTO Users2 VALUES ('Mona Ramzy', 'mona@gmail.com', '01501579136', '1234', 'Customer', 0);
 
 -- Insertion of some Existing static Rooms
-INSERT INTO Rooms VALUES ('Jokky', NULL, 'Hourly', 180);
-INSERT INTO Rooms VALUES ('Reddy', NULL, 'Hourly', 250);
-INSERT INTO Rooms VALUES ('Gatsby', NULL, 'Daily', 850);
-INSERT INTO Rooms VALUES ('Greeny', NULL, 'Hourly', 150);
-INSERT INTO Rooms VALUES ('Groupy', NULL, 'Hourly', 140);
-INSERT INTO Rooms VALUES ('Hommy', NULL, 'Daily', 800);
-INSERT INTO Rooms VALUES ('Dreamy', NULL, 'Daily', 600);
+/*
+INSERT INTO Rooms VALUES ('Jokky', NULL, 'Lorem ipsum dolor sit amet, adipiscing elit.' + CHAR(13) + 'Praesent in aliquet justo. Donec eget risus,' + CHAR(13) + 'Nam iaculis, nibh quis facilisis tempor,' + CHAR(13) + 'risus ligula malesuada tortor.', 'Hourly', 180);
+INSERT INTO Rooms VALUES ('Reddy', NULL, 'Lorem ipsum dolor sit amet, adipiscing elit.' + CHAR(13) + 'Praesent in aliquet justo. Donec eget risus,' + CHAR(13) + 'Nam iaculis, nibh quis facilisis tempor.', 'Hourly', 250);
+INSERT INTO Rooms VALUES ('Gatsby', NULL, 'Lorem ipsum dolor sit amet, adipiscing elit.' + CHAR(13) + 'Praesent in aliquet justo. Donec eget risus,' + CHAR(13) + 'risus ligula malesuada tortor.', 'Daily', 850);
+INSERT INTO Rooms VALUES ('Greeny', NULL, 'Lorem ipsum dolor sit amet, adipiscing elit.' + CHAR(13) + 'Praesent in aliquet justo. Donec eget risus,' + CHAR(13) + 'Nam iaculis, nibh quis facilisis tempor,' + CHAR(13) + 'risus ligula malesuada tortor.', 'Hourly', 150);
+INSERT INTO Rooms VALUES ('Groupy', NULL, 'Lorem ipsum dolor sit amet, adipiscing elit.' + CHAR(13) + 'Praesent in aliquet justo. Donec eget risus,' + CHAR(13) + 'Nam iaculis, nibh quis facilisis tempor.', 'Hourly', 140);
+INSERT INTO Rooms VALUES ('Hommy', NULL, 'Lorem ipsum dolor sit amet, adipiscing elit.' + CHAR(13) + 'Praesent in aliquet justo. Donec eget risus,' + CHAR(13) + 'Nam iaculis, nibh quis facilisis tempor,' + CHAR(13) + 'risus ligula malesuada tortor.', 'Daily', 800);
+INSERT INTO Rooms VALUES ('Dreamy', NULL, 'Lorem ipsum dolor sit amet, adipiscing elit.' + CHAR(13) + 'Praesent in aliquet justo. Donec eget risus,' + CHAR(13) + 'risus ligula malesuada tortor.', 'Daily', 600);
+*/

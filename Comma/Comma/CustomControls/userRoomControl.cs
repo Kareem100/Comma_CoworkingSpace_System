@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -8,10 +9,11 @@ namespace Comma.Forms
     {
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
-       (
+        (
            int nLeftRect, int nTopRect, int nRightRect,
            int nBottomRect, int nWidthEllipse, int nHeightEllipse
-       );
+        );
+
         private UserHomeForm homeForm;
 
         public UserRoom(UserHomeForm homeForm)
@@ -26,5 +28,32 @@ namespace Comma.Forms
         {
             homeForm.rentBtn_Click(sender, e, roomID.Text);
         }
+
+        // ============== CONTROLS SETTERS ================= 
+        public void setRoomID(int id)
+        {
+            roomID.Text = id.ToString();
+        }
+
+        public void setRoomName(string name)
+        {
+            roomName.Text = name;
+        }
+
+        public void setRoomImage(Image img)
+        {
+            roomImage.Image = img;
+        }
+
+        public void setRoomDescription(string description)
+        {
+            roomDescription.Text = description;
+        }
+
+        public void setRoomPrice(string price)
+        {
+            roomPrice.Text = price;
+        }
+        // =================================================
     }
 }

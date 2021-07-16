@@ -136,10 +136,12 @@
             this.priceTxt.BackColor = System.Drawing.SystemColors.Control;
             this.priceTxt.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.priceTxt.Location = new System.Drawing.Point(103, 179);
+            this.priceTxt.MaxLength = 4;
             this.priceTxt.Name = "priceTxt";
             this.priceTxt.Size = new System.Drawing.Size(191, 26);
             this.priceTxt.TabIndex = 25;
             this.priceTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.priceTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.priceTxt_KeyPress);
             // 
             // rentPriceLbl
             // 
@@ -212,6 +214,7 @@
             this.nameTxt.BackColor = System.Drawing.SystemColors.Control;
             this.nameTxt.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nameTxt.Location = new System.Drawing.Point(103, 70);
+            this.nameTxt.MaxLength = 20;
             this.nameTxt.Name = "nameTxt";
             this.nameTxt.Size = new System.Drawing.Size(191, 26);
             this.nameTxt.TabIndex = 0;
@@ -238,6 +241,7 @@
             this.descriptionBox.BackColor = System.Drawing.SystemColors.Control;
             this.descriptionBox.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.descriptionBox.Location = new System.Drawing.Point(13, 26);
+            this.descriptionBox.MaxLength = 500;
             this.descriptionBox.Multiline = true;
             this.descriptionBox.Name = "descriptionBox";
             this.descriptionBox.Size = new System.Drawing.Size(284, 207);
@@ -259,6 +263,7 @@
             this.processBtn.TabIndex = 17;
             this.processBtn.Text = "ADD ROOM";
             this.processBtn.UseVisualStyleBackColor = false;
+            this.processBtn.Click += new System.EventHandler(this.processBtn_Click);
             // 
             // roomDescGroupBox
             // 
@@ -337,6 +342,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ManageRoomsForm";
             this.Text = "ManageRoomsForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ManageRoomsForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.roomImage)).EndInit();
             this.roomDescGroupBox.ResumeLayout(false);
             this.roomDescGroupBox.PerformLayout();

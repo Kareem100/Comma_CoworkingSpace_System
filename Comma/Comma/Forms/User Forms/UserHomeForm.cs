@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Comma.CustomClasses;
+using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -14,6 +15,7 @@ namespace Comma
            int nLeftRect, int nTopRect, int nRightRect,
            int nBottomRect, int nWidthEllipse,  int nHeightEllipse
         );
+
         private Form activeForm = null;
 
         public UserHomeForm()
@@ -21,11 +23,14 @@ namespace Comma
             InitializeComponent();
             sidebarPanel.Top = homeBtn.Top;
             homeBtn.ForeColor = Color.Goldenrod;
-            notificationsContainer.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, notificationsContainer.Width, notificationsContainer.Height, 15, 15));
-            settingsContainer.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, settingsContainer.Width, settingsContainer.Height, 15, 15));
-            showRoomsBtn.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, showRoomsBtn.Width, showRoomsBtn.Height, 30, 30));
+            notificationsContainer.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, notificationsContainer.Width, notificationsContainer.Height, 15, 15));
+            settingsContainer.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, settingsContainer.Width, settingsContainer.Height, 15, 15));
+            showRoomsBtn.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, showRoomsBtn.Width, showRoomsBtn.Height, 30, 30));
             initializeQuotes();
+            string[] names = GlobalData.userFullName.Split(' ');
+            userNameLbl.Text = names[0][0] + "." + names[1];
         }
+
         private void initializeQuotes()
         {
             Random r = new Random();
@@ -161,6 +166,7 @@ namespace Comma
         }
 
         // DATABASE PART
+        // ADD MESSAGE BUTTON
         private void button1_Click(object sender, EventArgs e)
         {
             Panel border = new Panel();
@@ -173,7 +179,7 @@ namespace Comma
             notificationsContainer.Controls.Add(border);
             notificationsContainer.Controls.Add(L);
 
-            notificationsContainer.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, notificationsContainer.Width, notificationsContainer.Height, 15, 15));
+            notificationsContainer.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, notificationsContainer.Width, notificationsContainer.Height, 15, 15));
         }
 
         private void resetContextMenus()
@@ -214,5 +220,6 @@ namespace Comma
             showRoomsBtn.BackColor = Color.Goldenrod;
             showRoomsBtn.ForeColor = Color.Crimson;
         }
+
     }
 }
