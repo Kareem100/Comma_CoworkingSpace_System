@@ -9,8 +9,9 @@ An Information System Project With Database In SQL Server
   <summary>Procedures</summary>
 <p>
     
-- [AddRoom](Comma/Database/Procedures/AddRoom.sql)
+- [AddRoom](Comma/Database/Procedures/addRoom.sql)
 - [UpdateRoom](Comma/Database/Procedures/UpdateRoom.sql)
+- [RemoveRoom](Comma/Database/Procedures/RemoveRoom.sql)
 
 </p>
 </details>
