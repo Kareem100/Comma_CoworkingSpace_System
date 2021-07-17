@@ -23,18 +23,18 @@ An Information System Project With Database In SQL Server
 ***
 ### Some Runtime Screenshots
 
-![](Screenshots/screenshot_1.png)
+![](Screenshots/1.LoginRegisterForm.png)
 
-![](Screenshots/screenshot_2.png)
+![](Screenshots/2.CustomerHomeForm.png)
 
-![](Screenshots/screenshot_3.png)
+![](Screenshots/3.RoomsForm.png)
 
-![](Screenshots/screenshot_4.png)
+![](Screenshots/4.FeedbacksForm.png)
 
-![](Screenshots/screenshot_5.png)
+![](Screenshots/5.AdminHomeForm.png)
 
-![](Screenshots/screenshot_6.png)
+![](Screenshots/6.ManageAdminForm.png)
 
-![](Screenshots/screenshot_7.png)
+![](Screenshots/7.ManageRoomsForm.png)
 
-![](Screenshots/screenshot_8.png)
+![](Screenshots/8.TopRoomsForm.png)
