@@ -37,8 +37,10 @@
             this.roomDescription = new System.Windows.Forms.Label();
             this.rentRoomBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBoxRank = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.roomImage)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRank)).BeginInit();
             this.SuspendLayout();
             // 
             // roomImage
@@ -142,11 +144,22 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "#";
             // 
+            // pictureBoxRank
+            // 
+            this.pictureBoxRank.Location = new System.Drawing.Point(67, 5);
+            this.pictureBoxRank.Name = "pictureBoxRank";
+            this.pictureBoxRank.Size = new System.Drawing.Size(52, 45);
+            this.pictureBoxRank.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxRank.TabIndex = 13;
+            this.pictureBoxRank.TabStop = false;
+            this.pictureBoxRank.Visible = false;
+            // 
             // UserRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Controls.Add(this.pictureBoxRank);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.rentRoomBtn);
             this.Controls.Add(this.panel1);
@@ -159,6 +172,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.roomImage)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRank)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -174,5 +188,6 @@
         private System.Windows.Forms.Label roomDescription;
         private System.Windows.Forms.Button rentRoomBtn;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBoxRank;
     }
 }

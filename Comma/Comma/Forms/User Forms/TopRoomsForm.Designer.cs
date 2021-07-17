@@ -29,54 +29,54 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TopRoomsForm));
-            this.button1 = new System.Windows.Forms.Button();
-            this.containerPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.panelRoom2Container = new System.Windows.Forms.Panel();
+            this.panelRoom1Container = new System.Windows.Forms.Panel();
+            this.panelRoom3Container = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
-            // button1
+            // lblTitle
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Location = new System.Drawing.Point(502, 276);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(96, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Click To Add";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.lblTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.BackColor = System.Drawing.Color.Goldenrod;
+            this.lblTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblTitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblTitle.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.ForeColor = System.Drawing.Color.Green;
+            this.lblTitle.Image = ((System.Drawing.Image)(resources.GetObject("lblTitle.Image")));
+            this.lblTitle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblTitle.Location = new System.Drawing.Point(215, 90);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblTitle.Size = new System.Drawing.Size(175, 31);
+            this.lblTitle.TabIndex = 7;
+            this.lblTitle.Text = "   TOP ROOMS";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // containerPanel
+            // panelRoom2Container
             // 
-            this.containerPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.containerPanel.AutoScroll = true;
-            this.containerPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.containerPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.containerPanel.Location = new System.Drawing.Point(120, 60);
-            this.containerPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.containerPanel.Name = "containerPanel";
-            this.containerPanel.Size = new System.Drawing.Size(380, 520);
-            this.containerPanel.TabIndex = 2;
-            this.containerPanel.WrapContents = false;
+            this.panelRoom2Container.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.panelRoom2Container.Location = new System.Drawing.Point(28, 220);
+            this.panelRoom2Container.Name = "panelRoom2Container";
+            this.panelRoom2Container.Size = new System.Drawing.Size(340, 500);
+            this.panelRoom2Container.TabIndex = 8;
             // 
-            // label1
+            // panelRoom1Container
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Goldenrod;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label1.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Green;
-            this.label1.Image = ((System.Drawing.Image)(resources.GetObject("label1.Image")));
-            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label1.Location = new System.Drawing.Point(235, -10);
-            this.label1.Name = "label1";
-            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label1.Size = new System.Drawing.Size(175, 31);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "   TOP ROOMS";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.panelRoom1Container.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.panelRoom1Container.Location = new System.Drawing.Point(415, 160);
+            this.panelRoom1Container.Name = "panelRoom1Container";
+            this.panelRoom1Container.Size = new System.Drawing.Size(340, 500);
+            this.panelRoom1Container.TabIndex = 9;
+            // 
+            // panelRoom3Container
+            // 
+            this.panelRoom3Container.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.panelRoom3Container.Location = new System.Drawing.Point(800, 220);
+            this.panelRoom3Container.Name = "panelRoom3Container";
+            this.panelRoom3Container.Size = new System.Drawing.Size(340, 500);
+            this.panelRoom3Container.TabIndex = 10;
             // 
             // TopRoomsForm
             // 
@@ -85,21 +85,22 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(600, 590);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.containerPanel);
+            this.Controls.Add(this.panelRoom3Container);
+            this.Controls.Add(this.panelRoom1Container);
+            this.Controls.Add(this.panelRoom2Container);
+            this.Controls.Add(this.lblTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TopRoomsForm";
-            this.Load += new System.EventHandler(this.TopRoomsForm_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TopRoomsForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.FlowLayoutPanel containerPanel;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Panel panelRoom2Container;
+        private System.Windows.Forms.Panel panelRoom1Container;
+        private System.Windows.Forms.Panel panelRoom3Container;
     }
 }

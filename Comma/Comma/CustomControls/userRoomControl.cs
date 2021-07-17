@@ -30,7 +30,19 @@ namespace Comma.Forms
             homeForm.rentBtn_Click(sender, e, roomID.Text);
         }
 
-        // ============== CONTROLS SETTERS ================= 
+        // =============== SET RANK IMAGES =================
+        public void setRank(int rank)
+        {
+            pictureBoxRank.Visible = true;
+            if (rank == 1)
+                pictureBoxRank.Image = Properties.Resources.GoldenRank;
+            else if (rank == 2)
+                pictureBoxRank.Image = Properties.Resources.SilverRank;
+            else
+                pictureBoxRank.Image = Properties.Resources.BronzeRank;
+        }
+
+        // ============== CONTROLS SETTERS =================
         public void setRoomID(int id)
         {
             roomID.Text = id.ToString();

@@ -25,6 +25,7 @@ namespace Comma
             loadRooms();
         }
 
+        // ================ HELPER METHODS ====================
         private void loadRooms()
         {
             // max lines for description is 3 lines
@@ -56,9 +57,6 @@ namespace Comma
                 containerPanel.Controls.Add(room);
             }
         }
-
-        // ================ HELPER METHODS ====================
-
         // Fetching all rooms from database to roomList
         private void fetchRooms()
         {

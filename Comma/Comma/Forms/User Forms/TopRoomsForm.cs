@@ -1,5 +1,12 @@
-﻿using Comma.Forms;
+﻿using Comma.CustomClasses;
+using Comma.Forms;
 using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Comma
@@ -7,50 +14,92 @@ namespace Comma
     public partial class TopRoomsForm : Form
     {
         private UserHomeForm homeForm;
-        private string roomName, description;
-        private int roomID, roomPrice;
-        private char rentType;
+        private SqlConnection conn;
+        private List<RoomModel> roomsList;
 
         public TopRoomsForm(UserHomeForm homeForm)
         {
             InitializeComponent();
             this.homeForm = homeForm;
+            conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
+            if (conn.State == ConnectionState.Closed) conn.Open();
+            loadRooms();
         }
 
-        private void TopRoomsForm_Load(object sender, EventArgs e)
+
+        // ================ HELPER METHODS ====================
+        private void loadRooms()
         {
+            fetchRooms();
 
+            for (int i = 0; i < 3; ++i)
+            {
+                UserRoom room = new UserRoom(homeForm);
+
+                string temp = (roomsList[i].roomRentType[0] == 'H') ? "£ / H" : "£ / D";
+                string PriceFormat = roomsList[i].roomRentPrice.ToString() + temp;
+                room.setRoomID(roomsList[i].roomID);
+                room.setRoomName(roomsList[i].roomName);
+                room.setRoomImage(convertByteArrayToImage(roomsList[i].roomImage));
+                room.setRoomDescription(roomsList[i].roomDescription);
+                room.setRoomPrice(PriceFormat);
+
+                if (i == 0)
+                {
+                    room.setRank(1);
+                    panelRoom1Container.Controls.Add(room);
+                }
+                else if (i == 1)
+                {
+                    room.setRank(2);
+                    panelRoom2Container.Controls.Add(room);
+                }
+                else
+                {
+                    room.setRank(3);
+                    panelRoom3Container.Controls.Add(room);
+                }
+            }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        // Fetching all rooms from database to roomList
+        private void fetchRooms()
         {
-            UserRoom room = new UserRoom(homeForm);
-            initializeRoom(ref room);
-            containerPanel.Controls.Add(room);
+            roomsList = new List<RoomModel>();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = "SELECT TOP 3 * FROM Rooms ORDER BY rentPrice DESC";
+            cmd.CommandType = CommandType.Text;
+            SqlDataReader reader = cmd.ExecuteReader();
+            int rank = 1;
+            while (reader.Read())
+            {
+                RoomModel room = new RoomModel();
+                room.roomID = rank++;
+                room.roomName = reader.GetString(1);
+                room.roomImage = ((byte[])reader.GetSqlBinary(2));
+                room.roomDescription = reader.GetString(3);
+                room.roomRentType = reader.GetString(4);
+                room.roomRentPrice = reader.GetInt32(5);
+                roomsList.Add(room);
+            }
+            reader.Close();
         }
 
-        private void initializeRoom(ref UserRoom room)
+        private Image convertByteArrayToImage(byte[] data)
         {
-            /****************************************/ // FETCH FROM DATABASE
-            roomName = "Jokky 33";
-            description =
-                "Lorem ipsum dolor sit amet, adipiscing elit.\nPraesent in aliquet justo. Donec eget risus,\n" +
-                "Nam iaculis, nibh quis facilisis tempor,\nrisus ligula malesuada tortor.";
-            roomID = 13;
-            roomPrice = 120;
-            rentType = 'H';
-            /****************************************/
-
-            Control[] name = room.Controls.Find("roomName", true);
-            name[0].Text = roomName;
-            Control[] id = room.Controls.Find("roomID", true);
-            id[0].Text = roomID.ToString();
-            Control[] desc = room.Controls.Find("roomDescription", true);
-            desc[0].Text = description;
-            string temp = (rentType == 'H') ? "£ / H" : "£ / D";
-            string P = roomPrice.ToString() + temp;
-            Control[] price = room.Controls.Find("roomPrice", true);
-            price[0].Text = P;
+            if (data == null) return null;
+            using (MemoryStream ms = new MemoryStream(data, 0, data.Length))
+            {
+                return Image.FromStream(ms);
+            }
         }
+        // =====================================================
+
+        private void TopRoomsForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            conn.Dispose();
+        }
+
     }
 }

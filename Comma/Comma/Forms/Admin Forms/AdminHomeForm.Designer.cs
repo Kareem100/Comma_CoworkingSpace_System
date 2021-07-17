@@ -42,14 +42,16 @@
             this.showRoomsBtn = new System.Windows.Forms.Button();
             this.titleLbl = new System.Windows.Forms.Label();
             this.navbarPanel = new System.Windows.Forms.Panel();
+            this.userNameLbl = new System.Windows.Forms.Label();
+            this.welcomeLbl = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.contactLbl = new System.Windows.Forms.Label();
             this.feedbackBtn = new System.Windows.Forms.Button();
             this.phoneIcon = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.contactLbl = new System.Windows.Forms.Label();
             this.sidebarPanel = new System.Windows.Forms.Panel();
             this.roomsBtn = new System.Windows.Forms.Button();
             this.adminsBtn = new System.Windows.Forms.Button();
@@ -64,8 +66,6 @@
             this.logoPanel = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.topHeader = new System.Windows.Forms.Panel();
-            this.adminFirstNameLbl = new System.Windows.Forms.Label();
-            this.welcomeLbl = new System.Windows.Forms.Label();
             this.shadedPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.closeButton)).BeginInit();
@@ -249,7 +249,7 @@
             // navbarPanel
             // 
             this.navbarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(39)))), ((int)(((byte)(40)))));
-            this.navbarPanel.Controls.Add(this.adminFirstNameLbl);
+            this.navbarPanel.Controls.Add(this.userNameLbl);
             this.navbarPanel.Controls.Add(this.welcomeLbl);
             this.navbarPanel.Controls.Add(this.label1);
             this.navbarPanel.Controls.Add(this.contactLbl);
@@ -270,6 +270,52 @@
             this.navbarPanel.Name = "navbarPanel";
             this.navbarPanel.Size = new System.Drawing.Size(200, 590);
             this.navbarPanel.TabIndex = 6;
+            // 
+            // userNameLbl
+            // 
+            this.userNameLbl.AutoSize = true;
+            this.userNameLbl.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userNameLbl.ForeColor = System.Drawing.Color.Crimson;
+            this.userNameLbl.Location = new System.Drawing.Point(48, 57);
+            this.userNameLbl.Name = "userNameLbl";
+            this.userNameLbl.Size = new System.Drawing.Size(148, 29);
+            this.userNameLbl.TabIndex = 13;
+            this.userNameLbl.Text = "adminname...";
+            // 
+            // welcomeLbl
+            // 
+            this.welcomeLbl.AutoSize = true;
+            this.welcomeLbl.Font = new System.Drawing.Font("Comic Sans MS", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.welcomeLbl.ForeColor = System.Drawing.Color.Goldenrod;
+            this.welcomeLbl.Location = new System.Drawing.Point(12, 19);
+            this.welcomeLbl.Name = "welcomeLbl";
+            this.welcomeLbl.Size = new System.Drawing.Size(129, 38);
+            this.welcomeLbl.TabIndex = 12;
+            this.welcomeLbl.Text = "ADMIN,";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Cooper Black", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Goldenrod;
+            this.label1.Location = new System.Drawing.Point(6, 476);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(89, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Send Mail on...";
+            // 
+            // contactLbl
+            // 
+            this.contactLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.contactLbl.AutoSize = true;
+            this.contactLbl.Font = new System.Drawing.Font("Cooper Black", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contactLbl.ForeColor = System.Drawing.Color.Goldenrod;
+            this.contactLbl.Location = new System.Drawing.Point(6, 463);
+            this.contactLbl.Name = "contactLbl";
+            this.contactLbl.Size = new System.Drawing.Size(172, 13);
+            this.contactLbl.TabIndex = 4;
+            this.contactLbl.Text = "Need a Similar Application ?";
             // 
             // feedbackBtn
             // 
@@ -349,30 +395,6 @@
             this.label2.Size = new System.Drawing.Size(140, 13);
             this.label2.TabIndex = 6;
             this.label2.Text = "humangifts@gmail.com";
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Cooper Black", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Goldenrod;
-            this.label1.Location = new System.Drawing.Point(6, 476);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Send Mail on...";
-            // 
-            // contactLbl
-            // 
-            this.contactLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.contactLbl.AutoSize = true;
-            this.contactLbl.Font = new System.Drawing.Font("Cooper Black", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contactLbl.ForeColor = System.Drawing.Color.Goldenrod;
-            this.contactLbl.Location = new System.Drawing.Point(6, 463);
-            this.contactLbl.Name = "contactLbl";
-            this.contactLbl.Size = new System.Drawing.Size(172, 13);
-            this.contactLbl.TabIndex = 4;
-            this.contactLbl.Text = "Need a Similar Application ?";
             // 
             // sidebarPanel
             // 
@@ -580,28 +602,6 @@
             this.topHeader.Size = new System.Drawing.Size(800, 10);
             this.topHeader.TabIndex = 7;
             // 
-            // adminFirstNameLbl
-            // 
-            this.adminFirstNameLbl.AutoSize = true;
-            this.adminFirstNameLbl.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.adminFirstNameLbl.ForeColor = System.Drawing.Color.Crimson;
-            this.adminFirstNameLbl.Location = new System.Drawing.Point(48, 57);
-            this.adminFirstNameLbl.Name = "adminFirstNameLbl";
-            this.adminFirstNameLbl.Size = new System.Drawing.Size(148, 29);
-            this.adminFirstNameLbl.TabIndex = 13;
-            this.adminFirstNameLbl.Text = "adminname...";
-            // 
-            // welcomeLbl
-            // 
-            this.welcomeLbl.AutoSize = true;
-            this.welcomeLbl.Font = new System.Drawing.Font("Comic Sans MS", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.welcomeLbl.ForeColor = System.Drawing.Color.Goldenrod;
-            this.welcomeLbl.Location = new System.Drawing.Point(12, 19);
-            this.welcomeLbl.Name = "welcomeLbl";
-            this.welcomeLbl.Size = new System.Drawing.Size(143, 38);
-            this.welcomeLbl.TabIndex = 12;
-            this.welcomeLbl.Text = "Welcome,";
-            // 
             // AdminHomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -679,7 +679,7 @@
         private System.Windows.Forms.Button changeMailBtn;
         private System.Windows.Forms.Button changePassBtn;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label adminFirstNameLbl;
+        private System.Windows.Forms.Label userNameLbl;
         private System.Windows.Forms.Label welcomeLbl;
     }
 }

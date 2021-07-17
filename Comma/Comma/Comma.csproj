@@ -223,6 +223,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Forms\User Forms\UserHomeForm.resx">
       <DependentUpon>UserHomeForm.cs</DependentUpon>
@@ -246,6 +247,14 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Assets\BronzeRank.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\GoldenRank.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\SilverRank.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
