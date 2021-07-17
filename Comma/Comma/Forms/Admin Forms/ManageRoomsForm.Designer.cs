@@ -48,6 +48,7 @@
             this.addRoomGroupBox = new System.Windows.Forms.GroupBox();
             this.addRoomPanel = new System.Windows.Forms.Panel();
             this.roomSelectBox = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.roomImage)).BeginInit();
             this.roomDescGroupBox.SuspendLayout();
             this.addRoomGroupBox.SuspendLayout();
@@ -96,7 +97,7 @@
             this.titleForm.ForeColor = System.Drawing.Color.Green;
             this.titleForm.Image = ((System.Drawing.Image)(resources.GetObject("titleForm.Image")));
             this.titleForm.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.titleForm.Location = new System.Drawing.Point(192, 90);
+            this.titleForm.Location = new System.Drawing.Point(278, 90);
             this.titleForm.Name = "titleForm";
             this.titleForm.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.titleForm.Size = new System.Drawing.Size(225, 31);
@@ -300,6 +301,7 @@
             // addRoomPanel
             // 
             this.addRoomPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.addRoomPanel.Controls.Add(this.label2);
             this.addRoomPanel.Controls.Add(this.roomSelectBox);
             this.addRoomPanel.Controls.Add(this.processBtn);
             this.addRoomPanel.Controls.Add(this.roomDescGroupBox);
@@ -319,7 +321,7 @@
             this.roomSelectBox.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.roomSelectBox.ForeColor = System.Drawing.Color.Gold;
             this.roomSelectBox.FormattingEnabled = true;
-            this.roomSelectBox.Location = new System.Drawing.Point(385, 20);
+            this.roomSelectBox.Location = new System.Drawing.Point(385, 31);
             this.roomSelectBox.MaxDropDownItems = 20;
             this.roomSelectBox.Name = "roomSelectBox";
             this.roomSelectBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -329,13 +331,24 @@
             this.roomSelectBox.Visible = false;
             this.roomSelectBox.SelectedIndexChanged += new System.EventHandler(this.roomSelectBox_SelectedIndexChanged);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Gold;
+            this.label2.Location = new System.Drawing.Point(464, 7);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(149, 19);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "SELECT ROOM NAME";
+            // 
             // ManageRoomsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(600, 590);
+            this.ClientSize = new System.Drawing.Size(773, 590);
             this.Controls.Add(this.removeRoomLbl);
             this.Controls.Add(this.addRoomLbl);
             this.Controls.Add(this.titleForm);
@@ -378,5 +391,6 @@
         private System.Windows.Forms.GroupBox addRoomGroupBox;
         private System.Windows.Forms.Panel addRoomPanel;
         private System.Windows.Forms.ComboBox roomSelectBox;
+        private System.Windows.Forms.Label label2;
     }
 }

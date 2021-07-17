@@ -23,11 +23,14 @@ namespace Comma
 
         private Dictionary<string, int> roomDictionary;
 
+        private int currentRoomID;
+
         public ManageRoomsForm()
         {
             commonConstructorsLines();
             currentState = "ADD ROOM";
             roomModel = new RoomModel();
+            currentRoomID = -1;
         }
 
         public ManageRoomsForm(EventArgs e, string roomID, string choice)
@@ -39,8 +42,14 @@ namespace Comma
             else
                 removeRoomLbl_Click(this, e);
 
-            loadAllRoomNames();
-            loadRoom(int.Parse(roomID), e);
+            currentRoomID = int.Parse(roomID);
+            loadRoom(currentRoomID, e);
+            foreach (KeyValuePair<string, int> room in roomDictionary)
+                if (room.Value == currentRoomID)
+                {
+                    roomSelectBox.SelectedItem = room.Key;
+                    break;
+                }
         }
 
         // ======================= HELPER METHODS =======================
@@ -51,11 +60,13 @@ namespace Comma
             roomModel = new RoomModel();
             conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
             if (conn.State == ConnectionState.Closed) conn.Open();
+            loadAllRoomNames();
         }
 
         // Get All The Room Names Into roomSelectBox
         private void loadAllRoomNames()
         {
+            roomSelectBox.Items.Clear();
             roomDictionary = new Dictionary<string, int>();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
@@ -72,8 +83,8 @@ namespace Comma
 
         private void roomSelectBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int id = roomDictionary[roomSelectBox.SelectedItem.ToString()];
-            loadRoom(id, e);
+            currentRoomID = roomDictionary[roomSelectBox.SelectedItem.ToString()];
+            loadRoom(currentRoomID, e);
         }
 
         // Show Data of the Room with  the Given roomID
@@ -111,6 +122,24 @@ namespace Comma
             else
                 dailyTypeBtn_Click(this, e);
             priceTxt.Text = roomModel.roomRentPrice.ToString(); // rentPrice
+        }
+
+        private byte[] convertImageToByteArray(Image img)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                img.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                return ms.ToArray();
+            }
+        }
+
+        private Image convertByteArrayToImage(byte[] data)
+        {
+            if (data == null) return null;
+            using (MemoryStream ms = new MemoryStream(data, 0, data.Length))
+            {
+                return Image.FromStream(ms);
+            }
         }
 
         // ============= LAYOUT AND NAVIGATION CODE =========================
@@ -175,7 +204,16 @@ namespace Comma
             currentState = "REMOVE ROOM";
             disableControls();
         }
-        
+
+        private void roomImage_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog dialog = new OpenFileDialog() { Filter = "Image Files|*.jpg;*.jpeg;*.png;", Multiselect = false })
+            {
+                if (dialog.ShowDialog() == DialogResult.OK)
+                    roomImage.Image = Image.FromFile(dialog.FileName);
+            }
+        }
+
         private void hourlyTypeBtn_Click(object sender, EventArgs e)
         {
             hourlyTypeBtn.BackColor = Color.Green;
@@ -220,33 +258,6 @@ namespace Comma
         // =================================================================
 
         // ======================= ADD ROOM ================================
-        private void roomImage_Click(object sender, EventArgs e)
-        {
-            using (OpenFileDialog dialog = new OpenFileDialog() { Filter = "Image Files|*.jpg;*.jpeg;*.png;", Multiselect = false })
-            {
-                if (dialog.ShowDialog() == DialogResult.OK)
-                    roomImage.Image = Image.FromFile(dialog.FileName);
-            }
-        }
-
-        private byte[] convertImageToByteArray(Image img)
-        {
-            using (MemoryStream ms = new MemoryStream())
-            {
-                img.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-                return ms.ToArray();
-            }
-        }
-
-        private Image convertByteArrayToImage(byte[] data)
-        {
-            if (data == null) return null;
-            using (MemoryStream ms = new MemoryStream(data, 0, data.Length))
-            {
-                return Image.FromStream(ms);
-            }
-        }
-
         private void addRoom()
         {
             getFieldsData();
@@ -269,6 +280,7 @@ namespace Comma
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("Room has been Added Successfully !", "ADDING ROOM", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    loadAllRoomNames();
                 }
                 catch
                 {
@@ -325,13 +337,12 @@ namespace Comma
             return true;
         }
 
-
         // ======================= EDIT ROOM ===============================
         private void editRoom()
         {
             if (isValidUpdate())
             {
-                updateRommModel();
+                updateRoomModel();
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conn;
                 cmd.CommandText = "updateRoom";
@@ -411,7 +422,7 @@ namespace Comma
             }
         }
 
-        private void updateRommModel()
+        private void updateRoomModel()
         {
             roomModel.roomName = nameTxt.Text;
             roomModel.roomImage = convertImageToByteArray(roomImage.Image);
@@ -426,7 +437,38 @@ namespace Comma
         // ======================= REMOVE ROOM =============================
         private void removeRoom()
         {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = "removeRoom";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("roomID", currentRoomID);
+            int res = cmd.ExecuteNonQuery();
+            if (res == -1)
+                MessageBox.Show("Something went wrong !!\nPlease try again...", "REMOVE ROOM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+            {
+                cleanAfterRoomDeletion();
+                MessageBox.Show("The Room has been Removed Successfuly !", "REMOVE ROOM", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
 
+        private void cleanAfterRoomDeletion()
+        {
+            roomDictionary.Remove(roomSelectBox.SelectedItem.ToString());
+            roomSelectBox.Items.RemoveAt(roomSelectBox.SelectedIndex);
+            clearFields();
+        }
+
+        private void clearFields()
+        {
+            roomImage.Image = null;
+            nameTxt.Text = "";
+            hourlyTypeBtn.BackColor = Color.FromArgb(100, 0, 0, 0);
+            hourlyTypeBtn.ForeColor = Color.WhiteSmoke;
+            dailyTypeBtn.BackColor = Color.FromArgb(100, 0, 0, 0);
+            dailyTypeBtn.ForeColor = Color.WhiteSmoke;
+            priceTxt.Text = "";
+            descriptionBox.Text = "";
         }
         // =================================================================
 
@@ -435,8 +477,19 @@ namespace Comma
             if (currentState == "ADD ROOM")
                 addRoom();
             else if (currentState == "EDIT ROOM")
-                editRoom();
-            else
+                if (roomSelectBox.Items.Count == 0)
+                {
+                    MessageBox.Show("No Rooms to Edit\nTry to Add Some Rooms First.", "EDIT ROOMS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else 
+                    editRoom();
+            else if (roomSelectBox.Items.Count == 0)
+            {
+                MessageBox.Show("No Rooms to Remove\nTry to Add Some Rooms First.", "REMOVE ROOMS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else 
                 removeRoom();
         }
 
