@@ -1,5 +1,8 @@
 ﻿using Comma.CustomClasses;
 using System;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -29,6 +32,29 @@ namespace Comma
             initializeQuotes();
             string[] names = GlobalData.userFullName.Split(' ');
             userNameLbl.Text = names[0][0] + "." + names[1];
+
+            loadSocialLinks();
+        }
+
+        public string fac, twi, ins, ask;
+
+        private void loadSocialLinks()
+        {
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
+            SqlCommand cmd = new SqlCommand();
+            if (conn.State == ConnectionState.Closed) conn.Open();
+            cmd.Connection = conn;
+            cmd.CommandText = "get_social_link";
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlDataReader r = cmd.ExecuteReader();
+            while (r.Read())
+            {
+                fac = r["facebook"].ToString();
+                twi = r["twitter"].ToString();
+                ins = r["instagram"].ToString();
+                ask = r["askfm"].ToString();
+            }
+            conn.Close();
         }
 
         private void initializeQuotes()
@@ -199,10 +225,32 @@ namespace Comma
             this.Close();
         }
 
-        private void openLoginForm(Object obj)
+        private void openLoginForm(object obj)
         {
             Application.Run(new LoginForm());
         }
+
+        // SOCIAL MEDIA LINKS
+        private void facebookBtn_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(fac);
+        }
+
+        private void twitterBtn_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(twi);
+        }
+
+        private void instagramBtn_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(ins);
+        }
+
+        private void askfmBtn_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(ask);
+        }
+        // =========================================================
 
         private void showRoomsBtn_Click(object sender, EventArgs e)
         {

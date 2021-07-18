@@ -35,6 +35,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(showFeedbacksForm));
             this.dgv = new System.Windows.Forms.DataGridView();
             this.rank = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Namee = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.roomName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rentingFrom = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,6 +68,8 @@
             this.dgv.ColumnHeadersHeight = 34;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.rank,
+            this.UserID,
+            this.Namee,
             this.roomName,
             this.userName,
             this.rentingFrom,
@@ -124,10 +128,24 @@
             // 
             // rank
             // 
-            this.rank.FillWeight = 5F;
+            this.rank.FillWeight = 12F;
             this.rank.HeaderText = "#";
             this.rank.Name = "rank";
             this.rank.ReadOnly = true;
+            // 
+            // UserID
+            // 
+            this.UserID.FillWeight = 9F;
+            this.UserID.HeaderText = "UserID";
+            this.UserID.Name = "UserID";
+            this.UserID.ReadOnly = true;
+            // 
+            // Name
+            // 
+            this.Namee.FillWeight = 20F;
+            this.Namee.HeaderText = "Name";
+            this.Namee.Name = "Name";
+            this.Namee.ReadOnly = true;
             // 
             // roomName
             // 
@@ -198,8 +216,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgv);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "showFeedbacksForm";
+            //this.Name = "showFeedbacksForm";
             this.Text = "ShowFeedbacksForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.showFeedbacksForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -211,6 +230,8 @@
         private System.Windows.Forms.DataGridView dgv;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn rank;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Namee;
         private System.Windows.Forms.DataGridViewTextBoxColumn roomName;
         private System.Windows.Forms.DataGridViewTextBoxColumn userName;
         private System.Windows.Forms.DataGridViewTextBoxColumn rentingFrom;

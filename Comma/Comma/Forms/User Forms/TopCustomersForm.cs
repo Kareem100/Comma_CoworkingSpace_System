@@ -1,20 +1,45 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.Configuration;
+using System.Data;
 
 namespace Comma
 {
     public partial class TopCustomersForm : Form
     {
+        private SqlConnection conn;
+
         public TopCustomersForm()
         {
             InitializeComponent();
+            conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
+            if (conn.State == ConnectionState.Closed) conn.Open();
+        }
+
+        private void TopCustomersForm_Load(object sender, EventArgs e)
+        {
+            dgv.Rows.Clear();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd = conn.CreateCommand();
+            cmd.CommandText = "exec sortuser";
+            SqlDataReader r = cmd.ExecuteReader();
+            int i = 0;
+            while (r.Read())
+            {
+                if (r["userNumberOfRents"].ToString() == "")
+                    continue;
+                i++;
+                string[] row = new string[] { i.ToString(), r["userID"].ToString(), r["userName"].ToString(), r["userMail"].ToString(), r["userPhone"].ToString(), r["userNumberOfRents"].ToString() };
+                dgv.Rows.Add(row);
+            }
+        }
+
+        private void TopCustomersForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            conn.Dispose();
         }
     }
 }

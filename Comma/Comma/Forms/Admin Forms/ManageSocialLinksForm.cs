@@ -1,17 +1,22 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.Configuration;
+using System.Data;
 
 namespace Comma.Forms.Admin_Forms
 {
     public partial class ManageSocialLinksForm : Form
     {
-        private string fb, tw, ins, ask;
+        SqlConnection conn;
         public ManageSocialLinksForm()
         {
             InitializeComponent();
-            fb = tw = ins = ask = "";
+            conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
+            if (conn.State == ConnectionState.Closed) conn.Open();
         }
         // =============================================================
+
         private void fbTxt_Enter(object sender, EventArgs e)
         {
             if (fbTxt.Text == "facebook")
@@ -60,9 +65,25 @@ namespace Comma.Forms.Admin_Forms
                 askTxt.Text = "askfm";
         }
         // =============================================================
-        private void addLinksBtn_Click(object sender, EventArgs e)
+         private void addLinksBtn_Click(object sender, EventArgs e)
         {
             // DATABASE PART
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = "addlinks";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@fa", fbTxt.Text);
+            cmd.Parameters.AddWithValue("@tw", twTxt.Text);
+            cmd.Parameters.AddWithValue("@ins", insTxt.Text);
+            cmd.Parameters.AddWithValue("@ask", askTxt.Text);
+            cmd.ExecuteNonQuery();
+
+            fbTxt.Text = ""; twTxt.Text = ""; insTxt.Text = ""; askTxt.Text = "";
+        }
+
+        private void ManageSocialLinksForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            conn.Dispose();
         }
     }
 }

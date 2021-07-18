@@ -280,6 +280,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ManageSocialLinksForm";
             this.Text = "ManageSocialLinks";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ManageSocialLinksForm_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();

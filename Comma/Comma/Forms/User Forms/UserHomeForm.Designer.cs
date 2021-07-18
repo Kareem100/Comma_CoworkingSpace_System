@@ -54,13 +54,13 @@
             this.shadedPanel = new System.Windows.Forms.Panel();
             this.notificationsBtn = new System.Windows.Forms.PictureBox();
             this.connectPanel = new System.Windows.Forms.Panel();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.askfmBtn = new System.Windows.Forms.PictureBox();
             this.closeButton = new System.Windows.Forms.PictureBox();
             this.minimizeButton = new System.Windows.Forms.PictureBox();
             this.settingsBtn = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.facebookBtn = new System.Windows.Forms.PictureBox();
+            this.twitterBtn = new System.Windows.Forms.PictureBox();
+            this.instagramBtn = new System.Windows.Forms.PictureBox();
             this.childFormPanel = new System.Windows.Forms.Panel();
             this.showRoomsBtn = new System.Windows.Forms.Button();
             this.quoteBox = new System.Windows.Forms.GroupBox();
@@ -79,13 +79,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.shadedPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.notificationsBtn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.askfmBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.closeButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimizeButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.settingsBtn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.facebookBtn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.twitterBtn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.instagramBtn)).BeginInit();
             this.childFormPanel.SuspendLayout();
             this.quoteBox.SuspendLayout();
             this.settingsContainer.SuspendLayout();
@@ -397,13 +397,13 @@
             this.shadedPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.shadedPanel.Controls.Add(this.notificationsBtn);
             this.shadedPanel.Controls.Add(this.connectPanel);
-            this.shadedPanel.Controls.Add(this.pictureBox5);
+            this.shadedPanel.Controls.Add(this.askfmBtn);
             this.shadedPanel.Controls.Add(this.closeButton);
             this.shadedPanel.Controls.Add(this.minimizeButton);
             this.shadedPanel.Controls.Add(this.settingsBtn);
-            this.shadedPanel.Controls.Add(this.pictureBox2);
-            this.shadedPanel.Controls.Add(this.pictureBox3);
-            this.shadedPanel.Controls.Add(this.pictureBox4);
+            this.shadedPanel.Controls.Add(this.facebookBtn);
+            this.shadedPanel.Controls.Add(this.twitterBtn);
+            this.shadedPanel.Controls.Add(this.instagramBtn);
             this.shadedPanel.Location = new System.Drawing.Point(200, 9);
             this.shadedPanel.Name = "shadedPanel";
             this.shadedPanel.Size = new System.Drawing.Size(600, 40);
@@ -433,17 +433,18 @@
             this.connectPanel.TabIndex = 3;
             this.connectPanel.Visible = false;
             // 
-            // pictureBox5
+            // askfmBtn
             // 
-            this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(277, 6);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 10;
-            this.pictureBox5.TabStop = false;
+            this.askfmBtn.BackColor = System.Drawing.Color.Transparent;
+            this.askfmBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.askfmBtn.Image = ((System.Drawing.Image)(resources.GetObject("askfmBtn.Image")));
+            this.askfmBtn.Location = new System.Drawing.Point(277, 6);
+            this.askfmBtn.Name = "askfmBtn";
+            this.askfmBtn.Size = new System.Drawing.Size(24, 24);
+            this.askfmBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.askfmBtn.TabIndex = 10;
+            this.askfmBtn.TabStop = false;
+            this.askfmBtn.Click += new System.EventHandler(this.askfmBtn_Click);
             // 
             // closeButton
             // 
@@ -487,41 +488,44 @@
             this.settingsBtn.TabStop = false;
             this.settingsBtn.Click += new System.EventHandler(this.settingsBtn_Click);
             // 
-            // pictureBox2
+            // facebookBtn
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(154, 6);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 4;
-            this.pictureBox2.TabStop = false;
+            this.facebookBtn.BackColor = System.Drawing.Color.Transparent;
+            this.facebookBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.facebookBtn.Image = ((System.Drawing.Image)(resources.GetObject("facebookBtn.Image")));
+            this.facebookBtn.Location = new System.Drawing.Point(154, 6);
+            this.facebookBtn.Name = "facebookBtn";
+            this.facebookBtn.Size = new System.Drawing.Size(24, 24);
+            this.facebookBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.facebookBtn.TabIndex = 4;
+            this.facebookBtn.TabStop = false;
+            this.facebookBtn.Click += new System.EventHandler(this.facebookBtn_Click);
             // 
-            // pictureBox3
+            // twitterBtn
             // 
-            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(195, 6);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 5;
-            this.pictureBox3.TabStop = false;
+            this.twitterBtn.BackColor = System.Drawing.Color.Transparent;
+            this.twitterBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.twitterBtn.Image = ((System.Drawing.Image)(resources.GetObject("twitterBtn.Image")));
+            this.twitterBtn.Location = new System.Drawing.Point(195, 6);
+            this.twitterBtn.Name = "twitterBtn";
+            this.twitterBtn.Size = new System.Drawing.Size(24, 24);
+            this.twitterBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.twitterBtn.TabIndex = 5;
+            this.twitterBtn.TabStop = false;
+            this.twitterBtn.Click += new System.EventHandler(this.twitterBtn_Click);
             // 
-            // pictureBox4
+            // instagramBtn
             // 
-            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(236, 6);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 6;
-            this.pictureBox4.TabStop = false;
+            this.instagramBtn.BackColor = System.Drawing.Color.Transparent;
+            this.instagramBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.instagramBtn.Image = ((System.Drawing.Image)(resources.GetObject("instagramBtn.Image")));
+            this.instagramBtn.Location = new System.Drawing.Point(236, 6);
+            this.instagramBtn.Name = "instagramBtn";
+            this.instagramBtn.Size = new System.Drawing.Size(24, 24);
+            this.instagramBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.instagramBtn.TabIndex = 6;
+            this.instagramBtn.TabStop = false;
+            this.instagramBtn.Click += new System.EventHandler(this.instagramBtn_Click);
             // 
             // childFormPanel
             // 
@@ -724,13 +728,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.shadedPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.notificationsBtn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.askfmBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.closeButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimizeButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.settingsBtn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.facebookBtn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.twitterBtn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.instagramBtn)).EndInit();
             this.childFormPanel.ResumeLayout(false);
             this.childFormPanel.PerformLayout();
             this.quoteBox.ResumeLayout(false);
@@ -764,13 +768,13 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel shadedPanel;
         private System.Windows.Forms.PictureBox notificationsBtn;
-        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox askfmBtn;
         private System.Windows.Forms.PictureBox closeButton;
         private System.Windows.Forms.PictureBox minimizeButton;
         private System.Windows.Forms.PictureBox settingsBtn;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox facebookBtn;
+        private System.Windows.Forms.PictureBox twitterBtn;
+        private System.Windows.Forms.PictureBox instagramBtn;
         private System.Windows.Forms.Panel childFormPanel;
         private System.Windows.Forms.Button feedbackBtn;
         private System.Windows.Forms.FlowLayoutPanel notificationsContainer;

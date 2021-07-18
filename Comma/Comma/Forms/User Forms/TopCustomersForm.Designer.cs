@@ -35,9 +35,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TopCustomersForm));
             this.dgv = new System.Windows.Forms.DataGridView();
             this.rank = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.image = new System.Windows.Forms.DataGridViewImageColumn();
+            this.image = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.namee = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rents = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -67,6 +68,7 @@
             this.image,
             this.namee,
             this.mail,
+            this.Phone,
             this.rents});
             this.dgv.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -114,41 +116,50 @@
             this.dgv.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgv.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(545, 150);
+            this.dgv.Size = new System.Drawing.Size(560, 150);
             this.dgv.StandardTab = true;
             this.dgv.TabIndex = 1;
             // 
             // rank
             // 
-            this.rank.FillWeight = 5F;
+            this.rank.FillWeight = 1.55F;
             this.rank.HeaderText = "#";
             this.rank.Name = "rank";
             this.rank.ReadOnly = true;
             // 
             // image
             // 
-            this.image.FillWeight = 15F;
-            this.image.HeaderText = "img";
+            this.image.FillWeight = 4.487276F;
+            this.image.HeaderText = "ID";
             this.image.Name = "image";
             this.image.ReadOnly = true;
+            this.image.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.image.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // namee
             // 
-            this.namee.FillWeight = 25F;
+            this.namee.FillWeight = 7.478793F;
             this.namee.HeaderText = "Name";
             this.namee.Name = "namee";
             this.namee.ReadOnly = true;
             // 
             // mail
             // 
-            this.mail.FillWeight = 37F;
+            this.mail.FillWeight = 11.06861F;
             this.mail.HeaderText = "E-mail";
             this.mail.Name = "mail";
             this.mail.ReadOnly = true;
             // 
+            // Phone
+            // 
+            this.Phone.FillWeight = 12F;
+            this.Phone.HeaderText = "Phone";
+            this.Phone.Name = "Phone";
+            this.Phone.ReadOnly = true;
+            // 
             // rents
             // 
-            this.rents.FillWeight = 18F;
+            this.rents.FillWeight = 5.384731F;
             this.rents.HeaderText = "Number Of Rents";
             this.rents.Name = "rents";
             this.rents.ReadOnly = true;
@@ -182,6 +193,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TopCustomersForm";
             this.Text = "TopCustomersForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TopCustomersForm_FormClosing);
+            this.Load += new System.EventHandler(this.TopCustomersForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -191,11 +204,12 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgv;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn rank;
-        private System.Windows.Forms.DataGridViewImageColumn image;
+        private System.Windows.Forms.DataGridViewTextBoxColumn image;
         private System.Windows.Forms.DataGridViewTextBoxColumn namee;
         private System.Windows.Forms.DataGridViewTextBoxColumn mail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Phone;
         private System.Windows.Forms.DataGridViewTextBoxColumn rents;
-        private System.Windows.Forms.Label label1;
     }
 }

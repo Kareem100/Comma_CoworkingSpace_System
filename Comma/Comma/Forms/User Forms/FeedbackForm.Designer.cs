@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FeedbackForm));
-            this.somewhateProblem = new System.Windows.Forms.RadioButton();
+            this.somewhatProblem = new System.Windows.Forms.RadioButton();
             this.yesProblem = new System.Windows.Forms.RadioButton();
             this.somewhatProvided = new System.Windows.Forms.RadioButton();
             this.noProvided = new System.Windows.Forms.RadioButton();
@@ -50,6 +50,7 @@
             this.suggestions = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.containerPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.submitFeedbackBtn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -57,17 +58,17 @@
             this.containerPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // somewhateProblem
+            // somewhatProblem
             // 
-            this.somewhateProblem.AutoSize = true;
-            this.somewhateProblem.BackColor = System.Drawing.Color.Transparent;
-            this.somewhateProblem.Location = new System.Drawing.Point(281, 40);
-            this.somewhateProblem.Name = "somewhateProblem";
-            this.somewhateProblem.Size = new System.Drawing.Size(80, 20);
-            this.somewhateProblem.TabIndex = 9;
-            this.somewhateProblem.TabStop = true;
-            this.somewhateProblem.Text = "Somewhat";
-            this.somewhateProblem.UseVisualStyleBackColor = false;
+            this.somewhatProblem.AutoSize = true;
+            this.somewhatProblem.BackColor = System.Drawing.Color.Transparent;
+            this.somewhatProblem.Location = new System.Drawing.Point(281, 40);
+            this.somewhatProblem.Name = "somewhatProblem";
+            this.somewhatProblem.Size = new System.Drawing.Size(80, 20);
+            this.somewhatProblem.TabIndex = 9;
+            this.somewhatProblem.TabStop = true;
+            this.somewhatProblem.Text = "Somewhat";
+            this.somewhatProblem.UseVisualStyleBackColor = false;
             // 
             // yesProblem
             // 
@@ -167,10 +168,10 @@
             // 
             // feedback
             // 
-            this.feedback.Location = new System.Drawing.Point(28, 122);
+            this.feedback.Location = new System.Drawing.Point(28, 99);
             this.feedback.Multiline = true;
             this.feedback.Name = "feedback";
-            this.feedback.Size = new System.Drawing.Size(344, 84);
+            this.feedback.Size = new System.Drawing.Size(344, 60);
             this.feedback.TabIndex = 5;
             // 
             // label3
@@ -178,7 +179,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.ForeColor = System.Drawing.Color.Goldenrod;
-            this.label3.Location = new System.Drawing.Point(25, 102);
+            this.label3.Location = new System.Drawing.Point(25, 79);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(87, 16);
             this.label3.TabIndex = 4;
@@ -188,7 +189,7 @@
             // 
             this.comments.AutoSize = true;
             this.comments.BackColor = System.Drawing.Color.Transparent;
-            this.comments.Location = new System.Drawing.Point(28, 58);
+            this.comments.Location = new System.Drawing.Point(28, 47);
             this.comments.Name = "comments";
             this.comments.Size = new System.Drawing.Size(79, 20);
             this.comments.TabIndex = 1;
@@ -201,7 +202,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.ForeColor = System.Drawing.Color.Goldenrod;
-            this.label2.Location = new System.Drawing.Point(25, 39);
+            this.label2.Location = new System.Drawing.Point(25, 28);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 16);
             this.label2.TabIndex = 0;
@@ -241,7 +242,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.somewhateProblem);
+            this.groupBox3.Controls.Add(this.somewhatProblem);
             this.groupBox3.Controls.Add(this.noProblem);
             this.groupBox3.Controls.Add(this.yesProblem);
             this.groupBox3.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -269,7 +270,7 @@
             this.groupBox4.Margin = new System.Windows.Forms.Padding(10);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(0);
-            this.groupBox4.Size = new System.Drawing.Size(393, 219);
+            this.groupBox4.Size = new System.Drawing.Size(393, 174);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Write a Feedback...";
@@ -278,7 +279,7 @@
             // 
             this.questions.AutoSize = true;
             this.questions.BackColor = System.Drawing.Color.Transparent;
-            this.questions.Location = new System.Drawing.Point(278, 58);
+            this.questions.Location = new System.Drawing.Point(278, 47);
             this.questions.Name = "questions";
             this.questions.Size = new System.Drawing.Size(78, 20);
             this.questions.TabIndex = 3;
@@ -290,7 +291,7 @@
             // 
             this.suggestions.AutoSize = true;
             this.suggestions.BackColor = System.Drawing.Color.Transparent;
-            this.suggestions.Location = new System.Drawing.Point(153, 58);
+            this.suggestions.Location = new System.Drawing.Point(153, 47);
             this.suggestions.Name = "suggestions";
             this.suggestions.Size = new System.Drawing.Size(88, 20);
             this.suggestions.TabIndex = 2;
@@ -308,7 +309,7 @@
             this.label1.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Image = ((System.Drawing.Image)(resources.GetObject("label1.Image")));
             this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label1.Location = new System.Drawing.Point(195, 3);
+            this.label1.Location = new System.Drawing.Point(195, 102);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label1.Size = new System.Drawing.Size(221, 31);
@@ -326,12 +327,30 @@
             this.containerPanel.Controls.Add(this.groupBox3);
             this.containerPanel.Controls.Add(this.groupBox4);
             this.containerPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.containerPanel.Location = new System.Drawing.Point(93, 55);
+            this.containerPanel.Location = new System.Drawing.Point(93, 154);
             this.containerPanel.Margin = new System.Windows.Forms.Padding(0);
             this.containerPanel.Name = "containerPanel";
-            this.containerPanel.Size = new System.Drawing.Size(414, 600);
+            this.containerPanel.Size = new System.Drawing.Size(414, 555);
             this.containerPanel.TabIndex = 5;
             this.containerPanel.WrapContents = false;
+            // 
+            // submitFeedbackBtn
+            // 
+            this.submitFeedbackBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.submitFeedbackBtn.BackColor = System.Drawing.Color.Indigo;
+            this.submitFeedbackBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.submitFeedbackBtn.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.submitFeedbackBtn.FlatAppearance.BorderSize = 0;
+            this.submitFeedbackBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.submitFeedbackBtn.Font = new System.Drawing.Font("Comic Sans MS", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.submitFeedbackBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.submitFeedbackBtn.Location = new System.Drawing.Point(227, 725);
+            this.submitFeedbackBtn.Name = "submitFeedbackBtn";
+            this.submitFeedbackBtn.Size = new System.Drawing.Size(151, 35);
+            this.submitFeedbackBtn.TabIndex = 12;
+            this.submitFeedbackBtn.Text = "Submit Feedback";
+            this.submitFeedbackBtn.UseVisualStyleBackColor = false;
+            this.submitFeedbackBtn.Click += new System.EventHandler(this.submitFeedbackBtn_Click);
             // 
             // FeedbackForm
             // 
@@ -339,11 +358,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(600, 590);
+            this.ClientSize = new System.Drawing.Size(600, 788);
+            this.Controls.Add(this.submitFeedbackBtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.containerPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FeedbackForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FeedbackForm_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -360,7 +381,7 @@
 
         #endregion
 
-        private System.Windows.Forms.RadioButton somewhateProblem;
+        private System.Windows.Forms.RadioButton somewhatProblem;
         private System.Windows.Forms.RadioButton yesProblem;
         private System.Windows.Forms.RadioButton somewhatProvided;
         private System.Windows.Forms.RadioButton noProvided;
@@ -381,5 +402,6 @@
         private System.Windows.Forms.RadioButton suggestions;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FlowLayoutPanel containerPanel;
+        private System.Windows.Forms.Button submitFeedbackBtn;
     }
 }
