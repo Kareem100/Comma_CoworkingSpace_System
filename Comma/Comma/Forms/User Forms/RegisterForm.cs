@@ -4,6 +4,8 @@ using System.Net.Mail;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace Comma
 {
@@ -22,6 +24,8 @@ namespace Comma
             InitializeComponent();
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 30, 30));
             panel.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, panel.Width, panel.Height, 30, 30));
+            SqlConnection con = new SqlConnection("Data Source=DESKTOP-HTCGCDF;Initial Catalog=CommaSpace;Integrated Security=True");
+
         }
 
         private void closeButton_Click(object sender, EventArgs e)
@@ -130,7 +134,29 @@ namespace Comma
             if (isValidData())
             {
                 // DATABASE PART
+                SqlConnection con = new SqlConnection("Data Source=DESKTOP-HTCGCDF;Initial Catalog=CommaSpace;Integrated Security=True");
+                SqlCommand cmd = new SqlCommand("insertUser", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@UserName", SqlDbType.NVarChar).Value = nameTxt.Text.ToString();
+                cmd.Parameters.Add("@userMail", SqlDbType.NVarChar).Value = mailTxt.Text.ToString();
+                cmd.Parameters.Add("@userPhone", SqlDbType.NVarChar).Value = phoneTxt.Text.ToString();
+                cmd.Parameters.Add("@userPassword", SqlDbType.NVarChar).Value = passTxt.Text.ToString();
+                cmd.Parameters.Add("@userType", SqlDbType.NVarChar).Value = "Customer";
+                cmd.Parameters.Add("@userNumberOfRentals", SqlDbType.Int).Value =0;
+                con.Open();
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
 
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    con.Close();
+                }
                 MessageBox.Show("You Have Been Registered Successfully !!", "Congratulations...", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -188,6 +214,16 @@ namespace Comma
                 return false;
             }
             return true;
+        }
+
+        private void RegisterForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

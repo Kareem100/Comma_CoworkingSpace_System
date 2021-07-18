@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Net.Mail;
 using System.Runtime.InteropServices;
@@ -8,6 +11,9 @@ namespace Comma.Forms.Admin_Forms
 {
     public partial class ManageAdminsForm : Form
     {
+        List<int> AdminIDs;
+        int addminID;
+        int index;
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
        (
@@ -34,6 +40,8 @@ namespace Comma.Forms.Admin_Forms
             removeAdminLbl.BorderStyle = BorderStyle.None;
             processBtn.Text = "ADD ADMIN";
             currentState = "ADD ADMIN";
+            adminSelectBox.Items.Clear();
+            AdminIDs.Clear();
             enableControls();
         }
 
@@ -47,29 +55,94 @@ namespace Comma.Forms.Admin_Forms
             addAdminLbl.BorderStyle = BorderStyle.None;
             processBtn.Text = "REMOVE ADMIN";
             currentState = "REMOVE ADMIN";
-            disableControls();
-        }
 
+            disableControls();
+            fillDop();
+        }
+        private void fillDop()
+        {
+            SqlConnection con = new SqlConnection("Data Source=DESKTOP-HTCGCDF;Initial Catalog=CommaSpace;Integrated Security=True");
+            SqlCommand cmd = new SqlCommand("select userID,userName from Users2 where userType='Admin'", con);
+            cmd.CommandType = CommandType.Text;
+            con.Open();
+            SqlDataReader dr = null;
+            try
+            {
+                dr = cmd.ExecuteReader();
+                AdminIDs = new List<int>();
+                while (dr.Read())
+                {
+                    adminSelectBox.Items.Add(dr[1].ToString());
+                    AdminIDs.Add(int.Parse(dr[0].ToString()));
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                dr.Close();
+                con.Close();
+            }
+        }
         private void disableControls()
         {
+            nameTxt.Enabled = false;
             mailTxt.Enabled = false;
+            phoneTxt.Enabled = false;
             passTxt.Enabled = false;
             rePassTxt.Enabled = false;
             adminSelectBox.Visible = true;
         }
         private void enableControls()
         {
+            nameTxt.Enabled = true;
             mailTxt.Enabled = true;
+            phoneTxt.Enabled = true;
             passTxt.Enabled = true;
             rePassTxt.Enabled = true;
             adminSelectBox.Visible = false;
+            nameTxt.Text = "Full Name";
             mailTxt.Text = "E-mail";
+            phoneTxt.Text = "Phone Number";
             passTxt.Text = "Password"; passTxt.ForeColor = Color.Gold;
             passTxt.UseSystemPasswordChar = false;
             rePassTxt.Text = "Confirm Password"; rePassTxt.ForeColor = Color.Gold;
             rePassTxt.UseSystemPasswordChar = false;
         }
+        private void nameTxt_Enter(object sender, EventArgs e)
+        {
+            if (nameTxt.Text == "Full Name")
+            {
+                nameTxt.Text = ""; nameTxt.ForeColor = Color.Gold;
+            }
+        }
 
+        private void nameTxt_Leave(object sender, EventArgs e)
+        {
+            if (nameTxt.Text == "")
+            {
+                nameTxt.Text = "Full Name"; nameTxt.ForeColor = Color.WhiteSmoke;
+            }
+        }
+
+        private void phoneTxt_Enter(object sender, EventArgs e)
+        {
+            if (phoneTxt.Text == "Phone Number")
+            {
+                phoneTxt.Text = ""; phoneTxt.ForeColor = Color.Gold;
+            }
+        }
+
+        private void phoneTxt_Leave(object sender, EventArgs e)
+        {
+            if (phoneTxt.Text == "")
+            {
+                phoneTxt.Text = "Phone Number"; phoneTxt.ForeColor = Color.WhiteSmoke;
+            }
+        }
         private void mailTxt_Enter(object sender, EventArgs e)
         {
             if (mailTxt.Text == "E-mail")
@@ -125,11 +198,52 @@ namespace Comma.Forms.Admin_Forms
 
         private void processBtn_Click(object sender, EventArgs e)
         {
-            if (isValidData())
-            {
+           
+                SqlConnection con = new SqlConnection("Data Source=DESKTOP-HTCGCDF;Initial Catalog=CommaSpace;Integrated Security=True");
+                SqlCommand cmd=null;
+                if (currentState == "ADD ADMIN")
+                {
+                if (isValidData())
+                {
+                    cmd = new SqlCommand("insertUser", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@UserName", SqlDbType.NVarChar).Value = nameTxt.Text.ToString();
+                    cmd.Parameters.Add("@userMail", SqlDbType.NVarChar).Value = mailTxt.Text.ToString();
+                    cmd.Parameters.Add("@userPhone", SqlDbType.NVarChar).Value = phoneTxt.Text.ToString();
+                    cmd.Parameters.Add("@userPassword", SqlDbType.NVarChar).Value = passTxt.Text.ToString();
+                    cmd.Parameters.Add("@userType", SqlDbType.NVarChar).Value = "Admin";
+                    cmd.Parameters.Add("@userNumberOfRentals", SqlDbType.Int).Value = 0;
+                }
+                }
+                else if(currentState == "REMOVE ADMIN")
+                {
+                    cmd = new SqlCommand("RemoveAdmin", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@ID", SqlDbType.Int).Value = addminID;
+                }
+                con.Open();
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                if (currentState == "ADD ADMIN")
+                    MessageBox.Show("Admin Has Been Added Successfully !!", "ADD ADMIN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                {
+                    adminSelectBox.Items.RemoveAt(index);
+                    MessageBox.Show("Admin Has Been Deleted Successfully !!", "ADD ADMIN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    con.Close();
+                }
                 // DATABASE PART
-                MessageBox.Show("Admin Has Been Added Successfully !!", "ADD ADMIN", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
         }
 
         private bool isValidData()
@@ -154,7 +268,7 @@ namespace Comma.Forms.Admin_Forms
             if (pass == "" || pass == "Password" || pass == null)
             {
                 MessageBox.Show("Please Enter a Password...", "Incomplete Data !", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                return false;     
             }
             string rePass = rePassTxt.Text.Trim();
             if (rePass == "" || rePass == "Confirm Password" || rePass == null)
@@ -170,7 +284,12 @@ namespace Comma.Forms.Admin_Forms
             return true;
         }
 
-        
-        
+        private void adminSelectBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+             index = adminSelectBox.SelectedIndex;
+            addminID = AdminIDs[index];
+        }
+
+       
     }
 }

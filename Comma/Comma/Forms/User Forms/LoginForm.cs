@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Net.Mail;
 using System.Runtime.InteropServices;
@@ -82,15 +84,71 @@ namespace Comma
         {
             Application.Run(new RegisterForm());
         }
-
+        private void openForm2(Object obj)
+        {
+            Application.Run(new UserHomeForm());
+        }
+        private void openForm3(Object obj)
+        {
+            Application.Run(new AdminHomeForm());
+        }
         private void loginButton_Click(object sender, EventArgs e)
         {
             if (isValidData())
             {
                 // DATABASE PART
-                MessageBox.Show("You Have Logged in Successfully !!", "LOGIN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                SqlConnection con = new SqlConnection("Data Source=DESKTOP-HTCGCDF;Initial Catalog=CommaSpace;Integrated Security=True");
+                
+                SqlCommand cmd = new SqlCommand("select *from Users2 where userMail='"+ mailTxt.Text.ToString()+ "' And userPassword='"+ passTxt.Text.ToString()+"'", con);
+                cmd.CommandType = CommandType.Text;
+                con.Open();
+                SqlDataReader dr=null;
+                try
+                {
+
+                    dr = cmd.ExecuteReader();
+                    if (dr.Read())
+                    {
+                        GlobalData.userID = dr[0].ToString();
+                        GlobalData.userFullName = dr[1].ToString();
+                        GlobalData.userType = dr[5].ToString();
+                        if (dr[5].ToString() == "Customer")
+                        {
+                            thread = new Thread(openForm2);
+                            thread.SetApartmentState(ApartmentState.STA);
+                            thread.Start();
+                            this.Close();
+                        }
+                        else if(dr[5].ToString() == "Admin")
+                        {
+
+                            thread = new Thread(openForm3);
+                            thread.SetApartmentState(ApartmentState.STA);
+                            thread.Start();
+                            this.Close();
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Your Email OR Password Is Not Valid", "LOGIN", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    dr.Close();
+                    con.Close();
+                }
+               
+              //  MessageBox.Show("You Have Logged in Successfully !!", "LOGIN", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
         private bool isValidData()
         {
             string mail = mailTxt.Text.Trim();
@@ -116,5 +174,10 @@ namespace Comma
             }
             return true;
         }
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

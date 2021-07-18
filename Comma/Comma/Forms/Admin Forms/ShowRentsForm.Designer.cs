@@ -36,11 +36,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dgv = new System.Windows.Forms.DataGridView();
             this.rank = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.roomName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rentingFrom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rentingTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,10 +50,11 @@
             this.label1.ForeColor = System.Drawing.Color.Green;
             this.label1.Image = ((System.Drawing.Image)(resources.GetObject("label1.Image")));
             this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label1.Location = new System.Drawing.Point(140, 90);
+            this.label1.Location = new System.Drawing.Point(566, 111);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label1.Size = new System.Drawing.Size(315, 31);
+            this.label1.Size = new System.Drawing.Size(410, 40);
             this.label1.TabIndex = 12;
             this.label1.Text = "   ALL CURRENT REQUESTS";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -83,12 +79,7 @@
             this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv.ColumnHeadersHeight = 34;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.rank,
-            this.userName,
-            this.roomName,
-            this.rentingFrom,
-            this.rentingTo,
-            this.totalPrice});
+            this.rank});
             this.dgv.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
@@ -100,7 +91,8 @@
             this.dgv.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgv.GridColor = System.Drawing.Color.Gold;
-            this.dgv.Location = new System.Drawing.Point(28, 160);
+            this.dgv.Location = new System.Drawing.Point(37, 197);
+            this.dgv.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
             this.dgv.ReadOnly = true;
@@ -135,7 +127,7 @@
             this.dgv.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgv.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(550, 150);
+            this.dgv.Size = new System.Drawing.Size(1491, 185);
             this.dgv.StandardTab = true;
             this.dgv.TabIndex = 11;
             this.dgv.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellDoubleClick);
@@ -144,54 +136,22 @@
             // 
             this.rank.FillWeight = 5F;
             this.rank.HeaderText = "#";
+            this.rank.MinimumWidth = 6;
             this.rank.Name = "rank";
             this.rank.ReadOnly = true;
             // 
-            // userName
-            // 
-            this.userName.FillWeight = 19F;
-            this.userName.HeaderText = "Name";
-            this.userName.Name = "userName";
-            this.userName.ReadOnly = true;
-            // 
-            // roomName
-            // 
-            this.roomName.FillWeight = 19F;
-            this.roomName.HeaderText = "E-mail";
-            this.roomName.Name = "roomName";
-            this.roomName.ReadOnly = true;
-            // 
-            // rentingFrom
-            // 
-            this.rentingFrom.FillWeight = 19F;
-            this.rentingFrom.HeaderText = "Renting From";
-            this.rentingFrom.Name = "rentingFrom";
-            this.rentingFrom.ReadOnly = true;
-            // 
-            // rentingTo
-            // 
-            this.rentingTo.FillWeight = 19F;
-            this.rentingTo.HeaderText = "Reting To";
-            this.rentingTo.Name = "rentingTo";
-            this.rentingTo.ReadOnly = true;
-            // 
-            // totalPrice
-            // 
-            this.totalPrice.FillWeight = 19F;
-            this.totalPrice.HeaderText = "Total Price";
-            this.totalPrice.Name = "totalPrice";
-            this.totalPrice.ReadOnly = true;
-            // 
             // ShowRentsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 590);
+            this.ClientSize = new System.Drawing.Size(1558, 680);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgv);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ShowRentsForm";
             this.Text = "ShowRentsForm";
+            this.Load += new System.EventHandler(this.ShowRentsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -203,10 +163,5 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgv;
         private System.Windows.Forms.DataGridViewTextBoxColumn rank;
-        private System.Windows.Forms.DataGridViewTextBoxColumn userName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn roomName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rentingFrom;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rentingTo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn totalPrice;
     }
 }
