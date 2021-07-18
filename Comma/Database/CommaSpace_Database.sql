@@ -3,6 +3,7 @@ USE CommaSpace;
 
 -- DROPING ALL EXISTING TABLES
 DROP TABLE IF EXISTS Reservations;
+DROP TABLE IF EXISTS social_links;
 DROP TABLE IF EXISTS Feedbacks;
 DROP TABLE IF EXISTS Users2;
 DROP TABLE IF EXISTS Rooms;
@@ -33,8 +34,14 @@ rentStartDate DATETIME unique not null,
 rentEndDate DATETIME  not null,
 customerID INT not null FOREIGN KEY REFERENCES Users2(userID),
 roomID INT not null FOREIGN KEY REFERENCES Rooms(roomID),
-reservationPrice FLOAT not null
+rentStartHour INT NOT NULL,
+rentEndHour INT NOT NULL,
+capacity INT NOT NULL,
+reservationPrice FLOAT not null,
+reservationState NVARCHAR(50) NOT NULL,
+addRequests NVARCHAR(300) NULL
 );
+
 
 CREATE TABLE Feedbacks (
 feedbackID INT IDENTITY primary key,
@@ -44,6 +51,13 @@ customerHadProblems NVARCHAR(10) not null,
 feedbackType NVARCHAR(10) not null,
 feedbackContent NVARCHAR(100) not null,
 customerID INT not null FOREIGN KEY REFERENCES Users2(userID),
+);
+
+CREATE TABLE social_links (
+facebook VARCHAR(100) NOT NULL,
+twitter VARCHAR(100) NOT NULL,
+instagram VARCHAR(100) NOT NULL,
+askfm VARCHAR(100)
 );
 
 -- Insertion of some Existing Users
