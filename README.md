@@ -16,6 +16,8 @@ An Information System Project With Database In SQL Server
 - [AddRoom](Comma/Database/Procedures/addRoom.sql)
 - [UpdateRoom](Comma/Database/Procedures/UpdateRoom.sql)
 - [RemoveRoom](Comma/Database/Procedures/RemoveRoom.sql)
+- [AddLinks](Comma/Database/Procedures/AddLinks.sql)
+- [EditRentalState](Comma/Database/Procedures/EditeRentalState.sql)
 
 </p>
 </details>
