@@ -101,9 +101,9 @@ namespace Comma
             highlightSelectedButton(rentsBtn);
         }
 
-        public void openRentsInformation()
+        public void openRentsInformation(string RequestedID, string RoomName)
         {
-            openForm(new RentInformationForm());
+            openForm(new RentInformationForm(RequestedID, RoomName));
         }
 
         private void roomsBtn_Click(object sender, EventArgs e)
@@ -166,5 +166,12 @@ namespace Comma
             resetContextMenus();
         }
 
+        private void logoutBtn_Click_1(object sender, EventArgs e)
+        {
+            Thread thread = new Thread(openLoginForm);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+            Close();
+        }
     }
 }

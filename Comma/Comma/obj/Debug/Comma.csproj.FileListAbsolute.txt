@@ -49,7 +49,6 @@ C:\Users\20114\Documents\Visual Studio 2019\Projects\Comma\Comma\obj\Debug\Comma
 C:\Users\20114\Documents\Visual Studio 2019\Projects\Comma\Comma\obj\Debug\Comma.Properties.Resources.resources
 C:\Users\20114\Documents\Visual Studio 2019\Projects\Comma\Comma\obj\Debug\Comma.UserHomeForm.resources
 C:\Users\20114\Documents\Visual Studio 2019\Projects\Comma\Comma\obj\Debug\Comma.TopRoomsForm.resources
-C:\Users\20114\Documents\Visual Studio 2019\Projects\Comma\Comma\obj\Debug\Comma.testForm.resources
 C:\Users\20114\Documents\Visual Studio 2019\Projects\Comma\Comma\obj\Debug\Comma.csproj.GenerateResource.cache
 C:\Users\20114\Documents\Visual Studio 2019\Projects\Comma\Comma\obj\Debug\Comma.csproj.CoreCompileInputs.cache
 C:\Users\20114\Documents\Visual Studio 2019\Projects\Comma\Comma\obj\Debug\Comma.exe

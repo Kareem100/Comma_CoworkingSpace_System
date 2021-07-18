@@ -12,7 +12,7 @@ DROP TABLE IF EXISTS Rooms;
 CREATE TABLE Users2 (
 userID INT IDENTITY primary key,
 userName NVARCHAR(20) not null,
-userMail NVARCHAR(30) not null,
+userMail NVARCHAR(30) UNIQUE not null,
 userPhone NVARCHAR(20) not null,
 userPassword NVARCHAR(30) not null,
 userType NVARCHAR(10) not null,

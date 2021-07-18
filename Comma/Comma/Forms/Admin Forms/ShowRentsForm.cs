@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -7,15 +8,15 @@ namespace Comma.Forms.Admin_Forms
 {
     public partial class ShowRentsForm : Form
     {
+        private SqlConnection con;
         private AdminHomeForm homeForm;
-        public ShowRentsForm()
+
+        public ShowRentsForm(AdminHomeForm HF)
         {
             InitializeComponent();
-        }
-        public ShowRentsForm(AdminHomeForm homeForm)
-        {
-            InitializeComponent();
-            this.homeForm = homeForm;
+            homeForm = HF;
+            con = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
+            if (con.State == ConnectionState.Closed) con.Open();
         }
 
         private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -26,15 +27,14 @@ namespace Comma.Forms.Admin_Forms
                 string RoomName = dgv.CurrentRow.Cells[3].Value.ToString();
                 homeForm.openRentsInformation(RequestId, RoomName);
             }
-            
         }
 
-        private void ShowRentsForm_Load(object sender, System.EventArgs e)
+        private void ShowRentsForm_Load(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-HTCGCDF;Initial Catalog=CommaSpace;Integrated Security=True");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
+            if (con.State == ConnectionState.Closed) con.Open();
             SqlCommand cmd = new SqlCommand("select reservationID,customerID,roomID,rentStartDate,rentEndDate,reservationPrice from Reservations where reservationState='Request'", con);
             cmd.CommandType = CommandType.Text;
-            con.Open();
             SqlDataReader dr = null;
             DataTable tlb = new DataTable();
             try
@@ -62,7 +62,6 @@ namespace Comma.Forms.Admin_Forms
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message);
             }
             finally
@@ -72,17 +71,18 @@ namespace Comma.Forms.Admin_Forms
                 dgv.DataSource = tlb;
             }
         }
-         private string getRoomName(int Id)
-         {
-             SqlConnection con = new SqlConnection("Data Source=DESKTOP-HTCGCDF;Initial Catalog=CommaSpace;Integrated Security=True");
-             SqlCommand cmd = new SqlCommand("select roomName from Rooms where roomID = "+Id, con);
-             cmd.CommandType = CommandType.Text;
-             con.Open();
+        
+        private string getRoomName(int Id)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
+            if (con.State == ConnectionState.Closed) con.Open();
+            SqlCommand cmd = new SqlCommand("select roomName from Rooms where roomID = "+Id, con);
+            cmd.CommandType = CommandType.Text;
             SqlDataReader dr=null;
             string roomName = null;
             try
             {
-                 dr = cmd.ExecuteReader();
+                dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
                     roomName = dr[0].ToString();
@@ -98,32 +98,34 @@ namespace Comma.Forms.Admin_Forms
             }
             return roomName;
          }
-            private string getCustomerName(int Id)
+        
+        private string getCustomerName(int Id)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
+            if (con.State == ConnectionState.Closed) con.Open();
+            SqlCommand cmd = new SqlCommand("select userName from Users2 where userID = " + Id, con);
+            cmd.CommandType = CommandType.Text;
+            SqlDataReader dr = null;
+            string Customer = null;
+            try
             {
-                SqlConnection con = new SqlConnection("Data Source=DESKTOP-HTCGCDF;Initial Catalog=CommaSpace;Integrated Security=True");
-                SqlCommand cmd = new SqlCommand("select userName from Users2 where userID = " + Id, con);
-                cmd.CommandType = CommandType.Text;
-                con.Open();
-                SqlDataReader dr = null;
-                string Customer = null;
-                try
+                dr = cmd.ExecuteReader();
+                if (dr.Read())
                 {
-                    dr = cmd.ExecuteReader();
-                    if (dr.Read())
-                    {
-                        Customer = dr[0].ToString();
-                    }
+                    Customer = dr[0].ToString();
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    dr.Close();
-                    con.Close();
-                }
-                return Customer;
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                dr.Close();
+                con.Close();
+            }
+            return Customer;
+        }
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -12,8 +13,13 @@ namespace Comma.Forms.Admin_Forms
     public partial class ManageAdminsForm : Form
     {
         List<int> AdminIDs;
+        List<string> AdminNames;
+        List<string> AdminMails;
+        List<string> AdminPhones;
         int addminID;
         int index;
+        private SqlConnection con;
+
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
        (
@@ -25,7 +31,9 @@ namespace Comma.Forms.Admin_Forms
         {
             InitializeComponent();
             currentState = "ADD ADMIN";
-            processBtn.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, processBtn.Width, processBtn.Height, 30, 30));
+            processBtn.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, processBtn.Width, processBtn.Height, 30, 30));
+            con = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
+            if (con.State == ConnectionState.Closed) con.Open();
         }
 
         // NAVIGATION CODE 
@@ -59,34 +67,38 @@ namespace Comma.Forms.Admin_Forms
             disableControls();
             fillDop();
         }
+
         private void fillDop()
         {
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-HTCGCDF;Initial Catalog=CommaSpace;Integrated Security=True");
-            SqlCommand cmd = new SqlCommand("select userID,userName from Users2 where userType='Admin'", con);
+            SqlCommand cmd = new SqlCommand("select userID, userName, userMail, userPhone from Users2 where userType='Admin'", con);
             cmd.CommandType = CommandType.Text;
-            con.Open();
             SqlDataReader dr = null;
             try
             {
                 dr = cmd.ExecuteReader();
                 AdminIDs = new List<int>();
+                AdminNames = new List<string>();
+                AdminMails = new List<string>();
+                AdminPhones = new List<string>();
                 while (dr.Read())
                 {
                     adminSelectBox.Items.Add(dr[1].ToString());
                     AdminIDs.Add(int.Parse(dr[0].ToString()));
+                    AdminNames.Add(dr[1].ToString());
+                    AdminMails.Add(dr[2].ToString());
+                    AdminPhones.Add(dr[3].ToString());
                 }
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message);
             }
             finally
             {
                 dr.Close();
-                con.Close();
             }
         }
+
         private void disableControls()
         {
             nameTxt.Enabled = false;
@@ -198,52 +210,43 @@ namespace Comma.Forms.Admin_Forms
 
         private void processBtn_Click(object sender, EventArgs e)
         {
-           
-                SqlConnection con = new SqlConnection("Data Source=DESKTOP-HTCGCDF;Initial Catalog=CommaSpace;Integrated Security=True");
-                SqlCommand cmd=null;
-                if (currentState == "ADD ADMIN")
-                {
-                if (isValidData())
-                {
-                    cmd = new SqlCommand("insertUser", con);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@UserName", SqlDbType.NVarChar).Value = nameTxt.Text.ToString();
-                    cmd.Parameters.Add("@userMail", SqlDbType.NVarChar).Value = mailTxt.Text.ToString();
-                    cmd.Parameters.Add("@userPhone", SqlDbType.NVarChar).Value = phoneTxt.Text.ToString();
-                    cmd.Parameters.Add("@userPassword", SqlDbType.NVarChar).Value = passTxt.Text.ToString();
-                    cmd.Parameters.Add("@userType", SqlDbType.NVarChar).Value = "Admin";
-                    cmd.Parameters.Add("@userNumberOfRentals", SqlDbType.Int).Value = 0;
-                }
-                }
-                else if(currentState == "REMOVE ADMIN")
-                {
-                    cmd = new SqlCommand("RemoveAdmin", con);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@ID", SqlDbType.Int).Value = addminID;
-                }
-                con.Open();
-                try
-                {
-                    cmd.ExecuteNonQuery();
-                if (currentState == "ADD ADMIN")
-                    MessageBox.Show("Admin Has Been Added Successfully !!", "ADD ADMIN", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                else
-                {
-                    adminSelectBox.Items.RemoveAt(index);
-                    MessageBox.Show("Admin Has Been Deleted Successfully !!", "ADD ADMIN", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                }
-                catch (Exception ex)
-                {
+           SqlCommand cmd=null;
+            if (currentState == "ADD ADMIN")
+            {
+            if (isValidData())
+            {
+                cmd = new SqlCommand("insertUser", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@UserName", SqlDbType.NVarChar).Value = nameTxt.Text.ToString();
+                cmd.Parameters.Add("@userMail", SqlDbType.NVarChar).Value = mailTxt.Text.ToString();
+                cmd.Parameters.Add("@userPhone", SqlDbType.NVarChar).Value = phoneTxt.Text.ToString();
+                cmd.Parameters.Add("@userPassword", SqlDbType.NVarChar).Value = passTxt.Text.ToString();
+                cmd.Parameters.Add("@userType", SqlDbType.NVarChar).Value = "Admin";
+                cmd.Parameters.Add("@userNumberOfRentals", SqlDbType.Int).Value = 0;
+            }
+            }
+            else if(currentState == "REMOVE ADMIN")
+            {
+                cmd = new SqlCommand("RemoveAdmin", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@ID", SqlDbType.Int).Value = addminID;
+            }
+            try
+            {
+                cmd.ExecuteNonQuery();
+            if (currentState == "ADD ADMIN")
+                MessageBox.Show("Admin Has Been Added Successfully !!", "ADD ADMIN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+            {
+                adminSelectBox.Items.RemoveAt(index);
+                MessageBox.Show("Admin Has Been Deleted Successfully !!", "ADD ADMIN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            }
+            catch (Exception ex)
+            {
 
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    con.Close();
-                }
-                // DATABASE PART
-            
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private bool isValidData()
@@ -286,10 +289,21 @@ namespace Comma.Forms.Admin_Forms
 
         private void adminSelectBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-             index = adminSelectBox.SelectedIndex;
+            index = adminSelectBox.SelectedIndex;
             addminID = AdminIDs[index];
+            fillFields(index);
         }
 
-       
+        private void fillFields(int idx)
+        {
+            nameTxt.Text = AdminNames[idx];
+            mailTxt.Text = AdminMails[idx];
+            phoneTxt.Text = AdminPhones[idx];
+        }
+
+        private void ManageAdminsForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            con.Dispose();
+        }
     }
 }

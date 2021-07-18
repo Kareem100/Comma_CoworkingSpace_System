@@ -1,25 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Comma.Forms.Admin_Forms
 {
     public partial class RentInformationForm : Form
     {
-        String mRequestId, mRoomName;
-        int userID;
-        public RentInformationForm()
-        {
-            InitializeComponent();
-        }
-        public RentInformationForm(String RequestId, String RoomName)
+        string mRequestId, mRoomName;
+        
+        public RentInformationForm(string RequestId, string RoomName)
         {
             InitializeComponent();
             mRequestId = RequestId;
@@ -77,11 +69,10 @@ namespace Comma.Forms.Admin_Forms
 
         private void RentInformationForm_Load(object sender, EventArgs e)
         {
-
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-HTCGCDF;Initial Catalog=CommaSpace;Integrated Security=True");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
+            if (con.State == ConnectionState.Closed) con.Open(); 
             SqlCommand cmd = new SqlCommand("select * from Reservations where reservationID=" + int.Parse(mRequestId), con);
             cmd.CommandType = CommandType.Text;
-            con.Open();
             SqlDataReader dr = null;
             try
             {
@@ -99,7 +90,6 @@ namespace Comma.Forms.Admin_Forms
                     hourTo.Text = "Hour : " + dr[6].ToString();
                     guestsLbl.Text = "Number Of Guests: " + dr[7].ToString();
                     totalPriceLbl.Text = dr[8].ToString() + " £";
-                    userID = int.Parse(dr[3].ToString());
                     getCustomer(int.Parse(dr[3].ToString()));
                 }
             }
@@ -110,18 +100,19 @@ namespace Comma.Forms.Admin_Forms
             }
             finally
             {
-
+                dr.Close();
+                con.Close();
             }
         }
 
         private void declineBtn_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-HTCGCDF;Initial Catalog=CommaSpace;Integrated Security=True");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
+            if (con.State == ConnectionState.Closed) con.Open(); 
             SqlCommand cmd = new SqlCommand("editeRentalState", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@ID", SqlDbType.Int).Value = int.Parse(mRequestId.ToString());
             cmd.Parameters.Add("@State", SqlDbType.NVarChar).Value = "Decline";
-            con.Open();
             try
             {
                 cmd.ExecuteNonQuery();
@@ -137,12 +128,13 @@ namespace Comma.Forms.Admin_Forms
             }
             MessageBox.Show("Request Declined Successfully", "Request", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
         private void getCustomer(int Id)
         {
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-HTCGCDF;Initial Catalog=CommaSpace;Integrated Security=True");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
+            if (con.State == ConnectionState.Closed) con.Open(); 
             SqlCommand cmd = new SqlCommand("select userName,userMail,userPhone from Users2 where userID = " + Id, con);
             cmd.CommandType = CommandType.Text;
-            con.Open();
             SqlDataReader dr = null;
             try
             {

@@ -395,15 +395,15 @@
             this.shadedPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.shadedPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.shadedPanel.Controls.Add(this.facebookBtn);
+            this.shadedPanel.Controls.Add(this.askfmBtn);
+            this.shadedPanel.Controls.Add(this.twitterBtn);
+            this.shadedPanel.Controls.Add(this.instagramBtn);
             this.shadedPanel.Controls.Add(this.notificationsBtn);
             this.shadedPanel.Controls.Add(this.connectPanel);
-            this.shadedPanel.Controls.Add(this.askfmBtn);
             this.shadedPanel.Controls.Add(this.closeButton);
             this.shadedPanel.Controls.Add(this.minimizeButton);
             this.shadedPanel.Controls.Add(this.settingsBtn);
-            this.shadedPanel.Controls.Add(this.facebookBtn);
-            this.shadedPanel.Controls.Add(this.twitterBtn);
-            this.shadedPanel.Controls.Add(this.instagramBtn);
             this.shadedPanel.Location = new System.Drawing.Point(200, 9);
             this.shadedPanel.Name = "shadedPanel";
             this.shadedPanel.Size = new System.Drawing.Size(600, 40);
@@ -493,7 +493,7 @@
             this.facebookBtn.BackColor = System.Drawing.Color.Transparent;
             this.facebookBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.facebookBtn.Image = ((System.Drawing.Image)(resources.GetObject("facebookBtn.Image")));
-            this.facebookBtn.Location = new System.Drawing.Point(154, 6);
+            this.facebookBtn.Location = new System.Drawing.Point(154, 7);
             this.facebookBtn.Name = "facebookBtn";
             this.facebookBtn.Size = new System.Drawing.Size(24, 24);
             this.facebookBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

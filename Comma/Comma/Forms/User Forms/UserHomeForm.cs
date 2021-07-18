@@ -222,7 +222,7 @@ namespace Comma
             Thread thread = new Thread(openLoginForm);
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
-            this.Close();
+            Close();
         }
 
         private void openLoginForm(object obj)

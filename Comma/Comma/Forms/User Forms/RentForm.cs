@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Comma.CustomClasses;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Reflection.Emit;
 using System.Windows.Forms;
 
 namespace Comma
@@ -11,6 +12,8 @@ namespace Comma
     {
         int Roomid;
         List<int>RoomIDs;
+        private SqlConnection con;
+
         public RentForm()
         {
             InitializeComponent();
@@ -38,11 +41,11 @@ namespace Comma
 
         private void RentForm_Load(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-HTCGCDF;Initial Catalog=CommaSpace;Integrated Security=True");
+            con = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
+            if (con.State == ConnectionState.Closed) con.Open();
             SqlCommand cmd = new SqlCommand("select roomID,roomName from Rooms", con);
-              cmd.CommandType = CommandType.Text;
-                con.Open();
-                SqlDataReader dr=null;
+            cmd.CommandType = CommandType.Text;
+            SqlDataReader dr=null;
             try
             {
                 dr = cmd.ExecuteReader();
@@ -61,7 +64,6 @@ namespace Comma
             finally
             {
                 dr.Close();
-                con.Close();
             }
 
         }
@@ -75,56 +77,64 @@ namespace Comma
         {
             DateTime startDate = dayFrom.Value;
             DateTime endDate = dayTo.Value;
-            int stratHour = int.Parse(hourFrom.Text.ToString().Substring(0, 2));
-            if(hourFrom.Text.ToString().Substring(6, 2).Equals("PM"))
-            {
-                stratHour += 12;
-            }
-            int EndHour = int.Parse(hourtTo.Text.ToString().Substring(0, 2));
-            if (hourtTo.Text.ToString().Substring(6, 2).Equals("PM"))
-            {
-                EndHour += 12;
-            }
-            int capacity = int.Parse(guestsDropDown.Text.ToString());
-            string addRequests = requestsTxt.Text.ToString();
-            float totalPrice = capacity * getRoomRentPrice(Roomid);
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-HTCGCDF;Initial Catalog=CommaSpace;Integrated Security=True");
-            SqlCommand cmd = new SqlCommand("insertReservation", con);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@RentStartDate", SqlDbType.DateTime).Value = startDate;
-            cmd.Parameters.Add("@RentEndDate", SqlDbType.DateTime).Value = endDate;
-            cmd.Parameters.Add("@CustomerID", SqlDbType.Int).Value =int.Parse(GlobalData.userID);
-            cmd.Parameters.Add("@RoomID", SqlDbType.Int).Value = Roomid;
-            cmd.Parameters.Add("@RentStartHour", SqlDbType.Int).Value = stratHour;
-            cmd.Parameters.Add("@RentEndHour", SqlDbType.Int).Value = EndHour;
-            cmd.Parameters.Add("@cap", SqlDbType.Int).Value = int.Parse(guestsDropDown.Text.ToString());
-            cmd.Parameters.Add("@ReservationPrice", SqlDbType.Float).Value = totalPrice;
-            cmd.Parameters.Add("@ReservationState", SqlDbType.NVarChar).Value = "Request";
-            cmd.Parameters.Add("@AddRequests", SqlDbType.NVarChar).Value = addRequests;
-            con.Open();
-            try
-            {
-                cmd.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
 
-                MessageBox.Show(ex.Message);
-            }
-            finally
+            if (hourFrom.Text.ToString() != "" && hourtTo.Text.ToString() != "" && requestsTxt.Text.ToString() != "" &&
+                guestsDropDown.Text.ToString() != "" && roomIDdropDown.SelectedIndex != -1)
             {
-                con.Close();
-                MessageBox.Show("You Have Been Rented Successfully !!", "Congratulations...", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+                int stratHour = int.Parse(hourFrom.Text.ToString().Substring(0, 2));
+                if (hourFrom.Text.ToString().Substring(6, 2).Equals("PM"))
+                {
+                    stratHour += 12;
+                }
+                int EndHour = int.Parse(hourtTo.Text.ToString().Substring(0, 2));
+                if (hourtTo.Text.ToString().Substring(6, 2).Equals("PM"))
+                {
+                    EndHour += 12;
+                }
+                int capacity = int.Parse(guestsDropDown.Text.ToString());
+                string addRequests = requestsTxt.Text.ToString();
+                float totalPrice = capacity * getRoomRentPrice(Roomid);
+                SqlConnection con = new SqlConnection("Data Source=DESKTOP-HTCGCDF;Initial Catalog=CommaSpace;Integrated Security=True");
+                SqlCommand cmd = new SqlCommand("insertReservation", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@RentStartDate", SqlDbType.DateTime).Value = startDate;
+                cmd.Parameters.Add("@RentEndDate", SqlDbType.DateTime).Value = endDate;
+                cmd.Parameters.Add("@CustomerID", SqlDbType.Int).Value = int.Parse(GlobalData.userID);
+                cmd.Parameters.Add("@RoomID", SqlDbType.Int).Value = Roomid;
+                cmd.Parameters.Add("@RentStartHour", SqlDbType.Int).Value = stratHour;
+                cmd.Parameters.Add("@RentEndHour", SqlDbType.Int).Value = EndHour;
+                cmd.Parameters.Add("@cap", SqlDbType.Int).Value = int.Parse(guestsDropDown.Text.ToString());
+                cmd.Parameters.Add("@ReservationPrice", SqlDbType.Float).Value = totalPrice;
+                cmd.Parameters.Add("@ReservationState", SqlDbType.NVarChar).Value = "Request";
+                cmd.Parameters.Add("@AddRequests", SqlDbType.NVarChar).Value = addRequests;
+                con.Open();
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("You Have Been Rented Successfully !!", "Congratulations...", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                }
+                catch (SqlException ex)
+                {
+
+                    MessageBox.Show(ex.Errors + "");
+                }
+                finally
+                {
+                    con.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please Enter All Data Required", "Hour", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
         private float getRoomRentPrice(int RoomId)
         {
             float price = 0.0f;
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-HTCGCDF;Initial Catalog=CommaSpace;Integrated Security=True");
             SqlCommand cmd = new SqlCommand("select rentPrice from Rooms where roomID = " + RoomId, con);
             cmd.CommandType = CommandType.Text;
-            con.Open();
             SqlDataReader dr = null;
             try
             {
@@ -143,7 +153,6 @@ namespace Comma
             finally
             {
                 dr.Close();
-                con.Close();
             }
             return price;
         }
@@ -160,6 +169,11 @@ namespace Comma
             float totalPrice = capacity * getRoomRentPrice(Roomid);
             totalPriceLbl.Text = totalPrice + " £";
 
+        }
+
+        private void RentForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            con.Dispose();
         }
     }
 }

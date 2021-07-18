@@ -6,6 +6,7 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data;
+using System.Configuration;
 
 namespace Comma
 {
@@ -19,19 +20,18 @@ namespace Comma
        );
 
         private Thread thread;
+
         public RegisterForm()
         {
             InitializeComponent();
-            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 30, 30));
-            panel.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, panel.Width, panel.Height, 30, 30));
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-HTCGCDF;Initial Catalog=CommaSpace;Integrated Security=True");
-
+            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 30, 30));
+            panel.Region =Region.FromHrgn(CreateRoundRectRgn(0, 0, panel.Width, panel.Height, 30, 30));
         }
 
         private void closeButton_Click(object sender, EventArgs e)
         {
-            this.Close();
-        }
+            Close();
+        }                 
 
         private void loginBtn_Click(object sender, EventArgs e)
         {
@@ -40,7 +40,8 @@ namespace Comma
             thread.Start();
             this.Close();
         }
-        private void openForm(Object obj)
+
+        private void openForm(object obj)
         {
             Application.Run(new LoginForm());
         }
@@ -132,9 +133,10 @@ namespace Comma
         private void registerBtn_Click(object sender, EventArgs e)
         {
             if (isValidData())
-            {
+            {   
                 // DATABASE PART
-                SqlConnection con = new SqlConnection("Data Source=DESKTOP-HTCGCDF;Initial Catalog=CommaSpace;Integrated Security=True");
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
+                if (con.State == ConnectionState.Closed) con.Open();
                 SqlCommand cmd = new SqlCommand("insertUser", con);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@UserName", SqlDbType.NVarChar).Value = nameTxt.Text.ToString();
@@ -143,21 +145,23 @@ namespace Comma
                 cmd.Parameters.Add("@userPassword", SqlDbType.NVarChar).Value = passTxt.Text.ToString();
                 cmd.Parameters.Add("@userType", SqlDbType.NVarChar).Value = "Customer";
                 cmd.Parameters.Add("@userNumberOfRentals", SqlDbType.Int).Value =0;
-                con.Open();
                 try
                 {
                     cmd.ExecuteNonQuery();
+                    MessageBox.Show("You Have Been Registered Successfully !!", "Congratulations...", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception ex)
+                catch (SqlException ex)
                 {
-
-                    MessageBox.Show(ex.Message);
+                    int ExcRes = ex.ErrorCode;
+                    if (ExcRes == -2146232060)
+                        MessageBox.Show("There's Aleardy Registered User with the same mail !!", "REGISTER", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else 
+                        MessageBox.Show(ex.Message);
                 }
                 finally
                 {
                     con.Close();
                 }
-                MessageBox.Show("You Have Been Registered Successfully !!", "Congratulations...", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -214,11 +218,6 @@ namespace Comma
                 return false;
             }
             return true;
-        }
-
-        private void RegisterForm_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void label3_Click(object sender, EventArgs e)

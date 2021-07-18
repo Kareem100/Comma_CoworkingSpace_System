@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Comma.CustomClasses;
+using System;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -26,8 +28,8 @@ namespace Comma
         public LoginForm()
         {
             InitializeComponent();
-            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 30, 30));
-            panel.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, panel.Width, panel.Height, 30, 30));
+            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 30, 30));
+            panel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel.Width, panel.Height, 30, 30));
         }
 
         private void pictureBox3_Click(object sender, System.EventArgs e)
@@ -84,11 +86,11 @@ namespace Comma
         {
             Application.Run(new RegisterForm());
         }
-        private void openForm2(Object obj)
+        private void openForm2(object obj)
         {
             Application.Run(new UserHomeForm());
         }
-        private void openForm3(Object obj)
+        private void openForm3(object obj)
         {
             Application.Run(new AdminHomeForm());
         }
@@ -97,15 +99,13 @@ namespace Comma
             if (isValidData())
             {
                 // DATABASE PART
-                SqlConnection con = new SqlConnection("Data Source=DESKTOP-HTCGCDF;Initial Catalog=CommaSpace;Integrated Security=True");
-                
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
+                if (con.State == ConnectionState.Closed) con.Open();
                 SqlCommand cmd = new SqlCommand("select *from Users2 where userMail='"+ mailTxt.Text.ToString()+ "' And userPassword='"+ passTxt.Text.ToString()+"'", con);
                 cmd.CommandType = CommandType.Text;
-                con.Open();
                 SqlDataReader dr=null;
                 try
                 {
-
                     dr = cmd.ExecuteReader();
                     if (dr.Read())
                     {
@@ -117,7 +117,7 @@ namespace Comma
                             thread = new Thread(openForm2);
                             thread.SetApartmentState(ApartmentState.STA);
                             thread.Start();
-                            this.Close();
+                            Close();
                         }
                         else if(dr[5].ToString() == "Admin")
                         {
@@ -125,9 +125,8 @@ namespace Comma
                             thread = new Thread(openForm3);
                             thread.SetApartmentState(ApartmentState.STA);
                             thread.Start();
-                            this.Close();
+                            Close();
                         }
-
                     }
                     else
                     {
@@ -173,10 +172,6 @@ namespace Comma
                 return false;
             }
             return true;
-        }
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
-
         }
 
     }
