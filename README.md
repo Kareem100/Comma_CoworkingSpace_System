@@ -20,7 +20,9 @@ An Information System Project With Database In SQL Server
 - [GetSocialLinks](Comma/Database/Procedures/GetSocialLink.sql)
 - [InsertIntoFeedback](Comma/Database/Procedures/InsertIntoFeedback.sql)
 - [ShowFeedback](Comma/Database/Procedures/ShowFeedback.sql)
+- [InsertUser](Comma/Database/Procedures/InsertUser.sql)
 - [SortUser](Comma/Database/Procedures/SortUser.sql)
+- [InsertReservation](Comma/Database/Procedures/InsertReservation.sql)
 - [EditRentalState](Comma/Database/Procedures/EditeRentalState.sql)
 
 </p>
