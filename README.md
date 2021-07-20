@@ -35,6 +35,15 @@ from showing available rooms and seeing their rentals to booking the rooms and s
 </p>
 </details>
 
+<details>
+  <summary>Schema</summary>
+<p>
+  
+  ![](Screenshots/00.%20Schema.png)
+  
+</p>
+</details>
+
 ***
 ### Some Runtime Screenshots
 
