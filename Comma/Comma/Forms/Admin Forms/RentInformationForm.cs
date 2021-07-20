@@ -42,35 +42,10 @@ namespace Comma.Forms.Admin_Forms
             declineBtn.ForeColor = Color.Crimson;
         }
 
-        private void acceptBtn_Click(object sender, EventArgs e)
-        {
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-HTCGCDF;Initial Catalog=CommaSpace;Integrated Security=True");
-            SqlCommand cmd = new SqlCommand("editeRentalState", con);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@ID", SqlDbType.Int).Value = int.Parse(mRequestId.ToString());
-            cmd.Parameters.Add("@State", SqlDbType.NVarChar).Value = "Accepted";
-            con.Open();
-            try
-            {
-                cmd.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                con.Close();
-            }
-            MessageBox.Show("Request Accepted Successfully", "Request", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-        }
-
         private void RentInformationForm_Load(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
-            if (con.State == ConnectionState.Closed) con.Open(); 
+            if (con.State == ConnectionState.Closed) con.Open();
             SqlCommand cmd = new SqlCommand("select * from Reservations where reservationID=" + int.Parse(mRequestId), con);
             cmd.CommandType = CommandType.Text;
             SqlDataReader dr = null;
@@ -103,6 +78,31 @@ namespace Comma.Forms.Admin_Forms
                 dr.Close();
                 con.Close();
             }
+        }
+
+        private void acceptBtn_Click(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
+            if (con.State == ConnectionState.Closed) con.Open(); 
+            SqlCommand cmd = new SqlCommand("editeRentalState", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@ID", SqlDbType.Int).Value = int.Parse(mRequestId.ToString());
+            cmd.Parameters.Add("@State", SqlDbType.NVarChar).Value = "Accepted";
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+            MessageBox.Show("Request Accepted Successfully", "Request", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
 
         private void declineBtn_Click(object sender, EventArgs e)

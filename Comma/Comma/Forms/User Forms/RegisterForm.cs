@@ -168,7 +168,7 @@ namespace Comma
         private bool isValidData()
         {
             string name = nameTxt.Text.Trim();
-            if (name == "" || name == "Full Name" || name == null)
+            if (name == "" || name == "Full Name" || name == null || !name.Contains(" "))
             {
                 MessageBox.Show("Please Enter Your Full Name...", "Incomplete Data !", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -189,17 +189,11 @@ namespace Comma
                 return false;
             }
             string phone = phoneTxt.Text.Trim();
-            if (phone == "" || phone == "Phone Number" || phone == null)
+            if (phone == "" || phone == "Phone Number" || phone.Length != 11 ||phone == null)
             {
-                MessageBox.Show("Please Enter Your Phone Number...", "Incomplete Data !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please Enter a Correct Phone Number...", "Incomplete Data !", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            for (int i = 0; i < phone.Length; ++i)
-                if (phone[i] > '9' || phone[i] < '0')
-                {
-                    MessageBox.Show("Please Enter a Correct Phone Number...", "Invalid Phone Number !", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
             string pass = passTxt.Text.Trim();
             if (pass == "" || pass == "Password" || pass == null)
             {
@@ -220,9 +214,20 @@ namespace Comma
             return true;
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void nameTxt_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            if (e.KeyChar == (char)Keys.Enter)
+                registerBtn_Click(sender, e);
         }
+
+        private void phoneTxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+                registerBtn_Click(sender, e);
+
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+                e.Handled = true;
+        }
+
     }
 }

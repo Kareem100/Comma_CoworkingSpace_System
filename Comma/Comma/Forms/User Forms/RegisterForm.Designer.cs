@@ -49,9 +49,9 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.mailTxt = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.titleLabel = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.coworkingspaceLbl = new System.Windows.Forms.Label();
+            this.titleCLbl = new System.Windows.Forms.Label();
+            this.titleOmmaLbl = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.closeButton = new System.Windows.Forms.PictureBox();
             this.panel.SuspendLayout();
@@ -90,9 +90,9 @@
             this.panel.Controls.Add(this.pictureBox4);
             this.panel.Controls.Add(this.mailTxt);
             this.panel.Controls.Add(this.pictureBox2);
-            this.panel.Controls.Add(this.label5);
-            this.panel.Controls.Add(this.titleLabel);
-            this.panel.Controls.Add(this.label3);
+            this.panel.Controls.Add(this.coworkingspaceLbl);
+            this.panel.Controls.Add(this.titleCLbl);
+            this.panel.Controls.Add(this.titleOmmaLbl);
             this.panel.Controls.Add(this.textBox4);
             this.panel.Location = new System.Drawing.Point(190, 50);
             this.panel.Name = "panel";
@@ -180,6 +180,7 @@
             this.nameTxt.TabIndex = 1;
             this.nameTxt.Text = "Full Name";
             this.nameTxt.Enter += new System.EventHandler(this.nameTxt_Enter);
+            this.nameTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.nameTxt_KeyPress);
             this.nameTxt.Leave += new System.EventHandler(this.nameTxt_Leave);
             // 
             // pictureBox10
@@ -218,6 +219,7 @@
             this.phoneTxt.TabIndex = 3;
             this.phoneTxt.Text = "Phone Number";
             this.phoneTxt.Enter += new System.EventHandler(this.phoneTxt_Enter);
+            this.phoneTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.phoneTxt_KeyPress);
             this.phoneTxt.Leave += new System.EventHandler(this.phoneTxt_Leave);
             // 
             // pictureBox8
@@ -257,6 +259,7 @@
             this.rePassTxt.Text = "Confirm Password";
             this.rePassTxt.UseSystemPasswordChar = true;
             this.rePassTxt.Enter += new System.EventHandler(this.rePassTxt_Enter);
+            this.rePassTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.nameTxt_KeyPress);
             this.rePassTxt.Leave += new System.EventHandler(this.rePassTxt_Leave);
             // 
             // pictureBox5
@@ -307,6 +310,7 @@
             this.passTxt.Text = "Password";
             this.passTxt.UseSystemPasswordChar = true;
             this.passTxt.Enter += new System.EventHandler(this.passTxt_Enter);
+            this.passTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.nameTxt_KeyPress);
             this.passTxt.Leave += new System.EventHandler(this.passTxt_Leave);
             // 
             // pictureBox4
@@ -333,6 +337,7 @@
             this.mailTxt.TabIndex = 2;
             this.mailTxt.Text = "E-mail";
             this.mailTxt.Enter += new System.EventHandler(this.mailTxt_Enter);
+            this.mailTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.nameTxt_KeyPress);
             this.mailTxt.Leave += new System.EventHandler(this.mailTxt_Leave);
             // 
             // pictureBox2
@@ -346,42 +351,41 @@
             this.pictureBox2.TabIndex = 19;
             this.pictureBox2.TabStop = false;
             // 
-            // label5
+            // coworkingspaceLbl
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Goldenrod;
-            this.label5.Location = new System.Drawing.Point(199, 55);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(101, 16);
-            this.label5.TabIndex = 18;
-            this.label5.Text = "co-working space";
+            this.coworkingspaceLbl.AutoSize = true;
+            this.coworkingspaceLbl.BackColor = System.Drawing.Color.Transparent;
+            this.coworkingspaceLbl.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.coworkingspaceLbl.ForeColor = System.Drawing.Color.Goldenrod;
+            this.coworkingspaceLbl.Location = new System.Drawing.Point(199, 55);
+            this.coworkingspaceLbl.Name = "coworkingspaceLbl";
+            this.coworkingspaceLbl.Size = new System.Drawing.Size(101, 16);
+            this.coworkingspaceLbl.TabIndex = 18;
+            this.coworkingspaceLbl.Text = "co-working space";
             // 
-            // titleLabel
+            // titleCLbl
             // 
-            this.titleLabel.AutoSize = true;
-            this.titleLabel.BackColor = System.Drawing.Color.Transparent;
-            this.titleLabel.Font = new System.Drawing.Font("Cooper Black", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.titleLabel.Location = new System.Drawing.Point(153, 28);
-            this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(38, 36);
-            this.titleLabel.TabIndex = 16;
-            this.titleLabel.Text = "C";
+            this.titleCLbl.AutoSize = true;
+            this.titleCLbl.BackColor = System.Drawing.Color.Transparent;
+            this.titleCLbl.Font = new System.Drawing.Font("Cooper Black", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleCLbl.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.titleCLbl.Location = new System.Drawing.Point(153, 28);
+            this.titleCLbl.Name = "titleCLbl";
+            this.titleCLbl.Size = new System.Drawing.Size(38, 36);
+            this.titleCLbl.TabIndex = 16;
+            this.titleCLbl.Text = "C";
             // 
-            // label3
+            // titleOmmaLbl
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Comic Sans MS", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label3.Location = new System.Drawing.Point(184, 28);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 34);
-            this.label3.TabIndex = 17;
-            this.label3.Text = "omma";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.titleOmmaLbl.AutoSize = true;
+            this.titleOmmaLbl.BackColor = System.Drawing.Color.Transparent;
+            this.titleOmmaLbl.Font = new System.Drawing.Font("Comic Sans MS", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleOmmaLbl.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.titleOmmaLbl.Location = new System.Drawing.Point(184, 28);
+            this.titleOmmaLbl.Name = "titleOmmaLbl";
+            this.titleOmmaLbl.Size = new System.Drawing.Size(79, 34);
+            this.titleOmmaLbl.TabIndex = 17;
+            this.titleOmmaLbl.Text = "omma";
             // 
             // textBox4
             // 
@@ -438,9 +442,9 @@
         #endregion
 
         private System.Windows.Forms.Panel panel;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label titleLabel;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label coworkingspaceLbl;
+        private System.Windows.Forms.Label titleCLbl;
+        private System.Windows.Forms.Label titleOmmaLbl;
         private System.Windows.Forms.PictureBox closeButton;
         private System.Windows.Forms.TextBox passTxt;
         private System.Windows.Forms.PictureBox pictureBox4;
