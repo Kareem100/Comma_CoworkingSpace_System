@@ -174,5 +174,11 @@ namespace Comma
             return true;
         }
 
+        private void mailTxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+                loginButton_Click(sender, e);
+        }
+
     }
 }

@@ -214,6 +214,7 @@
             this.passTxt.Text = "Password";
             this.passTxt.UseSystemPasswordChar = true;
             this.passTxt.Enter += new System.EventHandler(this.passTxt_Enter);
+            this.passTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mailTxt_KeyPress);
             this.passTxt.Leave += new System.EventHandler(this.passTxt_Leave);
             // 
             // pictureBox4
@@ -240,6 +241,7 @@
             this.mailTxt.TabIndex = 3;
             this.mailTxt.Text = "E-mail";
             this.mailTxt.Enter += new System.EventHandler(this.nameTxt_Enter);
+            this.mailTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mailTxt_KeyPress);
             this.mailTxt.Leave += new System.EventHandler(this.nameTxt_Leave);
             // 
             // pictureBox2
