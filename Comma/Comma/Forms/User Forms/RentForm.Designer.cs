@@ -424,7 +424,6 @@
             this.dayFrom.Name = "dayFrom";
             this.dayFrom.Size = new System.Drawing.Size(194, 23);
             this.dayFrom.TabIndex = 2;
-            this.dayFrom.ValueChanged += new System.EventHandler(this.dayFrom_ValueChanged);
             // 
             // label3
             // 

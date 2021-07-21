@@ -28,35 +28,24 @@ namespace Comma
         // ================ HELPER METHODS ====================
         private void loadRooms()
         {
-            // max lines for description is 3 lines
-            string roomName, roomDescription; // max chars is 45 in first 3 lines and 30 in last line..
-            int roomID, roomPrice;
-            Image roomImage;
-            char rentType;
             fetchRooms();
 
             for (int i = 0; i < roomsList.Count; ++i)
             {
-                roomID = roomsList[i].roomID;
-                roomName = roomsList[i].roomName;
-                roomImage = convertByteArrayToImage(roomsList[i].roomImage);
-                roomDescription = roomsList[i].roomDescription;
-                rentType = roomsList[i].roomRentType[0];
-                roomPrice = roomsList[i].roomRentPrice;
-
                 UserRoom room = new UserRoom(homeForm);
 
-                string temp = (rentType == 'H') ? "£ / H" : "£ / D";
-                string PriceFormat = roomPrice.ToString() + temp;
-                room.setRoomID(roomID);
-                room.setRoomName(roomName);
-                room.setRoomImage(roomImage);
-                room.setRoomDescription(roomDescription);
+                string temp = (roomsList[i].roomRentType[0] == 'H') ? "£ / H" : "£ / D";
+                string PriceFormat = roomsList[i].roomRentPrice.ToString() + temp;
+                room.setRoomID(roomsList[i].roomID);
+                room.setRoomName(roomsList[i].roomName);
+                room.setRoomImage(convertByteArrayToImage(roomsList[i].roomImage));
+                room.setRoomDescription(roomsList[i].roomDescription);
                 room.setRoomPrice(PriceFormat);
 
                 containerPanel.Controls.Add(room);
             }
         }
+
         // Fetching all rooms from database to roomList
         private void fetchRooms()
         {

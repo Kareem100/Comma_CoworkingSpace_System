@@ -4,28 +4,32 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Comma
 {
     public partial class RentForm : Form
     {
-        int Roomid;
-        List<int>RoomIDs;
+        private int selectedRoomIdx;
+        private int Roomid;
+        private List<RoomModel> roomModelList;
         private SqlConnection con;
 
         public RentForm()
         {
             InitializeComponent();
             generateQuote();
+            Roomid = selectedRoomIdx = -1;
         }
         public RentForm(string roomID)
         {
             InitializeComponent();
             generateQuote();
-            //DISPLAY DATA OF THE ROOM WITH roomID
             Roomid = int.Parse(roomID);
         }
+
         private void generateQuote()
         {
             string[] quotes; quotes = new string[6];
@@ -43,17 +47,24 @@ namespace Comma
         {
             con = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
             if (con.State == ConnectionState.Closed) con.Open();
-            SqlCommand cmd = new SqlCommand("select roomID,roomName from Rooms", con);
+            SqlCommand cmd = new SqlCommand("select * from Rooms", con);
             cmd.CommandType = CommandType.Text;
             SqlDataReader dr=null;
             try
             {
                 dr = cmd.ExecuteReader();
-                RoomIDs = new List<int>();
+                roomModelList = new List<RoomModel>();
                 while (dr.Read())
                 {
+                    RoomModel tempRoom = new RoomModel();
                     roomIDdropDown.Items.Add(dr[1].ToString());
-                    RoomIDs.Add(int.Parse(dr[0].ToString()));
+                    tempRoom.roomID = dr.GetInt32(0);
+                    tempRoom.roomName = dr.GetString(1);
+                    tempRoom.roomImage = ((byte[])dr.GetSqlBinary(2));
+                    tempRoom.roomDescription = dr.GetString(3);
+                    tempRoom.roomRentType = dr.GetString(4);
+                    tempRoom.roomRentPrice = dr.GetInt32(5);
+                    roomModelList.Add(tempRoom);
                 }
             }
             catch (Exception ex)
@@ -64,13 +75,20 @@ namespace Comma
             finally
             {
                 dr.Close();
+                if (roomModelList.Count > 0)
+                {
+                    if (Roomid == -1) // SELECT FIRST ROOM
+                        roomIDdropDown.SelectedIndex = 0;
+                    else
+                        for (int k = 0; k < roomModelList.Count; ++k)
+                            if (roomModelList[k].roomID == Roomid) // SELECT CHOSEN ROOM
+                            {
+                                roomIDdropDown.SelectedIndex = k;
+                                break;
+                            }
+                }
             }
 
-        }
-
-        private void dayFrom_ValueChanged(object sender, EventArgs e)
-        {
-            // DateTime t = new DateTime(sender);
         }
 
         private void rentBtn_Click(object sender, EventArgs e)
@@ -93,8 +111,7 @@ namespace Comma
                 }
                 int capacity = int.Parse(guestsDropDown.Text.ToString());
                 string addRequests = requestsTxt.Text.ToString();
-                float totalPrice = capacity * getRoomRentPrice(Roomid);
-                SqlConnection con = new SqlConnection("Data Source=DESKTOP-HTCGCDF;Initial Catalog=CommaSpace;Integrated Security=True");
+                int totalPrice = capacity * roomModelList[selectedRoomIdx].roomRentPrice;
                 SqlCommand cmd = new SqlCommand("insertReservation", con);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@RentStartDate", SqlDbType.DateTime).Value = startDate;
@@ -107,7 +124,6 @@ namespace Comma
                 cmd.Parameters.Add("@ReservationPrice", SqlDbType.Float).Value = totalPrice;
                 cmd.Parameters.Add("@ReservationState", SqlDbType.NVarChar).Value = "Request";
                 cmd.Parameters.Add("@AddRequests", SqlDbType.NVarChar).Value = addRequests;
-                con.Open();
                 try
                 {
                     cmd.ExecuteNonQuery();
@@ -130,43 +146,37 @@ namespace Comma
             }
         }
 
-        private float getRoomRentPrice(int RoomId)
-        {
-            float price = 0.0f;
-            SqlCommand cmd = new SqlCommand("select rentPrice from Rooms where roomID = " + RoomId, con);
-            cmd.CommandType = CommandType.Text;
-            SqlDataReader dr = null;
-            try
-            {
-
-                dr = cmd.ExecuteReader();
-                if (dr.Read())
-                {
-                    price = float.Parse(dr[0].ToString());
-                }
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                dr.Close();
-            }
-            return price;
-        }
-
         private void roomIDdropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int i = roomIDdropDown.SelectedIndex;
-            Roomid = RoomIDs[i];
+            selectedRoomIdx = roomIDdropDown.SelectedIndex;
+            Roomid = roomModelList[selectedRoomIdx].roomID;
+            loadRoom(selectedRoomIdx);
+        }
+
+        private void loadRoom(int RoomIdx)
+        {
+            string temp = (roomModelList[RoomIdx].roomRentType.Equals(GlobalData.hourlyRoom)) ? "£ / H" : "£ / D";
+            string PriceFormat = roomModelList[RoomIdx].roomRentPrice.ToString() + temp;
+            roomID.Text = roomModelList[RoomIdx].roomID.ToString();
+            roomName.Text = roomModelList[RoomIdx].roomName;
+            roomImage.Image = convertByteArrayToImage(roomModelList[RoomIdx].roomImage);
+            roomDescription.Text = roomModelList[RoomIdx].roomDescription;
+            roomPrice.Text = PriceFormat;
+        }
+
+        private Image convertByteArrayToImage(byte[] data)
+        {
+            if (data == null) return null;
+            using (MemoryStream ms = new MemoryStream(data, 0, data.Length))
+            {
+                return Image.FromStream(ms);
+            }
         }
 
         private void guestsDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
             int capacity = int.Parse(guestsDropDown.Text.ToString());
-            float totalPrice = capacity * getRoomRentPrice(Roomid);
+            int totalPrice = capacity * roomModelList[selectedRoomIdx].roomRentPrice;
             totalPriceLbl.Text = totalPrice + " £";
 
         }
@@ -175,5 +185,6 @@ namespace Comma
         {
             con.Dispose();
         }
+
     }
 }
