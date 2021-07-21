@@ -24,12 +24,12 @@ namespace Comma
             cmd.Connection = conn;
             cmd.CommandType = CommandType.StoredProcedure;
             cmd = conn.CreateCommand();
-            cmd.CommandText = "exec sortuser";
+            cmd.CommandText = "sortuser";
             SqlDataReader r = cmd.ExecuteReader();
             int i = 0;
             while (r.Read())
             {
-                if (r["userNumberOfRents"].ToString() == "")
+                if (r["userType"].ToString() == "Admin")
                     continue;
                 i++;
                 string[] row = new string[] { i.ToString(), r["userID"].ToString(), r["userName"].ToString(), r["userMail"].ToString(), r["userPhone"].ToString(), r["userNumberOfRents"].ToString() };

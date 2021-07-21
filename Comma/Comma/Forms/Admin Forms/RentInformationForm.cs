@@ -87,53 +87,59 @@ namespace Comma.Forms.Admin_Forms
 
         private void acceptBtn_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
-            if (con.State == ConnectionState.Closed) con.Open();
-            SqlCommand cmd = new SqlCommand("editeRentalState", con);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@ID", SqlDbType.Int).Value = int.Parse(mRequestId.ToString());
-            cmd.Parameters.Add("@State", SqlDbType.NVarChar).Value = "Accepted";
-            try
-            {
-                cmd.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                con.Close();
-            }
-
-            MessageBox.Show("Request Accepted Successfully", "Request", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            returnToRequests();
+            increaseRentals();
+            takeRequestAction("Accepted");
         }
 
         private void declineBtn_Click(object sender, EventArgs e)
         {
+            takeRequestAction("Declined");
+        }
+
+        private void takeRequestAction(string state)
+        {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
             if (con.State == ConnectionState.Closed) con.Open();
-            SqlCommand cmd = new SqlCommand("editeRentalState", con);
+            SqlCommand cmd = new SqlCommand("editRentalState", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@ID", SqlDbType.Int).Value = int.Parse(mRequestId.ToString());
-            cmd.Parameters.Add("@State", SqlDbType.NVarChar).Value = "Decline";
+            cmd.Parameters.Add("@State", SqlDbType.NVarChar).Value = state;
             try
             {
                 cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message);
             }
             finally
             {
                 con.Close();
             }
-            MessageBox.Show("Request Declined Successfully", "Request", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            MessageBox.Show("Request " + state +  " Successfully !", "Request", MessageBoxButtons.OK, MessageBoxIcon.Information);
             returnToRequests();
+        }
+
+        private void increaseRentals()
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
+            if (con.State == ConnectionState.Closed) con.Open();
+            SqlCommand cmd = new SqlCommand("increaseRentals", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("reservationID", int.Parse(mRequestId));
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
         }
 
         private void setRoomImage(int roomId)

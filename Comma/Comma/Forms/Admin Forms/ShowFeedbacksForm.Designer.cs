@@ -36,7 +36,7 @@
             this.dgv = new System.Windows.Forms.DataGridView();
             this.rank = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Namee = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            //this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.roomName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rentingFrom = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,7 +51,8 @@
             // 
             this.dgv.AllowUserToResizeColumns = false;
             this.dgv.AllowUserToResizeRows = false;
-            this.dgv.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -69,7 +70,7 @@
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.rank,
             this.UserID,
-            this.Namee,
+            //this.Name,
             this.roomName,
             this.userName,
             this.rentingFrom,
@@ -122,7 +123,7 @@
             this.dgv.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgv.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(550, 150);
+            this.dgv.Size = new System.Drawing.Size(550, 397);
             this.dgv.StandardTab = true;
             this.dgv.TabIndex = 12;
             // 
@@ -142,10 +143,10 @@
             // 
             // Name
             // 
-            this.Namee.FillWeight = 20F;
-            this.Namee.HeaderText = "Name";
-            this.Namee.Name = "Name";
-            this.Namee.ReadOnly = true;
+            /*this.Name.FillWeight = 20F;
+            this.Name.HeaderText = "Name";
+            this.Name.Name = "Name";
+            this.Name.ReadOnly = true;*/
             // 
             // roomName
             // 
@@ -216,7 +217,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgv);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            //this.Name = "showFeedbacksForm";
+            this.Name = "showFeedbacksForm";
             this.Text = "ShowFeedbacksForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.showFeedbacksForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
@@ -231,7 +232,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn rank;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Namee;
+       // private System.Windows.Forms.DataGridViewTextBoxColumn Namee;
         private System.Windows.Forms.DataGridViewTextBoxColumn roomName;
         private System.Windows.Forms.DataGridViewTextBoxColumn userName;
         private System.Windows.Forms.DataGridViewTextBoxColumn rentingFrom;

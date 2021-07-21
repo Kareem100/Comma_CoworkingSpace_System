@@ -63,6 +63,21 @@ namespace Comma
             settingsBtn.BackColor = Color.Transparent;
         }
 
+        private void changeMailBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void changePassBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sendMessageBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void logoutBtn_Click(object sender, EventArgs e)
         {
             Thread thread = new Thread(openLoginForm);
@@ -116,7 +131,7 @@ namespace Comma
             openForm(new ManageRoomsForm());
             highlightSelectedButton(roomsBtn);
         }
-        public void roomsBtn_Click(object sender, EventArgs e, string roomID, string choice)
+        public void RoomsBtn_Click(object sender, EventArgs e, string roomID, string choice)
         {
             openForm(new ManageRoomsForm(e, roomID, choice));
             highlightSelectedButton(roomsBtn);

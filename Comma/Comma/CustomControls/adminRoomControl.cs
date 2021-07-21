@@ -27,13 +27,13 @@ namespace Comma.Forms.Admin_Forms
         // EDIT BUTTON EVENT
         private void editRoomBtn_Click(object sender, EventArgs e)
         {
-            homeForm.roomsBtn_Click(sender, e, roomID.Text, GlobalData.editRoom);
+            homeForm.RoomsBtn_Click(sender, e, roomID.Text, GlobalData.editRoom);
         }
 
         // REMOVE BUTTON EVENT
         private void removeRoomBtn_Click(object sender, EventArgs e)
         {
-            homeForm.roomsBtn_Click(sender, e, roomID.Text, GlobalData.removeRoom);
+            homeForm.RoomsBtn_Click(sender, e, roomID.Text, GlobalData.removeRoom);
         }
 
         // ============== CONTROLS SETTERS ================= 

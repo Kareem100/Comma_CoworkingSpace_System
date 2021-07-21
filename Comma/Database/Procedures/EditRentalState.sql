@@ -1,4 +1,4 @@
-create proc editeRentalState @ID int, @State nvarchar(50)
+CREATE PROC editRentalState @ID int, @State nvarchar(50)
 As
 update Reservations
 set reservationState=@State

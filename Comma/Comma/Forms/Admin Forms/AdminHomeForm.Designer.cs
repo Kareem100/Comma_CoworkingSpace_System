@@ -66,6 +66,7 @@
             this.logoPanel = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.topHeader = new System.Windows.Forms.Panel();
+            this.sendMessageBtn = new System.Windows.Forms.Button();
             this.shadedPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.askfmBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.closeButton)).BeginInit();
@@ -509,11 +510,12 @@
             this.settingsContainer.BackColor = System.Drawing.Color.Goldenrod;
             this.settingsContainer.Controls.Add(this.changeMailBtn);
             this.settingsContainer.Controls.Add(this.changePassBtn);
+            this.settingsContainer.Controls.Add(this.sendMessageBtn);
             this.settingsContainer.Controls.Add(this.logoutBtn);
             this.settingsContainer.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.settingsContainer.Location = new System.Drawing.Point(322, 40);
             this.settingsContainer.Name = "settingsContainer";
-            this.settingsContainer.Size = new System.Drawing.Size(191, 165);
+            this.settingsContainer.Size = new System.Drawing.Size(191, 220);
             this.settingsContainer.TabIndex = 9;
             this.settingsContainer.Visible = false;
             this.settingsContainer.WrapContents = false;
@@ -535,6 +537,7 @@
             this.changeMailBtn.Text = "    Change E-mail";
             this.changeMailBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.changeMailBtn.UseVisualStyleBackColor = true;
+            this.changeMailBtn.Click += new System.EventHandler(this.changeMailBtn_Click);
             // 
             // changePassBtn
             // 
@@ -552,6 +555,7 @@
             this.changePassBtn.TabIndex = 4;
             this.changePassBtn.Text = "  Change Password";
             this.changePassBtn.UseVisualStyleBackColor = true;
+            this.changePassBtn.Click += new System.EventHandler(this.changePassBtn_Click);
             // 
             // logoutBtn
             // 
@@ -563,7 +567,7 @@
             this.logoutBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.logoutBtn.Image = ((System.Drawing.Image)(resources.GetObject("logoutBtn.Image")));
             this.logoutBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.logoutBtn.Location = new System.Drawing.Point(3, 113);
+            this.logoutBtn.Location = new System.Drawing.Point(3, 168);
             this.logoutBtn.Name = "logoutBtn";
             this.logoutBtn.Size = new System.Drawing.Size(185, 49);
             this.logoutBtn.TabIndex = 2;
@@ -602,6 +606,24 @@
             this.topHeader.Name = "topHeader";
             this.topHeader.Size = new System.Drawing.Size(800, 10);
             this.topHeader.TabIndex = 7;
+            // 
+            // sendMessageBtn
+            // 
+            this.sendMessageBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.sendMessageBtn.FlatAppearance.BorderSize = 0;
+            this.sendMessageBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.sendMessageBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sendMessageBtn.Font = new System.Drawing.Font("Comic Sans MS", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sendMessageBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.sendMessageBtn.Image = ((System.Drawing.Image)(resources.GetObject("sendMessageBtn.Image")));
+            this.sendMessageBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.sendMessageBtn.Location = new System.Drawing.Point(3, 113);
+            this.sendMessageBtn.Name = "sendMessageBtn";
+            this.sendMessageBtn.Size = new System.Drawing.Size(185, 49);
+            this.sendMessageBtn.TabIndex = 5;
+            this.sendMessageBtn.Text = "Send Message";
+            this.sendMessageBtn.UseVisualStyleBackColor = true;
+            this.sendMessageBtn.Click += new System.EventHandler(this.sendMessageBtn_Click);
             // 
             // AdminHomeForm
             // 
@@ -682,5 +704,6 @@
         private System.Windows.Forms.Button logoutBtn;
         private System.Windows.Forms.Label userNameLbl;
         private System.Windows.Forms.Label welcomeLbl;
+        private System.Windows.Forms.Button sendMessageBtn;
     }
 }
