@@ -30,8 +30,9 @@ from showing available rooms and seeing their rentals to booking the rooms and s
 - [InsertUser](Comma/Database/Procedures/InsertUser.sql)
 - [SortUser](Comma/Database/Procedures/SortUser.sql)
 - [InsertReservation](Comma/Database/Procedures/InsertReservation.sql)
-- [EditRentalState](Comma/Database/Procedures/EditeRentalState.sql)
-
+- [EditRentalState](Comma/Database/Procedures/EditRentalState.sql)
+- [IncreaseUserRentals](Comma/Database/Procedures/IncreaseRentals.sql)
+  
 </p>
 </details>
 
