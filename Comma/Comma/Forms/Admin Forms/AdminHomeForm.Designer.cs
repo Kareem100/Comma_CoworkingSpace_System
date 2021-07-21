@@ -570,7 +570,7 @@
             this.logoutBtn.Text = "    Logout";
             this.logoutBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.logoutBtn.UseVisualStyleBackColor = true;
-            this.logoutBtn.Click += new System.EventHandler(this.logoutBtn_Click_1);
+            this.logoutBtn.Click += new System.EventHandler(this.logoutBtn_Click);
             // 
             // logoPanel
             // 

@@ -93,16 +93,16 @@
     <Compile Include="Forms\Admin Forms\RentInformationForm.Designer.cs">
       <DependentUpon>RentInformationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\User Forms\FeedbackForm.cs">
+    <Compile Include="Forms\Customer Forms\FeedbackForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\User Forms\FeedbackForm.Designer.cs">
+    <Compile Include="Forms\Customer Forms\FeedbackForm.Designer.cs">
       <DependentUpon>FeedbackForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\User Forms\LoginForm.cs">
+    <Compile Include="Forms\Customer Forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\User Forms\LoginForm.Designer.cs">
+    <Compile Include="Forms\Customer Forms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\userRoomControl.cs">
@@ -119,40 +119,40 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Forms\User Forms\RegisterForm.cs">
+    <Compile Include="Forms\Customer Forms\RegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\User Forms\RegisterForm.Designer.cs">
+    <Compile Include="Forms\Customer Forms\RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\User Forms\RoomsForm.cs">
+    <Compile Include="Forms\Customer Forms\RoomsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\User Forms\RoomsForm.Designer.cs">
+    <Compile Include="Forms\Customer Forms\RoomsForm.Designer.cs">
       <DependentUpon>RoomsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\User Forms\UserHomeForm.cs">
+    <Compile Include="Forms\Customer Forms\UserHomeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\User Forms\UserHomeForm.Designer.cs">
+    <Compile Include="Forms\Customer Forms\UserHomeForm.Designer.cs">
       <DependentUpon>UserHomeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\User Forms\TopCustomersForm.cs">
+    <Compile Include="Forms\Customer Forms\TopCustomersForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\User Forms\TopCustomersForm.Designer.cs">
+    <Compile Include="Forms\Customer Forms\TopCustomersForm.Designer.cs">
       <DependentUpon>TopCustomersForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\User Forms\TopRoomsForm.cs">
+    <Compile Include="Forms\Customer Forms\TopRoomsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\User Forms\TopRoomsForm.Designer.cs">
+    <Compile Include="Forms\Customer Forms\TopRoomsForm.Designer.cs">
       <DependentUpon>TopRoomsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\User Forms\RentForm.cs">
+    <Compile Include="Forms\Customer Forms\RentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\User Forms\RentForm.Designer.cs">
+    <Compile Include="Forms\Customer Forms\RentForm.Designer.cs">
       <DependentUpon>RentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Admin Forms\ShowFeedbacksForm.cs">
@@ -188,25 +188,25 @@
     <EmbeddedResource Include="Forms\Admin Forms\ShowRentsForm.resx">
       <DependentUpon>ShowRentsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\User Forms\FeedbackForm.resx">
+    <EmbeddedResource Include="Forms\Customer Forms\FeedbackForm.resx">
       <DependentUpon>FeedbackForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\User Forms\LoginForm.resx">
+    <EmbeddedResource Include="Forms\Customer Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\User Forms\RegisterForm.resx">
+    <EmbeddedResource Include="Forms\Customer Forms\RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\userRoomControl.resx">
       <DependentUpon>userRoomControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\User Forms\RentForm.resx">
+    <EmbeddedResource Include="Forms\Customer Forms\RentForm.resx">
       <DependentUpon>RentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\User Forms\RoomsForm.resx">
+    <EmbeddedResource Include="Forms\Customer Forms\RoomsForm.resx">
       <DependentUpon>RoomsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\User Forms\TopCustomersForm.resx">
+    <EmbeddedResource Include="Forms\Customer Forms\TopCustomersForm.resx">
       <DependentUpon>TopCustomersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -219,10 +219,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Forms\User Forms\UserHomeForm.resx">
+    <EmbeddedResource Include="Forms\Customer Forms\UserHomeForm.resx">
       <DependentUpon>UserHomeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\User Forms\TopRoomsForm.resx">
+    <EmbeddedResource Include="Forms\Customer Forms\TopRoomsForm.resx">
       <DependentUpon>TopRoomsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">

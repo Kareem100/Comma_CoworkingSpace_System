@@ -31,12 +31,12 @@ namespace Comma
 
         private void closeButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void minimizeButton_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Minimized;
+            WindowState = FormWindowState.Minimized;
         }
 
         private void settingsBtn_Click(object sender, EventArgs e)
@@ -68,10 +68,10 @@ namespace Comma
             Thread thread = new Thread(openLoginForm);
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
-            this.Close();
+            Close();
         }
 
-        private void openLoginForm(Object obj)
+        private void openLoginForm(object obj)
         {
             Application.Run(new LoginForm());
         }
@@ -101,9 +101,14 @@ namespace Comma
             highlightSelectedButton(rentsBtn);
         }
 
+        public void openRentsForm()
+        {
+            openForm(new ShowRentsForm(this));
+        }
+
         public void openRentsInformation(string RequestedID, string RoomName)
         {
-            openForm(new RentInformationForm(RequestedID, RoomName));
+            openForm(new RentInformationForm(this, RequestedID, RoomName));
         }
 
         private void roomsBtn_Click(object sender, EventArgs e)
@@ -166,12 +171,5 @@ namespace Comma
             resetContextMenus();
         }
 
-        private void logoutBtn_Click_1(object sender, EventArgs e)
-        {
-            Thread thread = new Thread(openLoginForm);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-            Close();
-        }
     }
 }
