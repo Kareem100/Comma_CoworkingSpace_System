@@ -53,10 +53,10 @@ feedbackContent NVARCHAR(100) not null,
 customerID INT not null FOREIGN KEY REFERENCES Users2(userID),
 );
 
-CREATE TABLE social_links (
-facebook VARCHAR(100) NOT NULL,
-twitter VARCHAR(100) NOT NULL,
-instagram VARCHAR(100) NOT NULL,
+CREATE TABLE SocialLinks (
+facebook VARCHAR(100),
+twitter VARCHAR(100),
+instagram VARCHAR(100),
 askfm VARCHAR(100)
 );
 

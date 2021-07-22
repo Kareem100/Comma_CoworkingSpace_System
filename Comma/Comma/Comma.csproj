@@ -131,11 +131,11 @@
     <Compile Include="Forms\Customer Forms\RoomsForm.Designer.cs">
       <DependentUpon>RoomsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Customer Forms\UserHomeForm.cs">
+    <Compile Include="Forms\Customer Forms\CustomerHomeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Customer Forms\UserHomeForm.Designer.cs">
-      <DependentUpon>UserHomeForm.cs</DependentUpon>
+    <Compile Include="Forms\Customer Forms\CustomerHomeForm.Designer.cs">
+      <DependentUpon>CustomerHomeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Customer Forms\TopCustomersForm.cs">
       <SubType>Form</SubType>
@@ -219,8 +219,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Forms\Customer Forms\UserHomeForm.resx">
-      <DependentUpon>UserHomeForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Customer Forms\CustomerHomeForm.resx">
+      <DependentUpon>CustomerHomeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Customer Forms\TopRoomsForm.resx">
       <DependentUpon>TopRoomsForm.cs</DependentUpon>

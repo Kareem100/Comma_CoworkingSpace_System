@@ -121,7 +121,6 @@ namespace Comma
                         }
                         else if(dr[5].ToString() == "Admin")
                         {
-
                             thread = new Thread(openForm3);
                             thread.SetApartmentState(ApartmentState.STA);
                             thread.Start();
@@ -143,8 +142,6 @@ namespace Comma
                     dr.Close();
                     con.Close();
                 }
-               
-              //  MessageBox.Show("You Have Logged in Successfully !!", "LOGIN", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

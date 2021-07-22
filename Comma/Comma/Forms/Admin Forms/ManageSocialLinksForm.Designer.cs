@@ -81,7 +81,7 @@
             // 
             this.pictureBox7.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
-            this.pictureBox7.Location = new System.Drawing.Point(91, 252);
+            this.pictureBox7.Location = new System.Drawing.Point(38, 252);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(28, 28);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -94,11 +94,11 @@
             this.askTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.askTxt.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.askTxt.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.askTxt.Location = new System.Drawing.Point(120, 255);
+            this.askTxt.Location = new System.Drawing.Point(67, 255);
             this.askTxt.Multiline = true;
             this.askTxt.Name = "askTxt";
             this.askTxt.PasswordChar = '*';
-            this.askTxt.Size = new System.Drawing.Size(198, 25);
+            this.askTxt.Size = new System.Drawing.Size(286, 25);
             this.askTxt.TabIndex = 36;
             this.askTxt.Text = "askfm";
             this.askTxt.UseSystemPasswordChar = true;
@@ -109,9 +109,9 @@
             // 
             this.pictureBox8.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.Location = new System.Drawing.Point(82, 244);
+            this.pictureBox8.Location = new System.Drawing.Point(29, 244);
             this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(243, 45);
+            this.pictureBox8.Size = new System.Drawing.Size(331, 45);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox8.TabIndex = 37;
             this.pictureBox8.TabStop = false;
@@ -126,9 +126,9 @@
             this.addLinksBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addLinksBtn.Font = new System.Drawing.Font("Comic Sans MS", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addLinksBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.addLinksBtn.Location = new System.Drawing.Point(82, 321);
+            this.addLinksBtn.Location = new System.Drawing.Point(29, 321);
             this.addLinksBtn.Name = "addLinksBtn";
-            this.addLinksBtn.Size = new System.Drawing.Size(243, 41);
+            this.addLinksBtn.Size = new System.Drawing.Size(331, 41);
             this.addLinksBtn.TabIndex = 35;
             this.addLinksBtn.Text = "ADD LINKS";
             this.addLinksBtn.UseVisualStyleBackColor = false;
@@ -138,7 +138,7 @@
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(90, 186);
+            this.pictureBox3.Location = new System.Drawing.Point(37, 186);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(28, 28);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -151,11 +151,11 @@
             this.insTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.insTxt.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.insTxt.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.insTxt.Location = new System.Drawing.Point(120, 189);
+            this.insTxt.Location = new System.Drawing.Point(67, 189);
             this.insTxt.Multiline = true;
             this.insTxt.Name = "insTxt";
             this.insTxt.PasswordChar = '*';
-            this.insTxt.Size = new System.Drawing.Size(198, 25);
+            this.insTxt.Size = new System.Drawing.Size(286, 25);
             this.insTxt.TabIndex = 30;
             this.insTxt.Text = "instagram";
             this.insTxt.UseSystemPasswordChar = true;
@@ -166,9 +166,9 @@
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(82, 178);
+            this.pictureBox5.Location = new System.Drawing.Point(29, 178);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(243, 45);
+            this.pictureBox5.Size = new System.Drawing.Size(331, 45);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox5.TabIndex = 33;
             this.pictureBox5.TabStop = false;
@@ -177,7 +177,7 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(91, 119);
+            this.pictureBox1.Location = new System.Drawing.Point(38, 119);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(28, 28);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -190,11 +190,11 @@
             this.twTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.twTxt.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.twTxt.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.twTxt.Location = new System.Drawing.Point(120, 122);
+            this.twTxt.Location = new System.Drawing.Point(67, 122);
             this.twTxt.Multiline = true;
             this.twTxt.Name = "twTxt";
             this.twTxt.PasswordChar = '*';
-            this.twTxt.Size = new System.Drawing.Size(198, 25);
+            this.twTxt.Size = new System.Drawing.Size(286, 25);
             this.twTxt.TabIndex = 29;
             this.twTxt.Text = "twitter";
             this.twTxt.UseSystemPasswordChar = true;
@@ -205,9 +205,9 @@
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(82, 111);
+            this.pictureBox4.Location = new System.Drawing.Point(29, 111);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(243, 45);
+            this.pictureBox4.Size = new System.Drawing.Size(331, 45);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 31;
             this.pictureBox4.TabStop = false;
@@ -216,7 +216,7 @@
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(91, 53);
+            this.pictureBox6.Location = new System.Drawing.Point(38, 53);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(28, 28);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -229,10 +229,10 @@
             this.fbTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.fbTxt.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fbTxt.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.fbTxt.Location = new System.Drawing.Point(120, 57);
+            this.fbTxt.Location = new System.Drawing.Point(67, 57);
             this.fbTxt.Multiline = true;
             this.fbTxt.Name = "fbTxt";
-            this.fbTxt.Size = new System.Drawing.Size(198, 24);
+            this.fbTxt.Size = new System.Drawing.Size(286, 24);
             this.fbTxt.TabIndex = 25;
             this.fbTxt.Text = "facebook";
             this.fbTxt.Enter += new System.EventHandler(this.fbTxt_Enter);
@@ -242,9 +242,9 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(82, 44);
+            this.pictureBox2.Location = new System.Drawing.Point(29, 44);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(243, 45);
+            this.pictureBox2.Size = new System.Drawing.Size(331, 45);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 26;
             this.pictureBox2.TabStop = false;

@@ -8,15 +8,19 @@ namespace Comma.Forms.Admin_Forms
 {
     public partial class ManageSocialLinksForm : Form
     {
-        SqlConnection conn;
-        public ManageSocialLinksForm()
+        private SqlConnection conn;
+        private AdminHomeForm adminHome;
+
+        public ManageSocialLinksForm(AdminHomeForm homeForm)
         {
             InitializeComponent();
+            adminHome = homeForm;
             conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
             if (conn.State == ConnectionState.Closed) conn.Open();
+            loadSocialLinks();
         }
-        // =============================================================
 
+        // ================= FEILDS FOCUS EFFECTS ======================
         private void fbTxt_Enter(object sender, EventArgs e)
         {
             if (fbTxt.Text == "facebook")
@@ -65,25 +69,61 @@ namespace Comma.Forms.Admin_Forms
                 askTxt.Text = "askfm";
         }
         // =============================================================
-         private void addLinksBtn_Click(object sender, EventArgs e)
+
+        private void loadSocialLinks()
         {
-            // DATABASE PART
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
-            cmd.CommandText = "addlinks";
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@fa", fbTxt.Text);
-            cmd.Parameters.AddWithValue("@tw", twTxt.Text);
-            cmd.Parameters.AddWithValue("@ins", insTxt.Text);
-            cmd.Parameters.AddWithValue("@ask", askTxt.Text);
-            cmd.ExecuteNonQuery();
+            cmd.CommandText = "SELECT * FROM SocialLinks";
+            cmd.CommandType = CommandType.Text;
+            SqlDataReader r = cmd.ExecuteReader();
+            if (r.Read())
+            {
+                fbTxt.Text = r["facebook"].ToString();
+                twTxt.Text = r["twitter"].ToString();
+                insTxt.Text = r["instagram"].ToString();
+                askTxt.Text = r["askfm"].ToString();
+            }
+            r.Close();
+        }
 
-            fbTxt.Text = ""; twTxt.Text = ""; insTxt.Text = ""; askTxt.Text = "";
+        private void addLinksBtn_Click(object sender, EventArgs e)
+        {
+            string fb = fbTxt.Text, tw = twTxt.Text, inst = insTxt.Text, ask = askTxt.Text;
+            try
+            {
+                if (fb.Equals("facebook"))
+                    fb = "";
+                if (tw.Equals("twitter"))
+                    tw = "";
+                if (inst.Equals("instagram"))
+                    inst = "";
+                if (ask.Equals("askfm"))
+                    ask = "";
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandText = "addSocialLinks";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@fa", fb);
+                cmd.Parameters.AddWithValue("@tw", tw);
+                cmd.Parameters.AddWithValue("@ins", inst);
+                cmd.Parameters.AddWithValue("@ask", ask);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
+
+            adminHome.setSocialLinks(fb, tw, inst, ask);
+            MessageBox.Show("The Social Links has been Updated Successfully !", "SOCIAL LINKS", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void ManageSocialLinksForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             conn.Dispose();
         }
+
     }
 }

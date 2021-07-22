@@ -1,6 +1,9 @@
 ﻿using Comma.CustomClasses;
 using Comma.Forms.Admin_Forms;
 using System;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -18,6 +21,7 @@ namespace Comma
         );
 
         private Form activeForm = null;
+        private string facebookLink, twitterLink, instagramLink, askfmLink;
 
         public AdminHomeForm()
         {
@@ -27,6 +31,8 @@ namespace Comma
             showRoomsBtn.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, showRoomsBtn.Width, showRoomsBtn.Height, 30, 30));
             string[] names = GlobalData.userFullName.Split(' ');
             userNameLbl.Text = names[0][0] + "." + names[1];
+            facebookLink = twitterLink = instagramLink = askfmLink = "";
+            loadSocialLinks();
         }
 
         private void closeButton_Click(object sender, EventArgs e)
@@ -103,6 +109,7 @@ namespace Comma
             showRoomsBtn.ForeColor = Color.Crimson;
         }
 
+        // ================== NAVIGATION BAR BUTTONS ==================
         private void homeBtn_Click(object sender, EventArgs e)
         {
             if (activeForm != null)
@@ -145,8 +152,15 @@ namespace Comma
 
         private void socialLinksBtn_Click(object sender, EventArgs e)
         {
-            openForm(new ManageSocialLinksForm());
+            openForm(new ManageSocialLinksForm(this));
             highlightSelectedButton(socialLinksBtn);
+        }
+        public void setSocialLinks(string facebook, string twitter, string insta, string ask)
+        {
+            facebookLink = facebook;
+            twitterLink = twitter;
+            instagramLink = insta;
+            askfmLink = ask;
         }
 
         private void feedbackBtn_Click(object sender, EventArgs e)
@@ -185,6 +199,60 @@ namespace Comma
             childForm.Show();
             resetContextMenus();
         }
+        // ==============================================================
 
+        // ================= SOCIAL MEDIA LINKS ====================
+        private void loadSocialLinks()
+        {
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
+            SqlCommand cmd = new SqlCommand();
+            if (conn.State == ConnectionState.Closed) conn.Open();
+            cmd.Connection = conn;
+            cmd.CommandText = "SELECT * FROM SocialLinks";
+            cmd.CommandType = CommandType.Text;
+            SqlDataReader r = cmd.ExecuteReader();
+            if (r.Read())
+            {
+                facebookLink = r["facebook"].ToString();
+                twitterLink = r["twitter"].ToString();
+                instagramLink = r["instagram"].ToString();
+                askfmLink = r["askfm"].ToString();
+            }
+            r.Close();
+            conn.Close();
+        }
+
+        private void facebookBtn_Click(object sender, EventArgs e)
+        {
+            if (!facebookLink.Equals(""))
+                System.Diagnostics.Process.Start(facebookLink);
+            else
+                MessageBox.Show("There's No Corresponding Link Associated Yet !!", "SOCIAL LINKS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void twitterBtn_Click(object sender, EventArgs e)
+        {
+            if (!twitterLink.Equals(""))
+                System.Diagnostics.Process.Start(twitterLink);
+            else
+                MessageBox.Show("There's No Corresponding Link Associated Yet !!", "SOCIAL LINKS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void instagramBtn_Click(object sender, EventArgs e)
+        {
+            if (!instagramLink.Equals(""))
+                System.Diagnostics.Process.Start(instagramLink);
+            else
+                MessageBox.Show("There's No Corresponding Link Associated Yet !!", "SOCIAL LINKS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void askfmBtn_Click(object sender, EventArgs e)
+        {
+            if (!askfmLink.Equals(""))
+                System.Diagnostics.Process.Start(askfmLink);
+            else
+                MessageBox.Show("There's No Corresponding Link Associated Yet !!", "SOCIAL LINKS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+        // =========================================================
     }
 }

@@ -62,11 +62,11 @@
             this.settingsContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.changeMailBtn = new System.Windows.Forms.Button();
             this.changePassBtn = new System.Windows.Forms.Button();
+            this.sendMessageBtn = new System.Windows.Forms.Button();
             this.logoutBtn = new System.Windows.Forms.Button();
             this.logoPanel = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.topHeader = new System.Windows.Forms.Panel();
-            this.sendMessageBtn = new System.Windows.Forms.Button();
             this.shadedPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.askfmBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.closeButton)).BeginInit();
@@ -135,6 +135,7 @@
             this.askfmBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.askfmBtn.TabIndex = 10;
             this.askfmBtn.TabStop = false;
+            this.askfmBtn.Click += new System.EventHandler(this.askfmBtn_Click);
             // 
             // closeButton
             // 
@@ -189,6 +190,7 @@
             this.facebookBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.facebookBtn.TabIndex = 4;
             this.facebookBtn.TabStop = false;
+            this.facebookBtn.Click += new System.EventHandler(this.facebookBtn_Click);
             // 
             // twitterBtn
             // 
@@ -201,6 +203,7 @@
             this.twitterBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.twitterBtn.TabIndex = 5;
             this.twitterBtn.TabStop = false;
+            this.twitterBtn.Click += new System.EventHandler(this.twitterBtn_Click);
             // 
             // instagramBtn
             // 
@@ -213,6 +216,7 @@
             this.instagramBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.instagramBtn.TabIndex = 6;
             this.instagramBtn.TabStop = false;
+            this.instagramBtn.Click += new System.EventHandler(this.instagramBtn_Click);
             // 
             // showRoomsBtn
             // 
@@ -557,6 +561,24 @@
             this.changePassBtn.UseVisualStyleBackColor = true;
             this.changePassBtn.Click += new System.EventHandler(this.changePassBtn_Click);
             // 
+            // sendMessageBtn
+            // 
+            this.sendMessageBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.sendMessageBtn.FlatAppearance.BorderSize = 0;
+            this.sendMessageBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.sendMessageBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sendMessageBtn.Font = new System.Drawing.Font("Comic Sans MS", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sendMessageBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.sendMessageBtn.Image = ((System.Drawing.Image)(resources.GetObject("sendMessageBtn.Image")));
+            this.sendMessageBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.sendMessageBtn.Location = new System.Drawing.Point(3, 113);
+            this.sendMessageBtn.Name = "sendMessageBtn";
+            this.sendMessageBtn.Size = new System.Drawing.Size(185, 49);
+            this.sendMessageBtn.TabIndex = 5;
+            this.sendMessageBtn.Text = "Send Message";
+            this.sendMessageBtn.UseVisualStyleBackColor = true;
+            this.sendMessageBtn.Click += new System.EventHandler(this.sendMessageBtn_Click);
+            // 
             // logoutBtn
             // 
             this.logoutBtn.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -606,24 +628,6 @@
             this.topHeader.Name = "topHeader";
             this.topHeader.Size = new System.Drawing.Size(800, 10);
             this.topHeader.TabIndex = 7;
-            // 
-            // sendMessageBtn
-            // 
-            this.sendMessageBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.sendMessageBtn.FlatAppearance.BorderSize = 0;
-            this.sendMessageBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.sendMessageBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sendMessageBtn.Font = new System.Drawing.Font("Comic Sans MS", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sendMessageBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.sendMessageBtn.Image = ((System.Drawing.Image)(resources.GetObject("sendMessageBtn.Image")));
-            this.sendMessageBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.sendMessageBtn.Location = new System.Drawing.Point(3, 113);
-            this.sendMessageBtn.Name = "sendMessageBtn";
-            this.sendMessageBtn.Size = new System.Drawing.Size(185, 49);
-            this.sendMessageBtn.TabIndex = 5;
-            this.sendMessageBtn.Text = "Send Message";
-            this.sendMessageBtn.UseVisualStyleBackColor = true;
-            this.sendMessageBtn.Click += new System.EventHandler(this.sendMessageBtn_Click);
             // 
             // AdminHomeForm
             // 
