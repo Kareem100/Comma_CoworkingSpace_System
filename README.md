@@ -3,7 +3,7 @@ An Information System Project With Database In SQL Server.
 
 Co-working is when people assemble in a neutral space to work independently on different projects, </br>
 or in groups on the same projects so Co-working spaces offer the same amenities</br>
-you would find in a traditional office and this is my edition for that system.
+you would find in a traditional office and this is my programming edition for that system.
 
 Comma Space Offers an easily communication between the customers and the space admins,</br>
 from showing available rooms and seeing their rentals to booking the rooms and sending feedbacks. </br>
