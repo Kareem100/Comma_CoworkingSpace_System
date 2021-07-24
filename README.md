@@ -31,6 +31,7 @@ from showing available rooms and seeing their rentals to booking the rooms, send
 - [InsertReservation](Comma/Database/Procedures/InsertReservation.sql)
 - [EditRentalState](Comma/Database/Procedures/EditRentalState.sql)
 - [IncreaseUserRentals](Comma/Database/Procedures/IncreaseRentals.sql)
+- [AddMessage](Comma/Database/Procedures/AddMessage.sql)
   
 </p>
 </details>
