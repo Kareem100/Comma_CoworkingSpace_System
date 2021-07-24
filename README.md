@@ -6,7 +6,7 @@ or in groups on the same projects so Co-working spaces offer the same amenities<
 you would find in a traditional office and this is my programming edition for that system.
 
 Comma Space Offers an easily communication between the customers and the space admins,</br>
-from showing available rooms and seeing their rentals to booking the rooms and sending feedbacks. </br>
+from showing available rooms and seeing their rentals to booking the rooms, sending feedbacks and Special Messages.</br>
 
 ***
 ## Database
