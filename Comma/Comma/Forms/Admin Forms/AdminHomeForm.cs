@@ -1,5 +1,6 @@
 ﻿using Comma.CustomClasses;
 using Comma.Forms.Admin_Forms;
+using Comma.Forms.Common_Forms;
 using System;
 using System.Configuration;
 using System.Data;
@@ -81,7 +82,8 @@ namespace Comma
 
         private void sendMessageBtn_Click(object sender, EventArgs e)
         {
-
+            openForm(new MessagesForm(true));
+            highlightSelectedButton(homeBtn);
         }
 
         private void logoutBtn_Click(object sender, EventArgs e)

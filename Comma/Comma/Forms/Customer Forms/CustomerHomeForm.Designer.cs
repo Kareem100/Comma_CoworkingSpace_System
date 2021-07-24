@@ -30,28 +30,29 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserHomeForm));
             this.navbarPanel = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.sendMailOnLbl = new System.Windows.Forms.Label();
             this.contactLbl = new System.Windows.Forms.Label();
             this.userNameLbl = new System.Windows.Forms.Label();
             this.welcomeLbl = new System.Windows.Forms.Label();
             this.feedbackBtn = new System.Windows.Forms.Button();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.phonePic = new System.Windows.Forms.PictureBox();
+            this.phoneLbl = new System.Windows.Forms.Label();
+            this.giveACallLbl = new System.Windows.Forms.Label();
+            this.mailPic = new System.Windows.Forms.PictureBox();
+            this.mailAddressLbl = new System.Windows.Forms.Label();
             this.sidebarPanel = new System.Windows.Forms.Panel();
             this.rentBtn = new System.Windows.Forms.Button();
             this.topCustomersBtn = new System.Windows.Forms.Button();
             this.topRoomsBtn = new System.Windows.Forms.Button();
             this.roomsBtn = new System.Windows.Forms.Button();
             this.homeBtn = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.headerPanel = new System.Windows.Forms.Panel();
             this.logoPanel = new System.Windows.Forms.Panel();
             this.titleLabel = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ommaLbl = new System.Windows.Forms.Label();
+            this.logoPic = new System.Windows.Forms.PictureBox();
             this.shadedPanel = new System.Windows.Forms.Panel();
+            this.notificationsAlertLbl = new System.Windows.Forms.Label();
             this.facebookBtn = new System.Windows.Forms.PictureBox();
             this.askfmBtn = new System.Windows.Forms.PictureBox();
             this.twitterBtn = new System.Windows.Forms.PictureBox();
@@ -68,15 +69,15 @@
             this.settingsContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.changeMailBtn = new System.Windows.Forms.Button();
             this.changePassBtn = new System.Windows.Forms.Button();
+            this.messageBtn = new System.Windows.Forms.Button();
             this.logoutBtn = new System.Windows.Forms.Button();
             this.notificationsContainer = new System.Windows.Forms.FlowLayoutPanel();
-            this.label6 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.navbarPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phonePic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mailPic)).BeginInit();
             this.logoPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logoPic)).BeginInit();
             this.shadedPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.facebookBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.askfmBtn)).BeginInit();
@@ -89,22 +90,21 @@
             this.childFormPanel.SuspendLayout();
             this.quoteBox.SuspendLayout();
             this.settingsContainer.SuspendLayout();
-            this.notificationsContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // navbarPanel
             // 
             this.navbarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(39)))), ((int)(((byte)(40)))));
-            this.navbarPanel.Controls.Add(this.label1);
+            this.navbarPanel.Controls.Add(this.sendMailOnLbl);
             this.navbarPanel.Controls.Add(this.contactLbl);
             this.navbarPanel.Controls.Add(this.userNameLbl);
             this.navbarPanel.Controls.Add(this.welcomeLbl);
             this.navbarPanel.Controls.Add(this.feedbackBtn);
-            this.navbarPanel.Controls.Add(this.pictureBox9);
-            this.navbarPanel.Controls.Add(this.label5);
-            this.navbarPanel.Controls.Add(this.label4);
-            this.navbarPanel.Controls.Add(this.pictureBox6);
-            this.navbarPanel.Controls.Add(this.label2);
+            this.navbarPanel.Controls.Add(this.phonePic);
+            this.navbarPanel.Controls.Add(this.phoneLbl);
+            this.navbarPanel.Controls.Add(this.giveACallLbl);
+            this.navbarPanel.Controls.Add(this.mailPic);
+            this.navbarPanel.Controls.Add(this.mailAddressLbl);
             this.navbarPanel.Controls.Add(this.sidebarPanel);
             this.navbarPanel.Controls.Add(this.rentBtn);
             this.navbarPanel.Controls.Add(this.topCustomersBtn);
@@ -117,17 +117,17 @@
             this.navbarPanel.Size = new System.Drawing.Size(200, 600);
             this.navbarPanel.TabIndex = 0;
             // 
-            // label1
+            // sendMailOnLbl
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Cooper Black", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Goldenrod;
-            this.label1.Location = new System.Drawing.Point(6, 486);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Send Mail on...";
+            this.sendMailOnLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.sendMailOnLbl.AutoSize = true;
+            this.sendMailOnLbl.Font = new System.Drawing.Font("Cooper Black", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sendMailOnLbl.ForeColor = System.Drawing.Color.Goldenrod;
+            this.sendMailOnLbl.Location = new System.Drawing.Point(6, 486);
+            this.sendMailOnLbl.Name = "sendMailOnLbl";
+            this.sendMailOnLbl.Size = new System.Drawing.Size(89, 13);
+            this.sendMailOnLbl.TabIndex = 5;
+            this.sendMailOnLbl.Text = "Send Mail on...";
             // 
             // contactLbl
             // 
@@ -180,67 +180,67 @@
             this.feedbackBtn.UseVisualStyleBackColor = true;
             this.feedbackBtn.Click += new System.EventHandler(this.feedbackBtn_Click);
             // 
-            // pictureBox9
+            // phonePic
             // 
-            this.pictureBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBox9.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
-            this.pictureBox9.Location = new System.Drawing.Point(12, 549);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox9.TabIndex = 8;
-            this.pictureBox9.TabStop = false;
+            this.phonePic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.phonePic.BackColor = System.Drawing.Color.Transparent;
+            this.phonePic.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.phonePic.Image = ((System.Drawing.Image)(resources.GetObject("phonePic.Image")));
+            this.phonePic.Location = new System.Drawing.Point(12, 549);
+            this.phonePic.Name = "phonePic";
+            this.phonePic.Size = new System.Drawing.Size(24, 24);
+            this.phonePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.phonePic.TabIndex = 8;
+            this.phonePic.TabStop = false;
             // 
-            // label5
+            // phoneLbl
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Cooper Black", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label5.Location = new System.Drawing.Point(38, 554);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(98, 13);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "+201143734174";
+            this.phoneLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.phoneLbl.AutoSize = true;
+            this.phoneLbl.Font = new System.Drawing.Font("Cooper Black", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.phoneLbl.ForeColor = System.Drawing.Color.SteelBlue;
+            this.phoneLbl.Location = new System.Drawing.Point(38, 554);
+            this.phoneLbl.Name = "phoneLbl";
+            this.phoneLbl.Size = new System.Drawing.Size(98, 13);
+            this.phoneLbl.TabIndex = 9;
+            this.phoneLbl.Text = "+201143734174";
             // 
-            // label4
+            // giveACallLbl
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Cooper Black", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Goldenrod;
-            this.label4.Location = new System.Drawing.Point(12, 530);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(114, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Or Give a Call on...";
+            this.giveACallLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.giveACallLbl.AutoSize = true;
+            this.giveACallLbl.Font = new System.Drawing.Font("Cooper Black", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.giveACallLbl.ForeColor = System.Drawing.Color.Goldenrod;
+            this.giveACallLbl.Location = new System.Drawing.Point(12, 530);
+            this.giveACallLbl.Name = "giveACallLbl";
+            this.giveACallLbl.Size = new System.Drawing.Size(114, 13);
+            this.giveACallLbl.TabIndex = 7;
+            this.giveACallLbl.Text = "Or Give a Call on...";
             // 
-            // pictureBox6
+            // mailPic
             // 
-            this.pictureBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(12, 503);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 5;
-            this.pictureBox6.TabStop = false;
+            this.mailPic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.mailPic.BackColor = System.Drawing.Color.Transparent;
+            this.mailPic.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.mailPic.Image = ((System.Drawing.Image)(resources.GetObject("mailPic.Image")));
+            this.mailPic.Location = new System.Drawing.Point(12, 503);
+            this.mailPic.Name = "mailPic";
+            this.mailPic.Size = new System.Drawing.Size(24, 24);
+            this.mailPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.mailPic.TabIndex = 5;
+            this.mailPic.TabStop = false;
             // 
-            // label2
+            // mailAddressLbl
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Cooper Black", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label2.Location = new System.Drawing.Point(38, 508);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(140, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "humangifts@gmail.com";
+            this.mailAddressLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.mailAddressLbl.AutoSize = true;
+            this.mailAddressLbl.Font = new System.Drawing.Font("Cooper Black", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mailAddressLbl.ForeColor = System.Drawing.Color.SteelBlue;
+            this.mailAddressLbl.Location = new System.Drawing.Point(38, 508);
+            this.mailAddressLbl.Name = "mailAddressLbl";
+            this.mailAddressLbl.Size = new System.Drawing.Size(140, 13);
+            this.mailAddressLbl.TabIndex = 6;
+            this.mailAddressLbl.Text = "humangifts@gmail.com";
             // 
             // sidebarPanel
             // 
@@ -335,21 +335,21 @@
             this.homeBtn.UseVisualStyleBackColor = true;
             this.homeBtn.Click += new System.EventHandler(this.homeBtn_Click);
             // 
-            // panel2
+            // headerPanel
             // 
-            this.panel2.BackColor = System.Drawing.Color.Goldenrod;
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(200, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(600, 10);
-            this.panel2.TabIndex = 1;
+            this.headerPanel.BackColor = System.Drawing.Color.Goldenrod;
+            this.headerPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.headerPanel.Location = new System.Drawing.Point(200, 0);
+            this.headerPanel.Name = "headerPanel";
+            this.headerPanel.Size = new System.Drawing.Size(600, 10);
+            this.headerPanel.TabIndex = 1;
             // 
             // logoPanel
             // 
             this.logoPanel.BackColor = System.Drawing.Color.Goldenrod;
             this.logoPanel.Controls.Add(this.titleLabel);
-            this.logoPanel.Controls.Add(this.label3);
-            this.logoPanel.Controls.Add(this.pictureBox1);
+            this.logoPanel.Controls.Add(this.ommaLbl);
+            this.logoPanel.Controls.Add(this.logoPic);
             this.logoPanel.Location = new System.Drawing.Point(228, 1);
             this.logoPanel.Name = "logoPanel";
             this.logoPanel.Size = new System.Drawing.Size(120, 150);
@@ -367,34 +367,35 @@
             this.titleLabel.TabIndex = 16;
             this.titleLabel.Text = "C";
             // 
-            // label3
+            // ommaLbl
             // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Comic Sans MS", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(38, 108);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 34);
-            this.label3.TabIndex = 17;
-            this.label3.Text = "omma";
+            this.ommaLbl.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ommaLbl.AutoSize = true;
+            this.ommaLbl.BackColor = System.Drawing.Color.Transparent;
+            this.ommaLbl.Font = new System.Drawing.Font("Comic Sans MS", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ommaLbl.Location = new System.Drawing.Point(38, 108);
+            this.ommaLbl.Name = "ommaLbl";
+            this.ommaLbl.Size = new System.Drawing.Size(79, 34);
+            this.ommaLbl.TabIndex = 17;
+            this.ommaLbl.Text = "omma";
             // 
-            // pictureBox1
+            // logoPic
             // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(21, 20);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(80, 80);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
+            this.logoPic.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.logoPic.Image = ((System.Drawing.Image)(resources.GetObject("logoPic.Image")));
+            this.logoPic.Location = new System.Drawing.Point(21, 20);
+            this.logoPic.Name = "logoPic";
+            this.logoPic.Size = new System.Drawing.Size(80, 80);
+            this.logoPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.logoPic.TabIndex = 3;
+            this.logoPic.TabStop = false;
             // 
             // shadedPanel
             // 
             this.shadedPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.shadedPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.shadedPanel.Controls.Add(this.notificationsAlertLbl);
             this.shadedPanel.Controls.Add(this.facebookBtn);
             this.shadedPanel.Controls.Add(this.askfmBtn);
             this.shadedPanel.Controls.Add(this.twitterBtn);
@@ -408,6 +409,22 @@
             this.shadedPanel.Name = "shadedPanel";
             this.shadedPanel.Size = new System.Drawing.Size(600, 40);
             this.shadedPanel.TabIndex = 4;
+            // 
+            // notificationsAlertLbl
+            // 
+            this.notificationsAlertLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.notificationsAlertLbl.AutoSize = true;
+            this.notificationsAlertLbl.BackColor = System.Drawing.Color.Transparent;
+            this.notificationsAlertLbl.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.notificationsAlertLbl.Font = new System.Drawing.Font("Wingdings", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.notificationsAlertLbl.ForeColor = System.Drawing.Color.Crimson;
+            this.notificationsAlertLbl.Location = new System.Drawing.Point(451, 9);
+            this.notificationsAlertLbl.Name = "notificationsAlertLbl";
+            this.notificationsAlertLbl.Size = new System.Drawing.Size(14, 12);
+            this.notificationsAlertLbl.TabIndex = 12;
+            this.notificationsAlertLbl.Text = "l";
+            this.notificationsAlertLbl.Visible = false;
+            this.notificationsAlertLbl.Click += new System.EventHandler(this.notificationBtn_Click);
             // 
             // facebookBtn
             // 
@@ -601,11 +618,12 @@
             this.settingsContainer.BackColor = System.Drawing.Color.Goldenrod;
             this.settingsContainer.Controls.Add(this.changeMailBtn);
             this.settingsContainer.Controls.Add(this.changePassBtn);
+            this.settingsContainer.Controls.Add(this.messageBtn);
             this.settingsContainer.Controls.Add(this.logoutBtn);
             this.settingsContainer.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.settingsContainer.Location = new System.Drawing.Point(321, 45);
             this.settingsContainer.Name = "settingsContainer";
-            this.settingsContainer.Size = new System.Drawing.Size(191, 165);
+            this.settingsContainer.Size = new System.Drawing.Size(191, 230);
             this.settingsContainer.TabIndex = 3;
             this.settingsContainer.Visible = false;
             this.settingsContainer.WrapContents = false;
@@ -645,6 +663,24 @@
             this.changePassBtn.Text = "  Change Password";
             this.changePassBtn.UseVisualStyleBackColor = true;
             // 
+            // messageBtn
+            // 
+            this.messageBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.messageBtn.FlatAppearance.BorderSize = 0;
+            this.messageBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.messageBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.messageBtn.Font = new System.Drawing.Font("Comic Sans MS", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.messageBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.messageBtn.Image = ((System.Drawing.Image)(resources.GetObject("messageBtn.Image")));
+            this.messageBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.messageBtn.Location = new System.Drawing.Point(3, 113);
+            this.messageBtn.Name = "messageBtn";
+            this.messageBtn.Size = new System.Drawing.Size(185, 49);
+            this.messageBtn.TabIndex = 5;
+            this.messageBtn.Text = "Send Message";
+            this.messageBtn.UseVisualStyleBackColor = true;
+            this.messageBtn.Click += new System.EventHandler(this.messageBtn_Click);
+            // 
             // logoutBtn
             // 
             this.logoutBtn.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -655,7 +691,7 @@
             this.logoutBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.logoutBtn.Image = ((System.Drawing.Image)(resources.GetObject("logoutBtn.Image")));
             this.logoutBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.logoutBtn.Location = new System.Drawing.Point(3, 113);
+            this.logoutBtn.Location = new System.Drawing.Point(3, 168);
             this.logoutBtn.Name = "logoutBtn";
             this.logoutBtn.Size = new System.Drawing.Size(185, 49);
             this.logoutBtn.TabIndex = 2;
@@ -667,27 +703,15 @@
             // notificationsContainer
             // 
             this.notificationsContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.notificationsContainer.AutoSize = true;
+            this.notificationsContainer.AutoScroll = true;
             this.notificationsContainer.BackColor = System.Drawing.Color.Goldenrod;
-            this.notificationsContainer.Controls.Add(this.label6);
             this.notificationsContainer.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.notificationsContainer.Location = new System.Drawing.Point(236, 44);
+            this.notificationsContainer.Location = new System.Drawing.Point(195, 44);
             this.notificationsContainer.Name = "notificationsContainer";
-            this.notificationsContainer.Size = new System.Drawing.Size(238, 100);
+            this.notificationsContainer.Size = new System.Drawing.Size(279, 231);
             this.notificationsContainer.TabIndex = 1;
             this.notificationsContainer.Visible = false;
             this.notificationsContainer.WrapContents = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label6.Location = new System.Drawing.Point(3, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 16);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "label6";
             // 
             // button1
             // 
@@ -710,7 +734,7 @@
             this.ClientSize = new System.Drawing.Size(800, 600);
             this.Controls.Add(this.logoPanel);
             this.Controls.Add(this.shadedPanel);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.headerPanel);
             this.Controls.Add(this.navbarPanel);
             this.Controls.Add(this.childFormPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -721,12 +745,13 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.navbarPanel.ResumeLayout(false);
             this.navbarPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phonePic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mailPic)).EndInit();
             this.logoPanel.ResumeLayout(false);
             this.logoPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logoPic)).EndInit();
             this.shadedPanel.ResumeLayout(false);
+            this.shadedPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.facebookBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.askfmBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.twitterBtn)).EndInit();
@@ -739,8 +764,6 @@
             this.childFormPanel.PerformLayout();
             this.quoteBox.ResumeLayout(false);
             this.settingsContainer.ResumeLayout(false);
-            this.notificationsContainer.ResumeLayout(false);
-            this.notificationsContainer.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -748,11 +771,11 @@
         #endregion
 
         private System.Windows.Forms.Panel navbarPanel;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel headerPanel;
         private System.Windows.Forms.Panel logoPanel;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox logoPic;
         private System.Windows.Forms.Label titleLabel;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label ommaLbl;
         private System.Windows.Forms.Button homeBtn;
         private System.Windows.Forms.Button rentBtn;
         private System.Windows.Forms.Button topCustomersBtn;
@@ -760,12 +783,12 @@
         private System.Windows.Forms.Button roomsBtn;
         private System.Windows.Forms.Panel sidebarPanel;
         private System.Windows.Forms.Label contactLbl;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.PictureBox pictureBox9;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label mailAddressLbl;
+        private System.Windows.Forms.Label sendMailOnLbl;
+        private System.Windows.Forms.PictureBox mailPic;
+        private System.Windows.Forms.PictureBox phonePic;
+        private System.Windows.Forms.Label phoneLbl;
+        private System.Windows.Forms.Label giveACallLbl;
         private System.Windows.Forms.Panel shadedPanel;
         private System.Windows.Forms.PictureBox notificationsBtn;
         private System.Windows.Forms.PictureBox askfmBtn;
@@ -778,7 +801,6 @@
         private System.Windows.Forms.Panel childFormPanel;
         private System.Windows.Forms.Button feedbackBtn;
         private System.Windows.Forms.FlowLayoutPanel notificationsContainer;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel connectPanel;
         private System.Windows.Forms.FlowLayoutPanel settingsContainer;
@@ -790,5 +812,7 @@
         private System.Windows.Forms.Button changePassBtn;
         private System.Windows.Forms.Label userNameLbl;
         private System.Windows.Forms.Label welcomeLbl;
+        private System.Windows.Forms.Button messageBtn;
+        private System.Windows.Forms.Label notificationsAlertLbl;
     }
 }

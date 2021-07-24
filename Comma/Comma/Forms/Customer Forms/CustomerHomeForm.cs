@@ -1,4 +1,6 @@
 ﻿using Comma.CustomClasses;
+using Comma.Forms.Common_Forms;
+using Comma.Forms.Customer_Forms;
 using System;
 using System.Configuration;
 using System.Data;
@@ -30,6 +32,7 @@ namespace Comma
             notificationsContainer.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, notificationsContainer.Width, notificationsContainer.Height, 15, 15));
             settingsContainer.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, settingsContainer.Width, settingsContainer.Height, 15, 15));
             showRoomsBtn.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, showRoomsBtn.Width, showRoomsBtn.Height, 30, 30));
+            notificationsAlertLbl.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, notificationsAlertLbl.Width, notificationsAlertLbl.Height, 1500, 1500));
             initializeQuotes();
             string[] names = GlobalData.userFullName.Split(' ');
             userNameLbl.Text = names[0][0] + "." + names[1];
@@ -178,15 +181,14 @@ namespace Comma
         {
             Panel border = new Panel();
             border.BackColor = Color.Silver;
-            border.Width = notificationsContainer.Width - 6;
+            border.Width = notificationsContainer.Width - 24;
             border.Height = 4;
-            Label L = new Label();
-            L.Text = "NEW LABEL...";
-            L.Font = new Font("Comic Sans MS", 8, FontStyle.Bold);
-            notificationsContainer.Controls.Add(border);
-            notificationsContainer.Controls.Add(L);
 
-            notificationsContainer.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, notificationsContainer.Width, notificationsContainer.Height, 15, 15));
+            CustomMessage message = new CustomMessage();
+            message.Width = notificationsContainer.Width - 24;
+
+            notificationsContainer.Controls.Add(message);
+            //notificationsContainer.Controls.Add(border);
         }
 
         private void resetContextMenus()
@@ -263,6 +265,13 @@ namespace Comma
             else
                 MessageBox.Show("There's No Corresponding Link Associated Yet !!", "SOCIAL LINKS", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        private void messageBtn_Click(object sender, EventArgs e)
+        {
+             openForm(new MessagesForm(false));
+             highlightSelectedButton(homeBtn);
+        }
+
         // =========================================================
 
         private void showRoomsBtn_Click(object sender, EventArgs e)

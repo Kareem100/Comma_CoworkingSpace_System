@@ -38,6 +38,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -93,16 +94,28 @@
     <Compile Include="Forms\Admin Forms\RentInformationForm.Designer.cs">
       <DependentUpon>RentInformationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Common Forms\MessagesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Common Forms\MessagesForm.Designer.cs">
+      <DependentUpon>MessagesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\CustomMessageControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\CustomMessageControl.Designer.cs">
+      <DependentUpon>CustomMessageControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Customer Forms\FeedbackForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Customer Forms\FeedbackForm.Designer.cs">
       <DependentUpon>FeedbackForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Customer Forms\LoginForm.cs">
+    <Compile Include="Forms\Common Forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Customer Forms\LoginForm.Designer.cs">
+    <Compile Include="Forms\Common Forms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\userRoomControl.cs">
@@ -188,10 +201,16 @@
     <EmbeddedResource Include="Forms\Admin Forms\ShowRentsForm.resx">
       <DependentUpon>ShowRentsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Common Forms\MessagesForm.resx">
+      <DependentUpon>MessagesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\CustomMessageControl.resx">
+      <DependentUpon>CustomMessageControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Customer Forms\FeedbackForm.resx">
       <DependentUpon>FeedbackForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Customer Forms\LoginForm.resx">
+    <EmbeddedResource Include="Forms\Common Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Customer Forms\RegisterForm.resx">

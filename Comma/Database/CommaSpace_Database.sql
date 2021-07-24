@@ -2,8 +2,9 @@
 USE CommaSpace;
 
 -- DROPING ALL EXISTING TABLES
+DROP TABLE IF EXISTS AdminCustomerMessages;
 DROP TABLE IF EXISTS Reservations;
-DROP TABLE IF EXISTS social_links;
+DROP TABLE IF EXISTS SocialLinks;
 DROP TABLE IF EXISTS Feedbacks;
 DROP TABLE IF EXISTS Users2;
 DROP TABLE IF EXISTS Rooms;
@@ -51,6 +52,15 @@ customerHadProblems NVARCHAR(10) not null,
 feedbackType NVARCHAR(10) not null,
 feedbackContent NVARCHAR(100) not null,
 customerID INT not null FOREIGN KEY REFERENCES Users2(userID),
+);
+
+CREATE TABLE AdminCustomerMessages (
+messageID INT IDENTITY primary key,
+adminID INT not null FOREIGN KEY REFERENCES Users2(userID), 
+customerID INT not null FOREIGN KEY REFERENCES Users2(userID),
+messageContent NVARCHAR(200) not null,
+fromAdmin BIT not null,
+seen BIT not null
 );
 
 CREATE TABLE SocialLinks (
