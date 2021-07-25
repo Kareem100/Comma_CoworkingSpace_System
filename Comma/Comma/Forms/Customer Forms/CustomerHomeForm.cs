@@ -34,7 +34,7 @@ namespace Comma
             notificationsContainer.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, notificationsContainer.Width, notificationsContainer.Height, 15, 15));
             settingsContainer.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, settingsContainer.Width, settingsContainer.Height, 15, 15));
             showRoomsBtn.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, showRoomsBtn.Width, showRoomsBtn.Height, 30, 30));
-            notificationsAlertLbl.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, notificationsAlertLbl.Width, notificationsAlertLbl.Height, 1500, 1500));
+            notificationsAlertLbl.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, notificationsAlertLbl.Width, notificationsAlertLbl.Height, 100, 100));
             initializeQuotes();
             string[] names = GlobalData.userFullName.Split(' ');
             userNameLbl.Text = names[0][0] + "." + names[1];
@@ -71,18 +71,12 @@ namespace Comma
 
         private void addMessage(int messageID, string from, string messageContent)
         {
-            Panel border = new Panel();
-            border.BackColor = Color.Silver;
-            border.Width = notificationsContainer.Width - 24;
-            border.Height = 4;
-
             CustomMessage message = new CustomMessage(messageID);
             message.Width = notificationsContainer.Width - 24;
             message.setFromLbl(from);
             message.setMessageContent(messageContent);
 
             notificationsContainer.Controls.Add(message);
-            //notificationsContainer.Controls.Add(border);
         }
 
         private void initializeQuotes()

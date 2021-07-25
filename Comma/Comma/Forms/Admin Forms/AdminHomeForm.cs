@@ -1,6 +1,7 @@
 ﻿using Comma.CustomClasses;
 using Comma.Forms.Admin_Forms;
 using Comma.Forms.Common_Forms;
+using Comma.Forms.Customer_Forms;
 using System;
 using System.Configuration;
 using System.Data;
@@ -32,10 +33,12 @@ namespace Comma
             sidebarPanel.Top = homeBtn.Top;
             homeBtn.ForeColor = Color.Goldenrod;settingsContainer.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, settingsContainer.Width, settingsContainer.Height, 15, 15));
             showRoomsBtn.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, showRoomsBtn.Width, showRoomsBtn.Height, 30, 30));
+            notificationsAlertLbl.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, notificationsAlertLbl.Width, notificationsAlertLbl.Height, 100, 100));
             string[] names = GlobalData.userFullName.Split(' ');
             userNameLbl.Text = names[0][0] + "." + names[1];
             facebookLink = twitterLink = instagramLink = askfmLink = "";
             loadSocialLinks();
+            loadMessagesIfAny();
         }
 
         private void closeButton_Click(object sender, EventArgs e)
@@ -258,5 +261,66 @@ namespace Comma
                 MessageBox.Show("There's No Corresponding Link Associated Yet !!", "SOCIAL LINKS", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         // =========================================================
+
+        // ==================== NOTIFICATIONS ======================
+        private void notificationsBtn_Click(object sender, EventArgs e)
+        {
+            settingsContainer.Visible = false;
+            notificationsAlertLbl.Visible = false;
+            settingsBtn.BackColor = Color.Transparent;
+
+            if (notificationsContainer.Visible == false)
+            {
+                notificationsContainer.Visible = true;
+                connectPanel.Visible = true;
+                connectPanel.Left = notificationsBtn.Left;
+                notificationsContainer.BringToFront();
+                notificationsBtn.BackColor = Color.Goldenrod;
+            }
+            else
+            {
+                notificationsContainer.Visible = false;
+                connectPanel.Visible = false;
+                notificationsBtn.BackColor = Color.Transparent;
+            }
+        }
+
+        private void loadMessagesIfAny()
+        {
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
+            if (conn.State == ConnectionState.Closed) conn.Open();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = "getAdminMessages";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("adminID", int.Parse(GlobalData.userID));
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+                noMessagesLbl.Visible = false;
+                notificationsAlertLbl.Visible = true;
+            }
+            else
+                noMessagesLbl.Visible = true;
+
+            while (reader.Read())
+                addMessage(reader.GetInt32(0), reader.GetString(1), reader.GetString(2));
+
+            reader.Close();
+            conn.Dispose();
+        }
+
+        private void addMessage(int messageID, string from, string messageContent)
+        {
+            CustomMessage message = new CustomMessage(messageID);
+            message.Width = notificationsContainer.Width - 24;
+            message.setFromLbl(from);
+            message.setMessageContent(messageContent);
+
+            notificationsContainer.Controls.Add(message);
+        }
+
+        // ==========================================================
     }
 }

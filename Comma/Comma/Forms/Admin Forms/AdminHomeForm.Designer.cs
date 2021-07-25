@@ -31,6 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminHomeForm));
             this.titleLabel = new System.Windows.Forms.Label();
             this.shadedPanel = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.notificationsAlertLbl = new System.Windows.Forms.Label();
+            this.notificationsBtn = new System.Windows.Forms.PictureBox();
             this.connectPanel = new System.Windows.Forms.Panel();
             this.askfmBtn = new System.Windows.Forms.PictureBox();
             this.closeButton = new System.Windows.Forms.PictureBox();
@@ -64,10 +67,13 @@
             this.changePassBtn = new System.Windows.Forms.Button();
             this.sendMessageBtn = new System.Windows.Forms.Button();
             this.logoutBtn = new System.Windows.Forms.Button();
+            this.notificationsContainer = new System.Windows.Forms.FlowLayoutPanel();
+            this.noMessagesLbl = new System.Windows.Forms.Label();
             this.logoPanel = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.topHeader = new System.Windows.Forms.Panel();
             this.shadedPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.notificationsBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.askfmBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.closeButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimizeButton)).BeginInit();
@@ -80,6 +86,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.childFormPanel.SuspendLayout();
             this.settingsContainer.SuspendLayout();
+            this.notificationsContainer.SuspendLayout();
             this.logoPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -101,6 +108,9 @@
             this.shadedPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.shadedPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.shadedPanel.Controls.Add(this.panel1);
+            this.shadedPanel.Controls.Add(this.notificationsAlertLbl);
+            this.shadedPanel.Controls.Add(this.notificationsBtn);
             this.shadedPanel.Controls.Add(this.connectPanel);
             this.shadedPanel.Controls.Add(this.askfmBtn);
             this.shadedPanel.Controls.Add(this.closeButton);
@@ -113,6 +123,46 @@
             this.shadedPanel.Name = "shadedPanel";
             this.shadedPanel.Size = new System.Drawing.Size(600, 40);
             this.shadedPanel.TabIndex = 9;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.Goldenrod;
+            this.panel1.Location = new System.Drawing.Point(440, 30);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(24, 30);
+            this.panel1.TabIndex = 11;
+            this.panel1.Visible = false;
+            // 
+            // notificationsAlertLbl
+            // 
+            this.notificationsAlertLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.notificationsAlertLbl.AutoSize = true;
+            this.notificationsAlertLbl.BackColor = System.Drawing.Color.Transparent;
+            this.notificationsAlertLbl.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.notificationsAlertLbl.Font = new System.Drawing.Font("Wingdings", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.notificationsAlertLbl.ForeColor = System.Drawing.Color.Crimson;
+            this.notificationsAlertLbl.Location = new System.Drawing.Point(448, 8);
+            this.notificationsAlertLbl.Name = "notificationsAlertLbl";
+            this.notificationsAlertLbl.Size = new System.Drawing.Size(14, 12);
+            this.notificationsAlertLbl.TabIndex = 14;
+            this.notificationsAlertLbl.Text = "l";
+            this.notificationsAlertLbl.Visible = false;
+            this.notificationsAlertLbl.Click += new System.EventHandler(this.notificationsBtn_Click);
+            // 
+            // notificationsBtn
+            // 
+            this.notificationsBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.notificationsBtn.BackColor = System.Drawing.Color.Transparent;
+            this.notificationsBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.notificationsBtn.Image = ((System.Drawing.Image)(resources.GetObject("notificationsBtn.Image")));
+            this.notificationsBtn.Location = new System.Drawing.Point(440, 6);
+            this.notificationsBtn.Name = "notificationsBtn";
+            this.notificationsBtn.Size = new System.Drawing.Size(24, 24);
+            this.notificationsBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.notificationsBtn.TabIndex = 13;
+            this.notificationsBtn.TabStop = false;
+            this.notificationsBtn.Click += new System.EventHandler(this.notificationsBtn_Click);
             // 
             // connectPanel
             // 
@@ -501,6 +551,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.childFormPanel.BackColor = System.Drawing.Color.Transparent;
             this.childFormPanel.Controls.Add(this.settingsContainer);
+            this.childFormPanel.Controls.Add(this.notificationsContainer);
             this.childFormPanel.Controls.Add(this.showRoomsBtn);
             this.childFormPanel.Location = new System.Drawing.Point(200, 9);
             this.childFormPanel.Name = "childFormPanel";
@@ -598,6 +649,33 @@
             this.logoutBtn.UseVisualStyleBackColor = true;
             this.logoutBtn.Click += new System.EventHandler(this.logoutBtn_Click);
             // 
+            // notificationsContainer
+            // 
+            this.notificationsContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.notificationsContainer.AutoScroll = true;
+            this.notificationsContainer.BackColor = System.Drawing.Color.Goldenrod;
+            this.notificationsContainer.Controls.Add(this.noMessagesLbl);
+            this.notificationsContainer.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.notificationsContainer.Location = new System.Drawing.Point(185, 40);
+            this.notificationsContainer.Name = "notificationsContainer";
+            this.notificationsContainer.Size = new System.Drawing.Size(279, 231);
+            this.notificationsContainer.TabIndex = 10;
+            this.notificationsContainer.Visible = false;
+            this.notificationsContainer.WrapContents = false;
+            // 
+            // noMessagesLbl
+            // 
+            this.noMessagesLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.noMessagesLbl.AutoSize = true;
+            this.noMessagesLbl.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.noMessagesLbl.ForeColor = System.Drawing.Color.Crimson;
+            this.noMessagesLbl.Location = new System.Drawing.Point(3, 0);
+            this.noMessagesLbl.Name = "noMessagesLbl";
+            this.noMessagesLbl.Size = new System.Drawing.Size(99, 19);
+            this.noMessagesLbl.TabIndex = 0;
+            this.noMessagesLbl.Text = "No Messages !";
+            this.noMessagesLbl.Visible = false;
+            // 
             // logoPanel
             // 
             this.logoPanel.BackColor = System.Drawing.Color.Goldenrod;
@@ -648,6 +726,8 @@
             this.Text = "AdminHomeForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.shadedPanel.ResumeLayout(false);
+            this.shadedPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.notificationsBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.askfmBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.closeButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimizeButton)).EndInit();
@@ -662,6 +742,8 @@
             this.childFormPanel.ResumeLayout(false);
             this.childFormPanel.PerformLayout();
             this.settingsContainer.ResumeLayout(false);
+            this.notificationsContainer.ResumeLayout(false);
+            this.notificationsContainer.PerformLayout();
             this.logoPanel.ResumeLayout(false);
             this.logoPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -709,5 +791,10 @@
         private System.Windows.Forms.Label userNameLbl;
         private System.Windows.Forms.Label welcomeLbl;
         private System.Windows.Forms.Button sendMessageBtn;
+        private System.Windows.Forms.Label notificationsAlertLbl;
+        private System.Windows.Forms.PictureBox notificationsBtn;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.FlowLayoutPanel notificationsContainer;
+        private System.Windows.Forms.Label noMessagesLbl;
     }
 }
