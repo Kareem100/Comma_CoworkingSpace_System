@@ -1,20 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Comma.Forms.Customer_Forms
 {
     public partial class CustomMessage : UserControl
     {
-        public CustomMessage()
+        private int messageID;
+        public CustomMessage(int messageId)
         {
             InitializeComponent();
+            messageID = messageId;
         }
 
         private void deleteLbl_Click(object sender, EventArgs e)
@@ -23,6 +22,21 @@ namespace Comma.Forms.Customer_Forms
             messageLbl.Text = "";
             deleteLbl.Size = Size.Empty;
             Size = Size.Empty;
+            setMessageSeen();
+        }
+
+        private void setMessageSeen()
+        {
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
+            if (conn.State == ConnectionState.Closed) conn.Open();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = "makeMessageSeen";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("messageID", messageID);
+            
+            cmd.ExecuteNonQuery();
+            conn.Dispose();
         }
 
         public void setFromLbl(string fromLblTxt)
@@ -30,10 +44,11 @@ namespace Comma.Forms.Customer_Forms
             fromLbl.Text = fromLblTxt;
         }
 
-        public void setMessageContetn(string messageTxt)
+        public void setMessageContent(string messageTxt)
         {
             messageLbl.Text = messageTxt;
             Height = messageLbl.Location.Y + messageLbl.Height;
         }
+
     }
 }

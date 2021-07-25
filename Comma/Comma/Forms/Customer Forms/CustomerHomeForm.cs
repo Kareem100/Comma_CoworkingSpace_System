@@ -14,13 +14,15 @@ namespace Comma
 {
     public partial class UserHomeForm : Form
     {
+        // ============================================================
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
         (
            int nLeftRect, int nTopRect, int nRightRect,
            int nBottomRect, int nWidthEllipse,  int nHeightEllipse
         );
-
+        // ============================================================
+        
         private Form activeForm = null;
         private string facebookLink, twitterLink, instagramLink, askfmLink;
 
@@ -38,6 +40,49 @@ namespace Comma
             userNameLbl.Text = names[0][0] + "." + names[1];
             facebookLink = twitterLink = instagramLink = askfmLink = "";
             loadSocialLinks();
+            loadMessagesIfAny();
+        }
+
+        private void loadMessagesIfAny()
+        {
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
+            if (conn.State == ConnectionState.Closed) conn.Open();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = "getCustomerMessages";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("customerID", int.Parse(GlobalData.userID));
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+                noMessagesLbl.Visible = false;
+                notificationsAlertLbl.Visible = true;
+            }
+            else
+                noMessagesLbl.Visible = true;
+
+            while (reader.Read())
+                addMessage(reader.GetInt32(0), reader.GetString(1), reader.GetString(2));
+            
+            reader.Close();
+            conn.Dispose();
+        }
+
+        private void addMessage(int messageID, string from, string messageContent)
+        {
+            Panel border = new Panel();
+            border.BackColor = Color.Silver;
+            border.Width = notificationsContainer.Width - 24;
+            border.Height = 4;
+
+            CustomMessage message = new CustomMessage(messageID);
+            message.Width = notificationsContainer.Width - 24;
+            message.setFromLbl(from);
+            message.setMessageContent(messageContent);
+
+            notificationsContainer.Controls.Add(message);
+            //notificationsContainer.Controls.Add(border);
         }
 
         private void initializeQuotes()
@@ -136,6 +181,7 @@ namespace Comma
         private void notificationBtn_Click(object sender, EventArgs e)
         {
             settingsContainer.Visible = false;
+            notificationsAlertLbl.Visible = false;
             settingsBtn.BackColor = Color.Transparent;
 
             if (notificationsContainer.Visible == false)
@@ -173,22 +219,6 @@ namespace Comma
                 connectPanel.Visible = false;
                 settingsBtn.BackColor = Color.Transparent;
             }
-        }
-
-        // DATABASE PART
-        // ADD MESSAGE BUTTON
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Panel border = new Panel();
-            border.BackColor = Color.Silver;
-            border.Width = notificationsContainer.Width - 24;
-            border.Height = 4;
-
-            CustomMessage message = new CustomMessage();
-            message.Width = notificationsContainer.Width - 24;
-
-            notificationsContainer.Controls.Add(message);
-            //notificationsContainer.Controls.Add(border);
         }
 
         private void resetContextMenus()

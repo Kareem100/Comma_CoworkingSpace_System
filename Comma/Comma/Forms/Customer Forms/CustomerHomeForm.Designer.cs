@@ -72,7 +72,7 @@
             this.messageBtn = new System.Windows.Forms.Button();
             this.logoutBtn = new System.Windows.Forms.Button();
             this.notificationsContainer = new System.Windows.Forms.FlowLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.noMessagesLbl = new System.Windows.Forms.Label();
             this.navbarPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.phonePic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mailPic)).BeginInit();
@@ -90,6 +90,7 @@
             this.childFormPanel.SuspendLayout();
             this.quoteBox.SuspendLayout();
             this.settingsContainer.SuspendLayout();
+            this.notificationsContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // navbarPanel
@@ -554,7 +555,6 @@
             this.childFormPanel.Controls.Add(this.quoteBox);
             this.childFormPanel.Controls.Add(this.settingsContainer);
             this.childFormPanel.Controls.Add(this.notificationsContainer);
-            this.childFormPanel.Controls.Add(this.button1);
             this.childFormPanel.Location = new System.Drawing.Point(200, 4);
             this.childFormPanel.Name = "childFormPanel";
             this.childFormPanel.Size = new System.Drawing.Size(600, 596);
@@ -705,6 +705,7 @@
             this.notificationsContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.notificationsContainer.AutoScroll = true;
             this.notificationsContainer.BackColor = System.Drawing.Color.Goldenrod;
+            this.notificationsContainer.Controls.Add(this.noMessagesLbl);
             this.notificationsContainer.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.notificationsContainer.Location = new System.Drawing.Point(195, 44);
             this.notificationsContainer.Name = "notificationsContainer";
@@ -713,17 +714,18 @@
             this.notificationsContainer.Visible = false;
             this.notificationsContainer.WrapContents = false;
             // 
-            // button1
+            // noMessagesLbl
             // 
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(28, 153);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 33);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "ADD MSSG";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.noMessagesLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.noMessagesLbl.AutoSize = true;
+            this.noMessagesLbl.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.noMessagesLbl.ForeColor = System.Drawing.Color.Crimson;
+            this.noMessagesLbl.Location = new System.Drawing.Point(3, 0);
+            this.noMessagesLbl.Name = "noMessagesLbl";
+            this.noMessagesLbl.Size = new System.Drawing.Size(99, 19);
+            this.noMessagesLbl.TabIndex = 0;
+            this.noMessagesLbl.Text = "No Messages !";
+            this.noMessagesLbl.Visible = false;
             // 
             // UserHomeForm
             // 
@@ -764,6 +766,8 @@
             this.childFormPanel.PerformLayout();
             this.quoteBox.ResumeLayout(false);
             this.settingsContainer.ResumeLayout(false);
+            this.notificationsContainer.ResumeLayout(false);
+            this.notificationsContainer.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -801,7 +805,6 @@
         private System.Windows.Forms.Panel childFormPanel;
         private System.Windows.Forms.Button feedbackBtn;
         private System.Windows.Forms.FlowLayoutPanel notificationsContainer;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel connectPanel;
         private System.Windows.Forms.FlowLayoutPanel settingsContainer;
         private System.Windows.Forms.Button logoutBtn;
@@ -814,5 +817,6 @@
         private System.Windows.Forms.Label welcomeLbl;
         private System.Windows.Forms.Button messageBtn;
         private System.Windows.Forms.Label notificationsAlertLbl;
+        private System.Windows.Forms.Label noMessagesLbl;
     }
 }

@@ -52,6 +52,7 @@ namespace Comma.Forms.Customer_Forms
             this.messageLbl.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.messageLbl.Location = new System.Drawing.Point(5, 26);
             this.messageLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.messageLbl.MaximumSize = new System.Drawing.Size(240, 0);
             this.messageLbl.Name = "messageLbl";
             this.messageLbl.Size = new System.Drawing.Size(97, 15);
             this.messageLbl.TabIndex = 1;
@@ -75,7 +76,6 @@ namespace Comma.Forms.Customer_Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.deleteLbl);
             this.Controls.Add(this.messageLbl);
             this.Controls.Add(this.fromLbl);

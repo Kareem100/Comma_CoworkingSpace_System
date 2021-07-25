@@ -14,12 +14,14 @@ namespace Comma
 {
     public partial class AdminHomeForm : Form
     {
+        // ============================================================
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
         (
            int nLeftRect, int nTopRect, int nRightRect,
            int nBottomRect, int nWidthEllipse, int nHeightEllipse
         );
+        // ============================================================
 
         private Form activeForm = null;
         private string facebookLink, twitterLink, instagramLink, askfmLink;
