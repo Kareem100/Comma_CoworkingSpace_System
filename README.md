@@ -33,6 +33,7 @@ from showing available rooms and seeing their rentals to booking the rooms, send
 - [IncreaseUserRentals](Comma/Database/Procedures/IncreaseRentals.sql)
 - [AddMessage](Comma/Database/Procedures/AddMessage.sql)
 - [GetCustomerMessages](Comma/Database/Procedures/GetCustomerMessages.sql)
+- [GetAdminMessages](Comma/Database/Procedures/GetAdminMessages.sql)
 - [MakeMessageSeen](Comma/Database/Procedures/MakeMessageSeen.sql)
   
 </p>
