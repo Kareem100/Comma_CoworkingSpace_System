@@ -419,6 +419,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "RentInformationForm";
             this.Text = "UserProfileForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RentInformationForm_FormClosing);
             this.Load += new System.EventHandler(this.RentInformationForm_Load);
             this.responseGroupBox.ResumeLayout(false);
             this.roomGroupBox.ResumeLayout(false);

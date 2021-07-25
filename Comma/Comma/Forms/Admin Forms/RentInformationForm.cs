@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Comma.CustomClasses;
+using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -10,8 +11,10 @@ namespace Comma.Forms.Admin_Forms
 {
     public partial class RentInformationForm : Form
     {
-        string mRequestId, mRoomName;
+        private string mRequestId, mRoomName;
+        private int customerID;
         private AdminHomeForm homeForm;
+        private SqlConnection con;
 
         public RentInformationForm(AdminHomeForm adminHome, string RequestId, string RoomName)
         {
@@ -47,7 +50,7 @@ namespace Comma.Forms.Admin_Forms
 
         private void RentInformationForm_Load(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
+            con = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
             if (con.State == ConnectionState.Closed) con.Open();
             SqlCommand cmd = new SqlCommand("select * from Reservations where reservationID=" + int.Parse(mRequestId), con);
             cmd.CommandType = CommandType.Text;
@@ -69,19 +72,19 @@ namespace Comma.Forms.Admin_Forms
                     hourTo.Text = "Hour : " + dr[6].ToString();
                     guestsLbl.Text = "Number Of Guests: " + dr[7].ToString();
                     totalPriceLbl.Text = dr[8].ToString() + " £";
+
+                    customerID = int.Parse(dr[3].ToString());
                     setRoomImage(int.Parse(dr[4].ToString()));
-                    getCustomer(int.Parse(dr[3].ToString()));
+                    getCustomer(customerID);
                 }
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message);
             }
             finally
             {
                 dr.Close();
-                con.Close();
             }
         }
 
@@ -89,17 +92,34 @@ namespace Comma.Forms.Admin_Forms
         {
             increaseRentals();
             takeRequestAction("Accepted");
+            sendMessageByResponse(true);
+            returnToRequests();
         }
 
         private void declineBtn_Click(object sender, EventArgs e)
         {
             takeRequestAction("Declined");
+            sendMessageByResponse(false);
+            returnToRequests();
+        }
+
+        private void increaseRentals()
+        {
+            SqlCommand cmd = new SqlCommand("increaseRentals", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("reservationID", int.Parse(mRequestId));
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void takeRequestAction(string state)
         {
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
-            if (con.State == ConnectionState.Closed) con.Open();
             SqlCommand cmd = new SqlCommand("editRentalState", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@ID", SqlDbType.Int).Value = int.Parse(mRequestId.ToString());
@@ -112,41 +132,31 @@ namespace Comma.Forms.Admin_Forms
             {
                 MessageBox.Show(ex.Message);
             }
-            finally
-            {
-                con.Close();
-            }
 
             MessageBox.Show("Request " + state +  " Successfully !", "Request", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            returnToRequests();
         }
 
-        private void increaseRentals()
+        private void sendMessageByResponse(bool Accepted)
         {
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
-            if (con.State == ConnectionState.Closed) con.Open();
-            SqlCommand cmd = new SqlCommand("increaseRentals", con);
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = con;
+            cmd.CommandText = "addMessage";
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("reservationID", int.Parse(mRequestId));
-            try
-            {
-                cmd.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                con.Close();
-            }
+            string message = (Accepted) ? GlobalData.acceptedRentNotification : GlobalData.declinedRentNotification;
+            cmd.Parameters.AddWithValue("adminID", int.Parse(GlobalData.userID));
+            cmd.Parameters.AddWithValue("customerID", customerID);
+            cmd.Parameters.AddWithValue("messageContent", message);
+            cmd.Parameters.AddWithValue("fromAdmin", true);
+
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("A Message has been Sent to The Customer Specifying the Response !", "MESSAGES", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void setRoomImage(int roomId)
         {
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
-            if (con.State == ConnectionState.Closed) con.Open();
-            SqlCommand cmd = new SqlCommand("SELECT roomImage FROM ROOMS WHERE roomID = " + roomId, con);
+            SqlConnection con2 = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
+            if (con2.State == ConnectionState.Closed) con2.Open();
+            SqlCommand cmd = new SqlCommand("SELECT roomImage FROM ROOMS WHERE roomID = " + roomId, con2);
             cmd.CommandType = CommandType.Text;
             try
             {
@@ -159,7 +169,7 @@ namespace Comma.Forms.Admin_Forms
             }
             finally
             {
-                con.Close();
+                con2.Close();
             }
         }
 
@@ -174,9 +184,9 @@ namespace Comma.Forms.Admin_Forms
 
         private void getCustomer(int Id)
         {
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
-            if (con.State == ConnectionState.Closed) con.Open();
-            SqlCommand cmd = new SqlCommand("select userName,userMail,userPhone from Users2 where userID = " + Id, con);
+            SqlConnection con3 = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString);
+            if (con3.State == ConnectionState.Closed) con3.Open();
+            SqlCommand cmd = new SqlCommand("select userName,userMail,userPhone from Users2 where userID = " + Id, con3);
             cmd.CommandType = CommandType.Text;
             SqlDataReader dr = null;
             try
@@ -196,12 +206,17 @@ namespace Comma.Forms.Admin_Forms
             finally
             {
                 dr.Close();
-                con.Close();
+                con3.Close();
             }
         }
 
         private void returnToRequests(){
             homeForm.openRentsForm();
+        }
+
+        private void RentInformationForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            con.Dispose();
         }
 
     }
