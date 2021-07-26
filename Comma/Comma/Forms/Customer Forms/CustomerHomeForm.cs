@@ -302,6 +302,12 @@ namespace Comma
             highlightSelectedButton(homeBtn);
         }
 
+        private void changePassBtn_Click(object sender, EventArgs e)
+        {
+            openForm(new ChangePasswordForm());
+            highlightSelectedButton(homeBtn);
+        }
+
         // =========================================================
 
         private void showRoomsBtn_Click(object sender, EventArgs e)

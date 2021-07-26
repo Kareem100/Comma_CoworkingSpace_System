@@ -77,12 +77,14 @@ namespace Comma
 
         private void changeMailBtn_Click(object sender, EventArgs e)
         {
-
+            openForm(new ChangeEmailForm());
+            highlightSelectedButton(homeBtn);
         }
 
         private void changePassBtn_Click(object sender, EventArgs e)
         {
-
+            openForm(new ChangePasswordForm());
+            highlightSelectedButton(homeBtn);
         }
 
         private void sendMessageBtn_Click(object sender, EventArgs e)

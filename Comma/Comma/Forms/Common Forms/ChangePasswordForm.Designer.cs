@@ -53,7 +53,7 @@ namespace Comma.Forms.Common_Forms
             this.containerPanel.Controls.Add(this.newPasswordLbl);
             this.containerPanel.Controls.Add(this.oldPasswordTxt);
             this.containerPanel.Controls.Add(this.oldPasswordLbl);
-            this.containerPanel.Location = new System.Drawing.Point(113, 171);
+            this.containerPanel.Location = new System.Drawing.Point(113, 200);
             this.containerPanel.Name = "containerPanel";
             this.containerPanel.Size = new System.Drawing.Size(381, 328);
             this.containerPanel.TabIndex = 15;
@@ -65,7 +65,7 @@ namespace Comma.Forms.Common_Forms
             this.confirmNewPasswordTxt.Location = new System.Drawing.Point(62, 216);
             this.confirmNewPasswordTxt.Name = "confirmNewPasswordTxt";
             this.confirmNewPasswordTxt.Size = new System.Drawing.Size(264, 30);
-            this.confirmNewPasswordTxt.TabIndex = 15;
+            this.confirmNewPasswordTxt.TabIndex = 3;
             this.confirmNewPasswordTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // newPasswordTxt
@@ -75,7 +75,7 @@ namespace Comma.Forms.Common_Forms
             this.newPasswordTxt.Location = new System.Drawing.Point(62, 145);
             this.newPasswordTxt.Name = "newPasswordTxt";
             this.newPasswordTxt.Size = new System.Drawing.Size(264, 30);
-            this.newPasswordTxt.TabIndex = 14;
+            this.newPasswordTxt.TabIndex = 2;
             this.newPasswordTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // changePasswordBtn
@@ -91,9 +91,10 @@ namespace Comma.Forms.Common_Forms
             this.changePasswordBtn.Location = new System.Drawing.Point(119, 272);
             this.changePasswordBtn.Name = "changePasswordBtn";
             this.changePasswordBtn.Size = new System.Drawing.Size(151, 35);
-            this.changePasswordBtn.TabIndex = 13;
+            this.changePasswordBtn.TabIndex = 4;
             this.changePasswordBtn.Text = "Change Password";
             this.changePasswordBtn.UseVisualStyleBackColor = false;
+            this.changePasswordBtn.Click += new System.EventHandler(this.changePasswordBtn_Click);
             // 
             // confirmNewPasswordLbl
             // 
@@ -149,7 +150,7 @@ namespace Comma.Forms.Common_Forms
             this.titleLbl.ForeColor = System.Drawing.Color.White;
             this.titleLbl.Image = ((System.Drawing.Image)(resources.GetObject("titleLbl.Image")));
             this.titleLbl.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.titleLbl.Location = new System.Drawing.Point(172, 91);
+            this.titleLbl.Location = new System.Drawing.Point(172, 120);
             this.titleLbl.Name = "titleLbl";
             this.titleLbl.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.titleLbl.Size = new System.Drawing.Size(262, 31);
@@ -171,6 +172,7 @@ namespace Comma.Forms.Common_Forms
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "ChangePasswordForm";
             this.Text = "ChangePasswordForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ChangePasswordForm_FormClosing);
             this.containerPanel.ResumeLayout(false);
             this.containerPanel.PerformLayout();
             this.ResumeLayout(false);

@@ -663,6 +663,7 @@
             this.changePassBtn.TabIndex = 4;
             this.changePassBtn.Text = "  Change Password";
             this.changePassBtn.UseVisualStyleBackColor = true;
+            this.changePassBtn.Click += new System.EventHandler(this.changePassBtn_Click);
             // 
             // messageBtn
             // 
