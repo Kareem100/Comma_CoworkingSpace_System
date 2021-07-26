@@ -296,6 +296,12 @@ namespace Comma
              highlightSelectedButton(homeBtn);
         }
 
+        private void changeMailBtn_Click(object sender, EventArgs e)
+        {
+            openForm(new ChangeEmailForm());
+            highlightSelectedButton(homeBtn);
+        }
+
         // =========================================================
 
         private void showRoomsBtn_Click(object sender, EventArgs e)

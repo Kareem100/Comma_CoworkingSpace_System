@@ -32,14 +32,14 @@ namespace Comma.Forms.Common_Forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MessagesForm));
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.fromLbl = new System.Windows.Forms.Label();
-            this.fromTxt = new System.Windows.Forms.TextBox();
-            this.toLbl = new System.Windows.Forms.Label();
-            this.toCmb = new System.Windows.Forms.ComboBox();
+            this.customerIDLbl = new System.Windows.Forms.Label();
+            this.sendMessageBtn = new System.Windows.Forms.Button();
             this.messageTxt = new System.Windows.Forms.TextBox();
             this.messageLbl = new System.Windows.Forms.Label();
-            this.sendMessageBtn = new System.Windows.Forms.Button();
-            this.customerIDLbl = new System.Windows.Forms.Label();
+            this.toCmb = new System.Windows.Forms.ComboBox();
+            this.toLbl = new System.Windows.Forms.Label();
+            this.fromTxt = new System.Windows.Forms.TextBox();
+            this.fromLbl = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +54,7 @@ namespace Comma.Forms.Common_Forms
             this.label1.ForeColor = System.Drawing.Color.Green;
             this.label1.Image = ((System.Drawing.Image)(resources.GetObject("label1.Image")));
             this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label1.Location = new System.Drawing.Point(220, 90);
+            this.label1.Location = new System.Drawing.Point(224, 90);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label1.Size = new System.Drawing.Size(161, 31);
@@ -74,55 +74,39 @@ namespace Comma.Forms.Common_Forms
             this.panel1.Controls.Add(this.toLbl);
             this.panel1.Controls.Add(this.fromTxt);
             this.panel1.Controls.Add(this.fromLbl);
-            this.panel1.Location = new System.Drawing.Point(119, 160);
+            this.panel1.Location = new System.Drawing.Point(120, 160);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(381, 400);
             this.panel1.TabIndex = 11;
             // 
-            // fromLbl
+            // customerIDLbl
             // 
-            this.fromLbl.AutoSize = true;
-            this.fromLbl.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fromLbl.ForeColor = System.Drawing.Color.Goldenrod;
-            this.fromLbl.Location = new System.Drawing.Point(154, 37);
-            this.fromLbl.Name = "fromLbl";
-            this.fromLbl.Size = new System.Drawing.Size(68, 27);
-            this.fromLbl.TabIndex = 0;
-            this.fromLbl.Text = "FROM";
+            this.customerIDLbl.AutoSize = true;
+            this.customerIDLbl.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.customerIDLbl.ForeColor = System.Drawing.Color.Crimson;
+            this.customerIDLbl.Location = new System.Drawing.Point(207, 113);
+            this.customerIDLbl.Name = "customerIDLbl";
+            this.customerIDLbl.Size = new System.Drawing.Size(83, 15);
+            this.customerIDLbl.TabIndex = 14;
+            this.customerIDLbl.Text = "(Customer ID)";
             // 
-            // fromTxt
+            // sendMessageBtn
             // 
-            this.fromTxt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fromTxt.Enabled = false;
-            this.fromTxt.Location = new System.Drawing.Point(62, 71);
-            this.fromTxt.Name = "fromTxt";
-            this.fromTxt.Size = new System.Drawing.Size(264, 26);
-            this.fromTxt.TabIndex = 1;
-            this.fromTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // toLbl
-            // 
-            this.toLbl.AutoSize = true;
-            this.toLbl.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toLbl.ForeColor = System.Drawing.Color.Goldenrod;
-            this.toLbl.Location = new System.Drawing.Point(168, 104);
-            this.toLbl.Name = "toLbl";
-            this.toLbl.Size = new System.Drawing.Size(40, 27);
-            this.toLbl.TabIndex = 2;
-            this.toLbl.Text = "TO";
-            // 
-            // toCmb
-            // 
-            this.toCmb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.toCmb.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.toCmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.toCmb.FormattingEnabled = true;
-            this.toCmb.Location = new System.Drawing.Point(62, 138);
-            this.toCmb.Name = "toCmb";
-            this.toCmb.Size = new System.Drawing.Size(264, 27);
-            this.toCmb.TabIndex = 4;
+            this.sendMessageBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.sendMessageBtn.BackColor = System.Drawing.Color.Goldenrod;
+            this.sendMessageBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.sendMessageBtn.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.sendMessageBtn.FlatAppearance.BorderSize = 0;
+            this.sendMessageBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sendMessageBtn.Font = new System.Drawing.Font("Comic Sans MS", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sendMessageBtn.ForeColor = System.Drawing.Color.Crimson;
+            this.sendMessageBtn.Location = new System.Drawing.Point(119, 353);
+            this.sendMessageBtn.Name = "sendMessageBtn";
+            this.sendMessageBtn.Size = new System.Drawing.Size(151, 35);
+            this.sendMessageBtn.TabIndex = 13;
+            this.sendMessageBtn.Text = "Send Message";
+            this.sendMessageBtn.UseVisualStyleBackColor = false;
+            this.sendMessageBtn.Click += new System.EventHandler(this.sendMessageBtn_Click);
             // 
             // messageTxt
             // 
@@ -146,34 +130,50 @@ namespace Comma.Forms.Common_Forms
             this.messageLbl.TabIndex = 5;
             this.messageLbl.Text = "MESSAGE";
             // 
-            // sendMessageBtn
+            // toCmb
             // 
-            this.sendMessageBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.sendMessageBtn.BackColor = System.Drawing.Color.Goldenrod;
-            this.sendMessageBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.sendMessageBtn.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.sendMessageBtn.FlatAppearance.BorderSize = 0;
-            this.sendMessageBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sendMessageBtn.Font = new System.Drawing.Font("Comic Sans MS", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sendMessageBtn.ForeColor = System.Drawing.Color.Crimson;
-            this.sendMessageBtn.Location = new System.Drawing.Point(119, 353);
-            this.sendMessageBtn.Name = "sendMessageBtn";
-            this.sendMessageBtn.Size = new System.Drawing.Size(151, 35);
-            this.sendMessageBtn.TabIndex = 13;
-            this.sendMessageBtn.Text = "Send Message";
-            this.sendMessageBtn.UseVisualStyleBackColor = false;
-            this.sendMessageBtn.Click += new System.EventHandler(this.sendMessageBtn_Click);
+            this.toCmb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.toCmb.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.toCmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.toCmb.FormattingEnabled = true;
+            this.toCmb.Location = new System.Drawing.Point(62, 138);
+            this.toCmb.Name = "toCmb";
+            this.toCmb.Size = new System.Drawing.Size(264, 27);
+            this.toCmb.TabIndex = 4;
             // 
-            // customerIDLbl
+            // toLbl
             // 
-            this.customerIDLbl.AutoSize = true;
-            this.customerIDLbl.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customerIDLbl.ForeColor = System.Drawing.Color.Crimson;
-            this.customerIDLbl.Location = new System.Drawing.Point(207, 113);
-            this.customerIDLbl.Name = "customerIDLbl";
-            this.customerIDLbl.Size = new System.Drawing.Size(83, 15);
-            this.customerIDLbl.TabIndex = 14;
-            this.customerIDLbl.Text = "(Customer ID)";
+            this.toLbl.AutoSize = true;
+            this.toLbl.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toLbl.ForeColor = System.Drawing.Color.Goldenrod;
+            this.toLbl.Location = new System.Drawing.Point(168, 104);
+            this.toLbl.Name = "toLbl";
+            this.toLbl.Size = new System.Drawing.Size(40, 27);
+            this.toLbl.TabIndex = 2;
+            this.toLbl.Text = "TO";
+            // 
+            // fromTxt
+            // 
+            this.fromTxt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.fromTxt.Enabled = false;
+            this.fromTxt.Location = new System.Drawing.Point(62, 71);
+            this.fromTxt.Name = "fromTxt";
+            this.fromTxt.Size = new System.Drawing.Size(264, 26);
+            this.fromTxt.TabIndex = 1;
+            this.fromTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // fromLbl
+            // 
+            this.fromLbl.AutoSize = true;
+            this.fromLbl.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fromLbl.ForeColor = System.Drawing.Color.Goldenrod;
+            this.fromLbl.Location = new System.Drawing.Point(154, 37);
+            this.fromLbl.Name = "fromLbl";
+            this.fromLbl.Size = new System.Drawing.Size(68, 27);
+            this.fromLbl.TabIndex = 0;
+            this.fromLbl.Text = "FROM";
             // 
             // MessagesForm
             // 

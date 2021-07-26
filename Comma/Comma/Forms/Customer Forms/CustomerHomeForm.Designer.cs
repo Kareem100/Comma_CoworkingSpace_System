@@ -645,6 +645,7 @@
             this.changeMailBtn.Text = "    Change E-mail";
             this.changeMailBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.changeMailBtn.UseVisualStyleBackColor = true;
+            this.changeMailBtn.Click += new System.EventHandler(this.changeMailBtn_Click);
             // 
             // changePassBtn
             // 

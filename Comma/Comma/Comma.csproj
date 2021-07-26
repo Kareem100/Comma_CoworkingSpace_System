@@ -94,6 +94,12 @@
     <Compile Include="Forms\Admin Forms\RentInformationForm.Designer.cs">
       <DependentUpon>RentInformationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Common Forms\ChangeEmailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Common Forms\ChangeEmailForm.Designer.cs">
+      <DependentUpon>ChangeEmailForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Common Forms\MessagesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +206,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Admin Forms\ShowRentsForm.resx">
       <DependentUpon>ShowRentsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Common Forms\ChangeEmailForm.resx">
+      <DependentUpon>ChangeEmailForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Common Forms\MessagesForm.resx">
       <DependentUpon>MessagesForm.cs</DependentUpon>
