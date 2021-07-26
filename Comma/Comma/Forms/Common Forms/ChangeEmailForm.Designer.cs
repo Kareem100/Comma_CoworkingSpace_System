@@ -65,7 +65,7 @@ namespace Comma.Forms.Common_Forms
             this.confirmNewEmailTxt.Location = new System.Drawing.Point(62, 216);
             this.confirmNewEmailTxt.Name = "confirmNewEmailTxt";
             this.confirmNewEmailTxt.Size = new System.Drawing.Size(264, 26);
-            this.confirmNewEmailTxt.TabIndex = 15;
+            this.confirmNewEmailTxt.TabIndex = 3;
             this.confirmNewEmailTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // newEmailTxt
@@ -75,7 +75,7 @@ namespace Comma.Forms.Common_Forms
             this.newEmailTxt.Location = new System.Drawing.Point(62, 145);
             this.newEmailTxt.Name = "newEmailTxt";
             this.newEmailTxt.Size = new System.Drawing.Size(264, 26);
-            this.newEmailTxt.TabIndex = 14;
+            this.newEmailTxt.TabIndex = 2;
             this.newEmailTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // changeEmailBtn
@@ -91,9 +91,10 @@ namespace Comma.Forms.Common_Forms
             this.changeEmailBtn.Location = new System.Drawing.Point(119, 272);
             this.changeEmailBtn.Name = "changeEmailBtn";
             this.changeEmailBtn.Size = new System.Drawing.Size(151, 35);
-            this.changeEmailBtn.TabIndex = 13;
+            this.changeEmailBtn.TabIndex = 4;
             this.changeEmailBtn.Text = "Change E-mail";
             this.changeEmailBtn.UseVisualStyleBackColor = false;
+            this.changeEmailBtn.Click += new System.EventHandler(this.changeEmailBtn_Click);
             // 
             // confirmNewEmailLbl
             // 
@@ -171,6 +172,7 @@ namespace Comma.Forms.Common_Forms
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ChangeEmailForm";
             this.Text = "ChangeEmailForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ChangeEmailForm_FormClosing);
             this.containerPanel.ResumeLayout(false);
             this.containerPanel.PerformLayout();
             this.ResumeLayout(false);

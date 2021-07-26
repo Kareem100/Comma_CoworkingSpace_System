@@ -56,3 +56,4 @@ C:\Users\20114\Documents\Visual Studio 2019\Projects\Comma\Comma\obj\Debug\Comma
 C:\Users\20114\Documents\Visual Studio 2019\Projects\Comma\Comma\obj\Debug\Comma.Forms.Customer_Forms.CustomMessage.resources
 C:\Users\20114\Documents\Visual Studio 2019\Projects\Comma\Comma\obj\Debug\Comma.csproj.AssemblyReference.cache
 C:\Users\20114\Documents\Visual Studio 2019\Projects\Comma\Comma\obj\Debug\Comma.Forms.Common_Forms.ChangeEmailForm.resources
+C:\Users\20114\Documents\Visual Studio 2019\Projects\Comma\Comma\obj\Debug\Comma.Forms.Common_Forms.ChangePasswordForm.resources
