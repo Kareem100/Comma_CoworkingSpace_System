@@ -39,10 +39,20 @@ from showing available rooms and seeing their rentals to booking the rooms, send
 </details>
 
 <details>
+  <summary>ER Diagram</summary>
+<p>
+  
+  ![](Screenshots/00.%20ERD%20P1.jpg)
+  ![](Screenshots/00.%20ERD%20P2.jpg)
+  
+</p>
+</details>
+
+<details>
   <summary>Schema</summary>
 <p>
   
-  ![](Screenshots/00.%20Schema.png)
+  ![](Screenshots/0.%20Schema.png)
   
 </p>
 </details>
